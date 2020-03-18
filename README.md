@@ -13,5 +13,5 @@ Attempting to implement very basic front-end/back-end communication right now.
 
 ## TODO
 * Current: Create api channel
-
+* Set up as a server 
 

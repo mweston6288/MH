@@ -1,4 +1,7 @@
+const mh = require("./controllers/mhController")
+
 $(".form-group").on("submit", function(event){
     event.preventDefault();
-    console.log("success")
+
+    mh.getInfo(1);
 })
