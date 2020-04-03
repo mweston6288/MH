@@ -1,4 +1,4 @@
-const mh = require("./controllers/mhController")
+const mh = require("../controllers/mhController")
 
 $(".form-group").on("submit", function(event){
     event.preventDefault();

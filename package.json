@@ -1,0 +1,26 @@
+{
+  "name": "MH",
+  "version": "1.0.0",
+  "description": "The end-goal of this project is to make an app for Monster Hunter: World players. The app could recommend builds for players based on what they are hunting and what weapons they are using.",
+  "main": "script.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mweston6288/MH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mweston6288/MH/issues"
+  },
+  "homepage": "https://github.com/mweston6288/MH#readme"
+}
