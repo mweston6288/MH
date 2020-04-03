@@ -4,8 +4,11 @@
   "description": "The end-goal of this project is to make an app for Monster Hunter: World players. The app could recommend builds for players based on what they are hunting and what weapons they are using.",
   "main": "script.js",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
-    "path": "^0.12.7"
+    "mysql2": "^2.1.0",
+    "path": "^0.12.7",
+    "sequelize": "^5.21.5"
   },
   "devDependencies": {},
   "scripts": {

@@ -13,5 +13,8 @@ Attempting to implement very basic front-end/back-end communication right now.
 
 ## TODO
 * Current: Create api channel
-* Set up as a server 
+* mhw-db does not provide search armor by rarity; will need to create feature for that
+
+## Resources
+* https://docs.mhw-db.com/
 
