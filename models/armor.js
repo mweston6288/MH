@@ -1,4 +1,3 @@
-const axios = require("axios");
 module.exports = function (sequelize, DataTypes) {
     const Armor = sequelize.define("Armor", {
         id: {
@@ -15,14 +14,5 @@ module.exports = function (sequelize, DataTypes) {
     }, {
         timestamps: false
     });
-
     return Armor;
 };
-axios.get("https://mhw-db.com/armor").then((res) => {
-    for (let i = 0; i < res.length; i++) {
-        Armor.create({
-            id: res[i].id,
-            rarity: res[i].rarity
-        })
-    }
-})
