@@ -11,7 +11,19 @@ module.exports = (sequelize, DataTypes) => {
       name: {
           type: DataTypes.STRING,
           allowNull: false
-      }
+      },
+      lowRank: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+      },
+      highRank: {
+        type: DataTypes.INTEGER,
+        allowNull: true
+    },
+    masterRank: {
+      type: DataTypes.INTEGER,
+        allowNull: true
+    }
   }, {
       timestamps: false
   });

@@ -2,239 +2,370 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      const monsterData = "./monsterData.json"
+    const monsterData = "./monsterData.json"
     return queryInterface.bulkInsert('Monsters', [
       {
         "id": 1,
-        "name": "Aptonoth"
+        "name": "Aptonoth",
+        "lowRank": 1,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 2,
-        "name": "Jagras"
+        "name": "Jagras",
+        "lowRank": 1,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 3,
-        "name": "Mernos"
+        "name": "Mernos",
+        "lowRank": 1,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 4,
-        "name": "Vespoid"
+        "name": "Vespoid",
+        "lowRank": 3,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 5,
-        "name": "Mosswine"
+        "name": "Mosswine",
+        "lowRank": 1,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 6,
-        "name": "Apceros"
+        "name": "Apceros",
+        "lowRank": 3,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 7,
-        "name": "Kestodon"
+        "name": "Kestodon",
+        "lowRank": 1,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 8,
-        "name": "Noios"
+        "name": "Noios",
+        "lowRank": 3,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 9,
-        "name": "Gajau"
+        "name": "Gajau",
+        "lowRank": 3,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 10,
-        "name": "Kelbi"
+        "name": "Kelbi",
+        "lowRank": 3,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 11,
-        "name": "Raphinos"
+        "name": "Raphinos",
+        "lowRank": 8,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 12,
-        "name": "Shamos"
+        "name": "Shamos",
+        "lowRank": 6,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 13,
-        "name": "Girros"
+        "name": "Girros",
+        "lowRank": 8,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 14,
-        "name": "Hornetaur"
+        "name": "Hornetaur",
+        "lowRank": 8,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 15,
-        "name": "Gastodon"
+        "name": "Gastodon",
+        "highRank": 13,
+        "masterRank": 1
       },
       {
         "id": 16,
-        "name": "Barnos"
+        "name": "Barnos",
+        "highRank": 13,
+        "masterRank": 1
       },
       {
         "id": 17,
-        "name": "Great Jagras"
+        "name": "Great Jagras",
+        "lowRank": 1,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 18,
-        "name": "Kulu-Ya-Ku"
+        "name": "Kulu-Ya-Ku",
+        "lowRank": 2,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 19,
-        "name": "Pukei-Pukei"
+        "name": "Pukei-Pukei",
+        "lowRank": 2,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 20,
-        "name": "Barroth"
+        "name": "Barroth",
+        "masterRank": 7
       },
       {
         "id": 21,
-        "name": "Jyuratodus"
+        "name": "Jyuratodus",
+        "lowRank": 3,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 22,
-        "name": "Tobi-Kadachi"
+        "name": "Tobi-Kadachi",
+        "lowRank": 4,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 23,
-        "name": "Anjanath"
+        "name": "Anjanath",
+        "lowRank": 4,
+        "highRank": 11,
+        "masterRank": 4
       },
       {
         "id": 24,
-        "name": "Azure Rathalos"
+        "name": "Azure Rathalos",
+        "highRank": 13,
+        "masterRank": 13
       },
       {
         "id": 25,
-        "name": "Bazelgeuse"
+        "name": "Bazelgeuse",
+        "highRank": 13,
+        "masterRank": 1
       },
       {
         "id": 26,
-        "name": "Behemoth"
+        "name": "Behemoth",
+        "highRank": 16,
       },
       {
         "id": 27,
-        "name": "Deviljho"
+        "name": "Deviljho",
+        "highRank": 13,
+        "masterRank": 1
       },
       {
         "id": 28,
-        "name": "Diablos"
+        "name": "Diablos",
+        "lowRank": 8,
+        "highRank": 13,
+        "masterRank": 7
       },
       {
         "id": 29,
-        "name": "Black Diablos"
+        "name": "Black Diablos",
+        "highRank": 13,
+        "masterRank": 13
       },
       {
         "id": 30,
-        "name": "Dodogama"
+        "name": "Dodogama",
+        "highRank": 13,
+        "masterRank": 1
       },
       {
         "id": 31,
-        "name": "Great Girros"
+        "name": "Great Girros",
+        "lowRank": 8,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 32,
-        "name": "Kirin"
+        "name": "Kirin",
+        "lowRank": 8,
+        "highRank": 14,
+        "masterRank": 19
       },
       {
         "id": 33,
-        "name": "Kulve Taroth"
+        "name": "Kulve Taroth",
+        "highRank": 16
       },
       {
         "id": 34,
-        "name": "Kushala Daora"
+        "name": "Kushala Daora",
+        "highRank": 14,
+        "masterRank": 19
       },
       {
         "id": 35,
-        "name": "Lavasioth"
+        "name": "Lavasioth",
+        "highRank": 13,
+        "masterRank": 7
       },
       {
         "id": 36,
-        "name": "Legiana"
+        "name": "Legiana",
+        "lowRank": 8,
+        "highRank": 13,
+        "masterRank": 7
       },
       {
         "id": 37,
-        "name": "Lunastra"
+        "name": "Lunastra",
+        "highRank": 16,
+        "masterRank": 1
       },
       {
         "id": 38,
-        "name": "Nergigante"
+        "name": "Nergigante",
+        "highRank": 13
       },
       {
         "id": 39,
-        "name": "Odogaron"
+        "name": "Odogaron",
+        "lowRank": 8,
+        "highRank": 13,
+        "masterRank": 7
       },
       {
         "id": 40,
-        "name": "Paolumu"
+        "name": "Paolumu",
+        "lowRank": 6,
+        "highRank": 11,
+        "masterRank": 4
       },
       {
         "id": 41,
-        "name": "Radobaan"
+        "name": "Radobaan",
+        "lowRank": 8,
+        "highRank": 11,
+        "masterRank": 4
       },
       {
         "id": 42,
-        "name": "Rathalos"
+        "name": "Rathalos",
+        "lowRank": 8,
+        "highRank": 13,
+        "masterRank": 1
       },
       {
         "id": 43,
-        "name": "Rathian"
+        "name": "Rathian",
+        "lowRank": 5,
+        "highRank": 11,
+        "masterRank": 4
       },
       {
         "id": 44,
-        "name": "Pink Rathian"
+        "name": "Pink Rathian",
+        "highRank": 12,
+        "masterRank": 6
       },
       {
         "id": 45,
-        "name": "Teostra"
+        "name": "Teostra",
+        "highRank": 14,
+        "masterRank": 19
       },
       {
         "id": 48,
-        "name": "Tzitzi-Ya-Ku"
+        "name": "Tzitzi-Ya-Ku",
+        "lowRank": 6,
+        "highRank": 11,
+        "masterRank": 1
       },
       {
         "id": 49,
-        "name": "Uragaan"
+        "name": "Uragaan",
+        "highRank": 13,
+        "masterRank": 7
       },
       {
         "id": 50,
-        "name": "Vaal Hazak"
+        "name": "Vaal Hazak",
+        "highRank": 14,
       },
       {
         "id": 51,
-        "name": "Xeno'jiiva"
+        "name": "Xeno'jiiva",
+        "highRank": 16
       },
       {
         "id": 52,
-        "name": "Zorah Magdaros"
+        "name": "Zorah Magdaros",
+        "highRank": 11
       },
       {
         "id": 53,
-        "name": "Leshen"
+        "name": "Leshen",
+        "highRank": 16
       },
       {
         "id": 54,
-        "name": "Ancient Leshen"
+        "name": "Ancient Leshen",
+        "highRank": 50
       },
       {
         "id": 55,
-        "name": "Safi'jiiva"
+        "name": "Safi'jiiva",
+        "masterRank": 24
       },
       {
         "id": 56,
-        "name": "Stygian Zinogre"
+        "name": "Stygian Zinogre",
+        "masterRank": 24
       },
       {
         "id": 57,
-        "name": "Rajang"
+        "name": "Rajang",
+        "masterRank": 24
       },
       {
         "id": 58,
-        "name": "Viper Tobi-Kadachi"
+        "name": "Viper Tobi-Kadachi",
+        "masterRank": 3
       },
       {
         "id": 59,
-        "name": "Namielle"
+        "name": "Namielle",
+        "masterRank": 20
       },
       {
         "id": 60,
-        "name": "Zinogre"
+        "name": "Zinogre",
+        "masterRank": 24
       }
     ]);
   },
