@@ -18,3 +18,6 @@ Attempting to implement very basic front-end/back-end communication right now.
 ## Resources
 * https://docs.mhw-db.com/
 
+# Notes for use
+* for specific searches, follow with ?q={"element":"value"}
+* Ex: get armor with rarity 1: https://mhw-db.com/armor?q={"rarity":"1"}
