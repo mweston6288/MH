@@ -9,12 +9,12 @@ app.use(express.urlencoded({ extented: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-/*app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(require("./controllers/monsterController.js"));
-*/
 
-require("./routes/html-routes.js")(app);
+
+//require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 

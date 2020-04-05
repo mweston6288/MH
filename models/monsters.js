@@ -18,11 +18,16 @@ module.exports = (sequelize, DataTypes) => {
   Monsters.associate = function(models) {
     // associations can be defined here
   };
-  Monsters.add = function(data){
-    Monsters.create({
-        id: data.body.id,
-        name: data.body.name
-    })
-  }
+  Monsters.getMonsters = function(cb){
+    Monsters.findAll()
+      .then((res) => {
+        const data = [];
+        res.forEach((element) => {
+          data.push({ id: element.id, name: element.name });
+        });
+    return cb(null, data);
+  })
+}
+ 
   return Monsters;
 };
