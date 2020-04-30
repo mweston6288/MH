@@ -1,12 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Monsters = sequelize.define('Monsters', {
-      id: {
+      monsterID: {
           type: DataTypes.INTEGER,
           allowNull: false,
-          unique: true,
-          autoIncrement: false,
-          primaryKey: true
+          unique: true
       },
       name: {
           type: DataTypes.STRING,
@@ -35,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       .then((res) => {
         const data = [];
         res.forEach((element) => {
-          data.push({ id: element.id, name: element.name });
+          data.push({ id: element.monsterID, name: element.name });
         });
     return cb(null, data);
   })
