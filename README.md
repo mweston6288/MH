@@ -5,6 +5,7 @@ The app could recommend builds for players based on what they are hunting and wh
 
 ## Current status
 Attempting to implement very basic front-end/back-end communication right now.
+Convert to MERN.
 
 ## End Goal
 * Provide equipment options that would best protect against monsters
@@ -14,6 +15,7 @@ Attempting to implement very basic front-end/back-end communication right now.
 ## TODO
 * Current: Create api channel
 * mhw-db does not provide search armor by rarity; will need to create feature for that
+* Implement axios
 
 ## Resources
 * https://docs.mhw-db.com/
