@@ -3,10 +3,10 @@ import Form from "react-bootstrap/Form"
 
 function HR(props){
     return(
-        <Form>
             <Form.Group>
                 <Form.Label>Hunter Rank</Form.Label>
-                <Form.Control as="select" custom onChange={props.updateHunterRank}>
+                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateHunterRank}>
+                    <option disabled hidden>Rank</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -26,7 +26,6 @@ function HR(props){
                     <option>100+</option>
                 </Form.Control>
             </Form.Group>
-        </Form>
     )
 }
 export default HR;

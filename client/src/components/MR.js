@@ -3,10 +3,10 @@ import Form from "react-bootstrap/Form"
 
 function MR(props) {
     return (
-        <Form>
             <Form.Group>
                 <Form.Label>Master Rank</Form.Label>
-                <Form.Control as="select" custom onChange={props.updateMasterRank}>
+                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateMasterRank}>
+                    <option disabled hidden>Rank</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -32,7 +32,6 @@ function MR(props) {
                     <option>100+</option>
                 </Form.Control>
             </Form.Group>
-        </Form>
     )
 }
 export default MR;
