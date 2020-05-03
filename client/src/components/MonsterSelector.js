@@ -3,7 +3,7 @@ import * as apis from "../api/index.js"
 import Form from "react-bootstrap/Form"
 function MonsterSelector(props){
     const [monsterList,setMonsterList]=useState([]);
-    const [list,setList]=useState(0);
+    const list = 0;
 
     useEffect(()=>{
         apis.getMonsterList().then(res=>{

@@ -29,57 +29,72 @@ const SearchContext = ()=>{
 		setSearchState({ ...searchState, masterRank: event.target.value })
 	}
 	const setArmor = (armor)=>{
-		console.log(recommendedArmor)
-		console.log(armor)
+		let head = {};
+		let chest = {};
+		let gloves = {};
+		let waist = {};
+		let legs = {};
 		for (let i=0; i < armor.length; i++){
 			const type = armor[i].type;
 			switch(type){
 				case "head":
-					if (recommendedArmor.head.defense === undefined || recommendedArmor.head.defense.base < armor[i].defense.base){
-						recommendedArmor.head = armor[i]
-						console.log(recommendedArmor)
 
+					if (head.defense === undefined || head.defense.base < armor[i].defense.base){
+						head = armor[i]
 					}
 					break;
 				case "chest":
-					if (recommendedArmor.chest.defense === undefined || recommendedArmor.chest.defense.base < armor[i].defense.base) {
-						setRecommendedArmor({ ...recommendedArmor, chest: armor[i] })
+					if (chest.defense === undefined || chest.defense.base < armor[i].defense.base) {
+						chest = armor[i]
 					}
 					break;
 				case "gloves":
-					if (recommendedArmor.gloves.defense === undefined  || recommendedArmor.gloves.defense.base < armor[i].defense.base) {
-						setRecommendedArmor({ ...recommendedArmor, gloves: armor[i] })
+					if (gloves.defense === undefined  || gloves.defense.base < armor[i].defense.base) {
+						gloves = armor[i]
 					}
 					break;
 				case "waist":
-					if (recommendedArmor.waist.defense === undefined || recommendedArmor.waist.defense.base < armor[i].defense.base) {
-						recommendedArmor.waist = armor[i]
-
+					if (waist.defense === undefined || waist.defense.base < armor[i].defense.base) {
+						waist = armor[i]
 					}
 					break;
 				case "legs":
-					if (recommendedArmor.legs.defense === undefined || recommendedArmor.legs.defense.base < armor[i].defense.base) {
-						setRecommendedArmor({ ...recommendedArmor, legs: armor[i] })
-					}
+					if (legs.defense === undefined || legs.defense.base < armor[i].defense.base) {
+						legs = armor[i]
+					}	
 					break;
+				default:		
 			}
+			
 		}
+		setRecommendedArmor({...recommendedArmor, head: head, gloves: gloves, waist: waist, legs: legs, chest: chest})
 	}
-	const getResponse = (event)=>{
+	const getResponse = async (event)=>{
+		let armors=[];
 		if(searchState.monster){
-		event.preventDefault();
-		Axios.get(`https://mhw-db.com/monsters?q={"name":"`+searchState.monster+`"}`).then(res=>{
-			res.data[0].ailments.forEach(async ailment =>{
-				await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+ailment.protection.skills[0].name + `"}`).then(async res=>{
-				await setArmor(res.data);
-				}).catch(err=>{
-					console.log(err)
-				})				
-			})		
-		}).catch(err => {
-			console.log(err);
-		})
-	}
+			event.preventDefault();
+			try {
+				const res = await Axios.get(`https://mhw-db.com/monsters?q={"name":"`+searchState.monster+`"}`)		
+				for(let i=0;i<res.data[0].ailments.length;i++){
+					
+					const ailment=res.data[0].ailments[i]
+					try{
+					const res = await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+ailment.protection.skills[0].name + `"}`)
+						
+						res.data.forEach(armor => {
+							armors.push(armor)
+						})
+					}catch(err){
+						console.log(err)
+					}
+				}
+			}catch(err){
+				console.log(err);
+			}
+			
+			setArmor(armors);
+
+		}
 	}
 	return(
 		<div>
