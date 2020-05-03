@@ -8,7 +8,6 @@ function MonsterSelector(props){
     useEffect(()=>{
         apis.getMonsterList().then(res=>{
             setMonsterList(res.data);
-            console.log(monsterList)
         })
     },[list])
 
