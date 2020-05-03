@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as apis from "../api/index.js"
 import Form from "react-bootstrap/Form"
-function MonsterSelector(){
+function MonsterSelector(props){
     const [monsterList,setMonsterList]=useState([]);
     const [list,setList]=useState(0);
 
@@ -16,9 +16,9 @@ function MonsterSelector(){
         <Form>
             <Form.Group>
                 <Form.Label>Select Monster</Form.Label>
-                <Form.Control as="select" custom>
+                <Form.Control as="select" custom onChange={props.updateMonster}>
                     {monsterList.map(monster=>(
-                        <option>{monster.name}</option>
+                        <option key={monster.id}id={monster.id}>{monster.name}</option>
                     ))}
                 </Form.Control>
             </Form.Group>
