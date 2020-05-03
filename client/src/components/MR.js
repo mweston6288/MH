@@ -1,6 +1,9 @@
 import React from "react";
 import Form from "react-bootstrap/Form"
 
+// A menu for Master rank
+// Currently doesn't affact anything. Will eventually be used to filter equipment by availability
+// Will also need to add ability to disable when HR is too low
 function MR(props) {
     return (
             <Form.Group>

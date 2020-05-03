@@ -1,6 +1,10 @@
 import React from "react";
 import Form from "react-bootstrap/Form"
 
+// Create a select menu form so users can input their current hunter rank
+// Currently does not affect anything.
+// Will be used to filter equipment by what can be reularly farmed
+// The options are only the ranks where new hunts become available
 function HR(props){
     return(
             <Form.Group>
