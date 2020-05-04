@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MonsterSelector from "../components/MonsterSelector"
 import HR from "../components/HR"
 import MR from "../components/MR"
+import ArmorDisplay from "../components/armorDisplay"
 import Axios from "axios"
 import Form from "react-bootstrap/Form"
 
@@ -125,6 +126,7 @@ const SearchContext = ()=>{
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>
+			<ArmorDisplay armor={recommendedArmor}/>
 		</div>
 	)
 }
