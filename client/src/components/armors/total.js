@@ -1,8 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card"
+import ListGroup from "react-bootstrap/ListGroup"
 
-function Total(props) {
-    console.log(props)
+function Total({armor}) {
+    console.log({armor})
     let defense = 0;
     let fireRes =0;
     let waterRes=0;
@@ -10,33 +11,30 @@ function Total(props) {
     let iceRes=0;
     let dragonRes=0;
 
-
-    if (!props.waist) {
-        return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        No armor selected
-                    </Card.Title>
-                </Card.Body>
-            </Card>
-        )
-    } else {
-        return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        {props.waist.name}
-                    </Card.Title>
-                        <ListGroup.Item>Defense: {props.waist.defense.base}</ListGroup.Item>
-                        <ListGroup.Item>Fire Resistance: {props.waist.resistances.fire}</ListGroup.Item>
-                        <ListGroup.Item>Water Resistance: {props.waist.resistances.water}</ListGroup.Item>
-                        <ListGroup.Item>Ice Resistance: {props.waist.resistances.ice}</ListGroup.Item>
-                        <ListGroup.Item>Thunder Resistance:{props.waist.resistances.thunder}</ListGroup.Item>
-                        <ListGroup.Item>Dragon Resistance: {props.waist.resistances.dragon}</ListGroup.Item>
-                </Card.Body>
-            </Card>
-        )
+    for (const armorPiece in armor) {
+        if (armor[armorPiece]){
+            console.log(armor[armorPiece])
+            defense += armor[armorPiece].defense.base
+            fireRes += armor[armorPiece].resistances.fire
+            waterRes += armor[armorPiece].resistances.water
+            thunderRes += armor[armorPiece].resistances.thunder
+            iceRes += armor[armorPiece].resistances.ice
+            dragonRes += armor[armorPiece].resistances.dragon
+        }
     }
+    return (
+        <Card>
+            <Card.Body>
+                <Card.Title>Total
+                </Card.Title>
+                    <ListGroup.Item>Defense:{defense}</ListGroup.Item>
+                    <ListGroup.Item>Fire Resistance:{fireRes}</ListGroup.Item>
+                    <ListGroup.Item>Water Resistance: {waterRes}</ListGroup.Item>
+                    <ListGroup.Item>Ice Resistance: {iceRes}</ListGroup.Item>
+                    <ListGroup.Item>Thunder Resistance:{thunderRes}</ListGroup.Item>
+                    <ListGroup.Item>Dragon Resistance: {dragonRes}</ListGroup.Item>
+            </Card.Body>
+        </Card>
+    )
 }
 export default Total;

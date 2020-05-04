@@ -7,6 +7,7 @@ import Chest from "./armors/chest"
 import Gloves from "./armors/gloves"
 import Waist from "./armors/waist"
 import Legs from "./armors/legs"
+import Total from "./armors/total"
 
 // Display the selected armor. Currently displays names only
 // Will update with stats, skills, and slots
@@ -31,6 +32,9 @@ function ArmorDisplay(props){
                 </Col>
                 <Col className="col-sm-4">
                     <Legs legs={props.armor.legs} />
+                </Col>
+                <Col className="col-sm-4">
+                    <Total armor={props.armor} />
                 </Col>
             </Row>
         </Container>
