@@ -18,11 +18,11 @@ const SearchContext = ()=>{
 	// The state of the search results
 	// Updates when submit is pressed
 	const [recommendedArmor, setRecommendedArmor] = useState({
-		head: {},
-		chest: {},
-		waist: {},
-		gloves: {},
-		legs: {}
+		head: null,
+		chest: null,
+		waist: null,
+		gloves: null,
+		legs: null
 	})
 
 	// Update the searchState fields.
@@ -40,11 +40,11 @@ const SearchContext = ()=>{
 	// Takes in an array of armor objects
 	const updateArmor = (armor)=>{
 		// These variables are used to store the currently "best" armor in each field.
-		let head = {};
-		let chest = {};
-		let gloves = {};
-		let waist = {};
-		let legs = {};
+		let head = null;
+		let chest = null;
+		let gloves = null;
+		let waist = null;
+		let legs = null;
 		for (let i=0; i < armor.length; i++){
 			// Get the type of armor and compare it to the current armor saved in the above variables
 			// Set it if there is no option or if the armor is better
@@ -52,27 +52,27 @@ const SearchContext = ()=>{
 			const type = armor[i].type;
 			switch(type){
 				case "head":
-					if (head.defense === undefined || head.defense.base < armor[i].defense.base){
+					if (!head || head.defense.base < armor[i].defense.base){
 						head = armor[i]
 					}
 					break;
 				case "chest":
-					if (chest.defense === undefined || chest.defense.base < armor[i].defense.base) {
+					if (!chest || chest.defense.base < armor[i].defense.base) {
 						chest = armor[i]
 					}
 					break;
 				case "gloves":
-					if (gloves.defense === undefined  || gloves.defense.base < armor[i].defense.base) {
+					if (!gloves || gloves.defense.base < armor[i].defense.base) {
 						gloves = armor[i]
 					}
 					break;
 				case "waist":
-					if (waist.defense === undefined || waist.defense.base < armor[i].defense.base) {
+					if (!waist || waist.defense.base < armor[i].defense.base) {
 						waist = armor[i]
 					}
 					break;
 				case "legs":
-					if (legs.defense === undefined || legs.defense.base < armor[i].defense.base) {
+					if (!legs || legs.defense.base < armor[i].defense.base) {
 						legs = armor[i]
 					}	
 					break;
@@ -113,7 +113,7 @@ const SearchContext = ()=>{
 			}
 			
 			updateArmor(armors);
-
+			console.log(recommendedArmor)
 		}
 	}
 	return(

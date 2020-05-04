@@ -2,7 +2,11 @@ import React from "react";
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import Card from "react-bootstrap/Card"
+import Head from "./armors/head"
+import Chest from "./armors/chest"
+import Gloves from "./armors/gloves"
+import Waist from "./armors/waist"
+import Legs from "./armors/legs"
 
 // Display the selected armor. Currently displays names only
 // Will update with stats, skills, and slots
@@ -12,33 +16,21 @@ function ArmorDisplay(props){
         <Container>
             <Row>
                 <Col className="col-sm-4">
-                    <Card>
-                        <div>{props.armor.head.name}</div>
-                    </Card>
+                    <Head head={props.armor.head}/>
                 </Col>
                 <Col className="col-sm-4">
-                    <Card>
-                        <div>{props.armor.chest.name}</div>
-                    </Card>
+                    <Chest chest={props.armor.chest}/>
                 </Col>
                 <Col className="col-sm-4">
-                    <Card>
-                        <div>{props.armor.gloves.name}</div>
-                    </Card>
+                    <Gloves gloves={props.armor.gloves} />
                 </Col>
             </Row>
             <Row>
                 <Col className="col-sm-4">
-                    <Card>
-                        <div>{props.armor.waist.name}</div>
-                    </Card>
+                    <Waist waist={props.armor.waist} />
                 </Col>
-            </Row>
-            <Row>
                 <Col className="col-sm-4">
-                    <Card>
-                        <div>{props.armor.legs.name}</div>
-                    </Card>
+                    <Legs legs={props.armor.legs} />
                 </Col>
             </Row>
         </Container>
