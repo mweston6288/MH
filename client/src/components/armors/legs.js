@@ -21,14 +21,12 @@ function Legs(props) {
                     <Card.Title>
                         {props.legs.name}
                     </Card.Title>
-                    <Card.Text>
                         <ListGroup.Item>Defense: {props.legs.defense.base}</ListGroup.Item>
                         <ListGroup.Item>Fire Resistance: {props.legs.resistances.fire}</ListGroup.Item>
                         <ListGroup.Item>Water Resistance: {props.legs.resistances.water}</ListGroup.Item>
                         <ListGroup.Item>Ice Resistance: {props.legs.resistances.ice}</ListGroup.Item>
                         <ListGroup.Item>Thunder Resistance:{props.legs.resistances.thunder}</ListGroup.Item>
                         <ListGroup.Item>Dragon Resistance: {props.legs.resistances.dragon}</ListGroup.Item>
-                    </Card.Text>
                 </Card.Body>
             </Card>
         )

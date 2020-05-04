@@ -21,14 +21,12 @@ function Chest(props) {
                     <Card.Title>
                         {props.chest.name}
                     </Card.Title>
-                    <Card.Text>
                         <ListGroup.Item>Defense: {props.chest.defense.base}</ListGroup.Item>
                         <ListGroup.Item>Fire Resistance: {props.chest.resistances.fire}</ListGroup.Item>
                         <ListGroup.Item>Water Resistance: {props.chest.resistances.water}</ListGroup.Item>
                         <ListGroup.Item>Ice Resistance: {props.chest.resistances.ice}</ListGroup.Item>
                         <ListGroup.Item>Thunder Resistance:{props.chest.resistances.thunder}</ListGroup.Item>
                         <ListGroup.Item>Dragon Resistance: {props.chest.resistances.dragon}</ListGroup.Item>
-                    </Card.Text>
                 </Card.Body>
             </Card>
         )
