@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card"
+import ListGroup from "react-bootstrap/ListGroup"
 
-function Head(props) {
+function Gloves(props) {
     console.log(props)
     if (!props.gloves) {
         return (
@@ -21,16 +22,16 @@ function Head(props) {
                         {props.gloves.name}
                     </Card.Title>
                     <Card.Text>
-                        <p>{props.gloves.defense.base}</p>
-                        <p>{props.gloves.resistances.fire}</p>
-                        <p>{props.gloves.resistances.water}</p>
-                        <p>{props.gloves.resistances.ice}</p>
-                        <p>{props.gloves.resistances.thunder}</p>
-                        <p>{props.gloves.resistances.dragon}</p>
+                        <ListGroup.Item>Defense: {props.gloves.defense.base}</ListGroup.Item>
+                        <ListGroup.Item>Fire Resistance: {props.gloves.resistances.fire}</ListGroup.Item>
+                        <ListGroup.Item>Water Resistance: {props.gloves.resistances.water}</ListGroup.Item>
+                        <ListGroup.Item>Ice Resistance: {props.gloves.resistances.ice}</ListGroup.Item>
+                        <ListGroup.Item>Thunder Resistance:{props.gloves.resistances.thunder}</ListGroup.Item>
+                        <ListGroup.Item>Dragon Resistance: {props.gloves.resistances.dragon}</ListGroup.Item>
                     </Card.Text>
                 </Card.Body>
             </Card>
         )
     }
 }
-export default Head
+export default Gloves
