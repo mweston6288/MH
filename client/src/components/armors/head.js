@@ -20,12 +20,19 @@ function Head(props){
                     <Card.Title>
                         {props.head.name}
                     </Card.Title>
+                    <ListGroup>
                         <ListGroup.Item>Defense: {props.head.defense.base}</ListGroup.Item>
                         <ListGroup.Item>Fire Resistance: {props.head.resistances.fire}</ListGroup.Item>
                         <ListGroup.Item>Water Resistance: {props.head.resistances.water}</ListGroup.Item>
                         <ListGroup.Item>Ice Resistance: {props.head.resistances.ice}</ListGroup.Item>
                         <ListGroup.Item>Thunder Resistance:{props.head.resistances.thunder}</ListGroup.Item>
                         <ListGroup.Item>Dragon Resistance: {props.head.resistances.dragon}</ListGroup.Item>
+                    </ListGroup>
+                    <ListGroup>
+                        {props.head.skills.map(skill => (
+                            <ListGroup.Item>{skill.skillName} {skill.level}</ListGroup.Item>
+                        ))}
+                    </ListGroup>
                 </Card.Body>
             </Card>
         )

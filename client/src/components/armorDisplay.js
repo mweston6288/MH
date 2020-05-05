@@ -9,8 +9,8 @@ import Waist from "./armors/waist"
 import Legs from "./armors/legs"
 import Total from "./armors/total"
 
-// Display the selected armor. Currently displays names only
-// Will update with stats, skills, and slots
+// Display the selected armor. Currently displays names and stats
+// Will update with skills and slots
 function ArmorDisplay(props){
     return(
         <Container>

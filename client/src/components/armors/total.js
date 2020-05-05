@@ -9,6 +9,7 @@ function Total({armor}) {
     let thunderRes=0;
     let iceRes=0;
     let dragonRes=0;
+    let skills = [];
 
     for (const armorPiece in armor) {
         if (armor[armorPiece]){
@@ -18,6 +19,9 @@ function Total({armor}) {
             thunderRes += armor[armorPiece].resistances.thunder
             iceRes += armor[armorPiece].resistances.ice
             dragonRes += armor[armorPiece].resistances.dragon
+            armor[armorPiece].skills.map(skill=>{
+                console.log(skill)
+            })
         }
     }
     return (

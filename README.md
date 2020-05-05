@@ -15,6 +15,7 @@ The app could recommend builds for players based on what they are hunting and wh
 
 ## TODO
 * Create a database that tracks monster ailments, API ids for skills
+* Track skill levels.
 
 ## Resources
 * https://docs.mhw-db.com/
