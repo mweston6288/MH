@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
 
 function Chest(props) {
-    console.log(props)
     if (!props.chest) {
         return (
             <Card>

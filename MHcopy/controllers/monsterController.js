@@ -8,7 +8,6 @@ router.get("/", function (req, res) {
         const hbsObject = {
             Monster: data
         }
-        console.log(hbsObject)
         res.render("index", hbsObject);
     })
 });

@@ -8,8 +8,12 @@ export const getArmor = () => {
 export const getMonsterList = () => { 
     return axios.get("./api/monsters")
 }
+export const getMonster = (name) => {
+    return axios.get("./api/monsters/"+name)
+}
 const apis = {
     getArmor,
-    getMonsterList
+    getMonsterList,
+    getMonster
 }
 export default apis;

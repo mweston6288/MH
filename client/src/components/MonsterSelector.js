@@ -25,7 +25,7 @@ function MonsterSelector(props){
             <Form.Control as="select" custom defaultValue="Monster" onChange={props.updateMonster}>
                 <option disabled hidden>Monster</option>
                 {monsterList.map(monster=>(
-                    <option key={monster.id}id={monster.id}>{monster.name}</option>
+                    <option key={monster._id}>{monster.name}</option>
                 ))}
             </Form.Control>
         </Form.Group>

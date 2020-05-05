@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
 
 function Head(props){
-    console.log(props)
     if (!props.head){
         return (
             <Card>

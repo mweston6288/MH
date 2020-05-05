@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
 
 function Total({armor}) {
-    console.log({armor})
     let defense = 0;
     let fireRes =0;
     let waterRes=0;
@@ -13,7 +12,6 @@ function Total({armor}) {
 
     for (const armorPiece in armor) {
         if (armor[armorPiece]){
-            console.log(armor[armorPiece])
             defense += armor[armorPiece].defense.base
             fireRes += armor[armorPiece].resistances.fire
             waterRes += armor[armorPiece].resistances.water

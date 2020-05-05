@@ -5,6 +5,8 @@ import MR from "../components/MR"
 import ArmorDisplay from "../components/armorDisplay"
 import Axios from "axios"
 import Form from "react-bootstrap/Form"
+import * as apis from "../api/index.js"
+
 
 // Creates the user search and results states.
 const SearchContext = ()=>{
@@ -92,13 +94,14 @@ const SearchContext = ()=>{
 			event.preventDefault();
 			try {
 				// Get the full details on the monster I'm looking for
-				const res = await Axios.get(`https://mhw-db.com/monsters?q={"name":"`+searchState.monster+`"}`)		
-				for(let i=0;i<res.data[0].ailments.length;i++){
+				const res = await apis.getMonster(searchState.monster);	
+				console.log(res)	
+				for(let i=0;i<res.data[0].skills.length;i++){
 					// Get the ailments section
-					const ailment=res.data[0].ailments[i]
+					const skill=res.data[0].skills[i]
 					try{
 					// Get the skills under protection
-					const res = await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+ailment.protection.skills[0].name + `"}`)
+					const res = await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+skill.name + `"}`)
 						// Add results to the array
 						res.data.forEach(armor => {
 							armors.push(armor)
@@ -111,9 +114,7 @@ const SearchContext = ()=>{
 			}catch(err){
 				console.log(err);
 			}
-			
 			updateArmor(armors);
-			console.log(recommendedArmor)
 		}
 	}
 	return(

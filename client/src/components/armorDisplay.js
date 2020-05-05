@@ -12,7 +12,6 @@ import Total from "./armors/total"
 // Display the selected armor. Currently displays names only
 // Will update with stats, skills, and slots
 function ArmorDisplay(props){
-    console.log(props);
     return(
         <Container>
             <Row>

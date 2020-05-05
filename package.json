@@ -6,11 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start": "npm run build && nodemon server.js",
     "client": "cd client && npm run start",
-    "client-install": "cd client && npm install"
+    "client-install": "cd client && npm install",
+    "seed":"cd backend && node seed.js"
   },
   "keywords": [],
   "author": "",
