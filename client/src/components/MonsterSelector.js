@@ -14,6 +14,8 @@ function MonsterSelector(props){
     useEffect(()=>{
         apis.getMonsterList().then(res=>{
             setMonsterList(res.data);
+        }).catch(err=>{
+            console.log(err)
         })
     },[list])
 

@@ -1,11 +1,14 @@
-const db = require("../models/monsters.js");
-const axios = require("axios");
-// Convert to axios
-module.exports = (app) => {
-    app.post("/api/armor", (req, res) => {
-        $.get("https://mhw-db.com/armor").then((res)=>{
+const Monsters = require("../models/monsters.js");
+const router = require("express").Router();
 
-        })
-       // db.Armor.create
+router.get("/api/monsters", (req, res)=>{
+    console.log(req)
+    Monsters.find().then(monsters=>{
+        console.log(monsters)
+        res.json(monsters);
+    }).catch((err)=>{
+        console.log(err)
     })
-}
+});
+
+module.exports = router;
