@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const monstersSchema = new Schema({
-    dbID:{
+    monsterID:{
         type: Number
     },
     name:{
@@ -19,7 +19,12 @@ const monstersSchema = new Schema({
     },
     masterRank:{
         type: Number
-    }
+    },
+    skills:[{
+        id: Number,
+        name: String,
+        level: Number
+    }]
 })
 const Monsters = mongoose.model("Monsters", monstersSchema);
 
