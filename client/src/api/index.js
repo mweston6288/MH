@@ -8,6 +8,7 @@ export const getArmor = () => {
 export const getMonsterList = () => { 
     return axios.get("./api/monsters")
 }
+// Get a specific monster. Used to get recommended skills
 export const getMonster = (name) => {
     return axios.get("./api/monsters/"+name)
 }

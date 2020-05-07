@@ -11,6 +11,8 @@ const monstersSchema = new Schema({
         trim: true,
         required: "Enter a monster name"
     },
+    // Track the minimum hunter rank you will be when you can take
+    // quests to hunt monsters
     lowRank:{
         type: Number
     },
@@ -20,10 +22,11 @@ const monstersSchema = new Schema({
     masterRank:{
         type: Number
     },
+    // Skills that help against the monster
     skills:[{
-        id: Number,
+        id: Number, // associated skill id from https://docs.mhw-db.com/
         name: String,
-        level: Number
+        level: Number // Maximum skill level
     }]
 })
 const Monsters = mongoose.model("Monsters", monstersSchema);

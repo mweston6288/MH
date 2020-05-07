@@ -95,12 +95,11 @@ const SearchContext = ()=>{
 			try {
 				// Get the full details on the monster I'm looking for
 				const res = await apis.getMonster(searchState.monster);	
-				console.log(res)	
 				for(let i=0;i<res.data[0].skills.length;i++){
-					// Get the ailments section
+					// Get the recommended skills section
 					const skill=res.data[0].skills[i]
 					try{
-					// Get the skills under protection
+					// Get the armor pieces that have that skill
 					const res = await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+skill.name + `"}`)
 						// Add results to the array
 						res.data.forEach(armor => {
@@ -110,7 +109,6 @@ const SearchContext = ()=>{
 						console.log(err)
 					}
 				}
-			// Some monsters have an undefined ailments.protection
 			}catch(err){
 				console.log(err);
 			}

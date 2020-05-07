@@ -14,10 +14,6 @@ function Chest(props) {
             </Card>
         )
     } else {
-        console.log(props.chest.skills)
-        props.chest.skills.map(skill=>{
-            console.log(skill)
-        })
         return (
             <Card>
                 <Card.Body>
