@@ -1272,6 +1272,11 @@ let monsterSeed =[
 				id: 24,
 				name: "Dragon Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	}
