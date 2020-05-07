@@ -6,6 +6,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/monsters", {
 	useFindAndModify: false
 });
 
+// Seeder for the monster database.
+// monsterID refers to the ids at * https://docs.mhw-db.com/
+// Skills refer to skills that a useful against the monster
 let monsterSeed =[
 	{
 		monsterID: 17,
@@ -621,6 +624,11 @@ let monsterSeed =[
 				id: 22,
 				name: "Ice Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -642,6 +650,11 @@ let monsterSeed =[
 				id: 22,
 				name: "Ice Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -659,6 +672,11 @@ let monsterSeed =[
 				id: 2,
 				name: "Paralysis Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -669,6 +687,11 @@ let monsterSeed =[
 			{
 				id: 3,
 				name: "Sleep Resistance",
+				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
 				level: 3
 			}
 		]
@@ -681,6 +704,11 @@ let monsterSeed =[
 				id: 21,
 				name: "Water Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -692,6 +720,11 @@ let monsterSeed =[
 				id: 22,
 				name: "Ice Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -703,6 +736,11 @@ let monsterSeed =[
 				id: 17,
 				name: "Bleeding Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -714,6 +752,11 @@ let monsterSeed =[
 				id: 20,
 				name: "Fire Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -730,6 +773,11 @@ let monsterSeed =[
 				id: 22,
 				name: "Ice Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -741,6 +789,11 @@ let monsterSeed =[
 				id: 6,
 				name: "Blast Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -752,6 +805,11 @@ let monsterSeed =[
 				id: 22,
 				name: "Ice Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -762,6 +820,11 @@ let monsterSeed =[
 			{
 				id: 23,
 				name: "Thunder Resistance",
+				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
 				level: 3
 			}
 		]
@@ -774,6 +837,11 @@ let monsterSeed =[
 				id: 8,
 				name: "Iron Skin",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -790,6 +858,11 @@ let monsterSeed =[
 				id: 24,
 				name: "Dragon Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -801,6 +874,11 @@ let monsterSeed =[
 				id: 22,
 				name: "Ice Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -817,6 +895,11 @@ let monsterSeed =[
 				id: 6,
 				name: "Blast Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -828,6 +911,11 @@ let monsterSeed =[
 				id: 13,
 				name: "Effluvia Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -845,6 +933,11 @@ let monsterSeed =[
 				id: 23,
 				name: "Thunder Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -876,6 +969,11 @@ let monsterSeed =[
 				id: 8,
 				name: "Iron Skin",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -887,6 +985,11 @@ let monsterSeed =[
 				id: 17,
 				name: "Bleeding Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -898,6 +1001,11 @@ let monsterSeed =[
 				id: 4,
 				name: "Stun Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -910,6 +1018,11 @@ let monsterSeed =[
 				id: 23,
 				name: "Thunder Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -921,6 +1034,11 @@ let monsterSeed =[
 				id: 20,
 				name: "Fire Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -937,6 +1055,11 @@ let monsterSeed =[
 				id: 4,
 				name: "Stun Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -953,6 +1076,11 @@ let monsterSeed =[
 				id: 20,
 				name: "Fire Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -974,6 +1102,11 @@ let monsterSeed =[
 				id: 4,
 				name: "Stun Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -990,6 +1123,11 @@ let monsterSeed =[
 				id: 20,
 				name: "Fire Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -1002,6 +1140,11 @@ let monsterSeed =[
 				id: 23,
 				name: "Thunder Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -1014,6 +1157,11 @@ let monsterSeed =[
 				id: 24,
 				name: "Dragon Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 3
 			}
 		]
 	},
@@ -1025,6 +1173,11 @@ let monsterSeed =[
 				id: 6,
 				name: "Blast Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
@@ -1036,6 +1189,11 @@ let monsterSeed =[
 				id: 23,
 				name: "Thunder Resistance",
 				level: 3
+			},
+			{
+				id: 9,
+				name: "Earplugs",
+				level: 5
 			}
 		]
 	},
