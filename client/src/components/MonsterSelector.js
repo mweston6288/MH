@@ -11,7 +11,7 @@ function MonsterSelector({HR,MR, updateMonster}){
 
     // Get all monsters from the database and set them into the monsterlist
     useEffect(()=>{
-        apis.getMonsterList().then(res=>{
+        apis.getMonsterList(HR, MR).then(res=>{
             setMonsterList(res.data);
         }).catch(err=>{
             console.log(err)
