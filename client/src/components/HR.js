@@ -24,10 +24,11 @@ function HR(props){
                     <option>12</option>
                     <option>13</option>
                     <option>14</option>
-                    <option>15-29</option>
+                    <option>15</option>
+                    <option>16-29</option>
                     <option>30-49</option>
                     <option>50-99</option>
-                    <option>100+</option>
+                    <option>100-999</option>
                 </Form.Control>
             </Form.Group>
     )

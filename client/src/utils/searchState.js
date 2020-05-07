@@ -3,7 +3,6 @@ import MonsterSelector from "../components/MonsterSelector"
 import HR from "../components/HR"
 import MR from "../components/MR"
 import ArmorDisplay from "../components/armorDisplay"
-import Axios from "axios"
 import Form from "react-bootstrap/Form"
 import * as apis from "../api/index.js"
 
@@ -14,8 +13,8 @@ const SearchContext = ()=>{
 	// updates when any search parameter is changed
 	const [searchState, setSearchState] = useState({
 		monster:"",
-		hunterRank:"",
-		masterRank:"",
+		hunterRank:0,
+		masterRank:0,
 	});
 	// The state of the search results
 	// Updates when submit is pressed
@@ -33,10 +32,13 @@ const SearchContext = ()=>{
 		setSearchState({...searchState, monster: event.target.value})
 	};
 	const updateHunterRank = (event) => {
-		setSearchState({ ...searchState, hunterRank: event.target.value })
+		const value = event.target.value.split("-")
+		setSearchState({ ...searchState, hunterRank: value[0]});
+		console.log(searchState)
 	};
 	const updateMasterRank = (event) => {
-		setSearchState({ ...searchState, masterRank: event.target.value })
+		const value = event.target.value.split("-")
+		setSearchState({ ...searchState, masterRank: value[0] })
 	}
 	// Updates the recommended Armor
 	// Takes in an array of armor objects
@@ -100,7 +102,7 @@ const SearchContext = ()=>{
 					const skill=res.data[0].skills[i]
 					try{
 					// Get the armor pieces that have that skill
-					const res = await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+skill.name + `"}`)
+					const res = await apis.getArmor(searchState.hunterRank, searchState.masterRank, skill)
 						// Add results to the array
 						res.data.forEach(armor => {
 							armors.push(armor)
@@ -120,8 +122,8 @@ const SearchContext = ()=>{
 			<Form onSubmit={getResponse}>
 				<Form.Group>
 					<HR updateHunterRank={updateHunterRank} />
-					<MR updateMasterRank={updateMasterRank} />
-					<MonsterSelector updateMonster={updateMonster} />
+					<MR updateMasterRank={updateMasterRank} HR={searchState.hunterRank}/>
+					<MonsterSelector updateMonster={updateMonster} HR={searchState.hunterRank} MR={searchState.masterRank}/>
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>

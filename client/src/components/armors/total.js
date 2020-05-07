@@ -22,7 +22,7 @@ function Total({armor}) {
 			dragonRes += armor[armorPiece].resistances.dragon
 			// Map the attached skills to an array of objects
 			// The objects will contain the skill name and cumulative level
-			armor[armorPiece].skills.map(skill=>{
+			armor[armorPiece].skills.forEach(skill=>{
 				const skillIndex = skills.findIndex(arraySkill => arraySkill.skillName === skill.skillName)
 				// Skill not previously found so push it into the array
 				if (skillIndex !== -1){
