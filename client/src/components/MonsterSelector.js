@@ -9,7 +9,8 @@ function MonsterSelector({HR,MR, updateMonster}){
     // Stores the list of monsters
     const [monsterList,setMonsterList]=useState([]);
 
-    // Get all monsters from the database and set them into the monsterlist
+    // Get monsters from the database and set them into the monsterlist
+    // HR and MR will limit the search to those that the hunter can hunt
     useEffect(()=>{
         apis.getMonsterList(HR, MR).then(res=>{
             setMonsterList(res.data);

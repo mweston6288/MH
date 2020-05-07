@@ -3,7 +3,6 @@ import MonsterSelector from "../components/MonsterSelector"
 import HR from "../components/HR"
 import MR from "../components/MR"
 import ArmorDisplay from "../components/armorDisplay"
-import Axios from "axios"
 import Form from "react-bootstrap/Form"
 import * as apis from "../api/index.js"
 
@@ -103,7 +102,7 @@ const SearchContext = ()=>{
 					const skill=res.data[0].skills[i]
 					try{
 					// Get the armor pieces that have that skill
-					const res = await Axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+skill.name + `"}`)
+					const res = await apis.getArmor(searchState.hunterRank, searchState.masterRank, skill)
 						// Add results to the array
 						res.data.forEach(armor => {
 							armors.push(armor)

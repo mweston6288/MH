@@ -7,10 +7,11 @@ import Form from "react-bootstrap/Form"
 function MR(props) {
     const[disabled,setDisabled]=useState();
     
+    // Disable the Master Rank selector if HUnter rank is less than 16
+    // You cannot play on Master rank beforehand
     useEffect(()=>{
         if (props.HR < 16){
             setDisabled(true)
-            console.log("here")
         }else{
             setDisabled(false)
         }
