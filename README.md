@@ -14,9 +14,9 @@ The app could recommend builds for players based on what they are hunting and wh
 * Limit suggestions based on Hunter Rank
 
 ## TODO
-* Create a database that tracks monster ailments, API ids for skills
-* Track skill levels.
-
+[x] Create a database that tracks monster ailments, API ids for skills
+[ ] Track skill levels.
+[ ] Write Heroku deploy scripts for database
 ## Resources
 * https://docs.mhw-db.com/
 
