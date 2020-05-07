@@ -1,14 +1,25 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Form from "react-bootstrap/Form"
 
 // A menu for Master rank
 // Currently doesn't affact anything. Will eventually be used to filter equipment by availability
 // Will also need to add ability to disable when HR is too low
 function MR(props) {
+    const[disabled,setDisabled]=useState();
+    
+    useEffect(()=>{
+        if (props.HR < 16){
+            setDisabled(true)
+            console.log("here")
+        }else{
+            setDisabled(false)
+        }
+    }, [props.HR])
+    
     return (
             <Form.Group>
                 <Form.Label>Master Rank</Form.Label>
-                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateMasterRank}>
+            <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateMasterRank} disabled={disabled}>
                     <option disabled hidden>Rank</option>
                     <option>1</option>
                     <option>2</option>

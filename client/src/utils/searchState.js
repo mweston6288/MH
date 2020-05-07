@@ -14,8 +14,8 @@ const SearchContext = ()=>{
 	// updates when any search parameter is changed
 	const [searchState, setSearchState] = useState({
 		monster:"",
-		hunterRank:"",
-		masterRank:"",
+		hunterRank:0,
+		masterRank:0,
 	});
 	// The state of the search results
 	// Updates when submit is pressed
@@ -33,10 +33,13 @@ const SearchContext = ()=>{
 		setSearchState({...searchState, monster: event.target.value})
 	};
 	const updateHunterRank = (event) => {
-		setSearchState({ ...searchState, hunterRank: event.target.value })
+		const value = event.target.value.split("-")
+		setSearchState({ ...searchState, hunterRank: value[0]});
+		console.log(searchState)
 	};
 	const updateMasterRank = (event) => {
-		setSearchState({ ...searchState, masterRank: event.target.value })
+		const value = event.target.value.split("-")
+		setSearchState({ ...searchState, masterRank: value[0] })
 	}
 	// Updates the recommended Armor
 	// Takes in an array of armor objects
@@ -120,8 +123,8 @@ const SearchContext = ()=>{
 			<Form onSubmit={getResponse}>
 				<Form.Group>
 					<HR updateHunterRank={updateHunterRank} />
-					<MR updateMasterRank={updateMasterRank} />
-					<MonsterSelector updateMonster={updateMonster} />
+					<MR updateMasterRank={updateMasterRank} HR={searchState.hunterRank}/>
+					<MonsterSelector updateMonster={updateMonster} HR={searchState.hunterRank} MR={searchState.masterRank}/>
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>
