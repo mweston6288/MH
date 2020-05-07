@@ -119,9 +119,9 @@ const SearchContext = ()=>{
 		<div>
 			<Form onSubmit={getResponse}>
 				<Form.Group>
-					<MonsterSelector updateMonster={updateMonster} />
 					<HR updateHunterRank={updateHunterRank} />
 					<MR updateMasterRank={updateMasterRank} />
+					<MonsterSelector updateMonster={updateMonster} />
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>

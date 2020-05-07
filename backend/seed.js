@@ -193,7 +193,7 @@ let monsterSeed =[
 	{
 		monsterID: 41,
 		name: "Radobaan",
-		lowRank: 8,
+		lowRank: 7,
 		highRank: 11,
 		masterRank: 4,
 		skills: [
@@ -317,7 +317,7 @@ let monsterSeed =[
 	{
 		monsterID: 52,
 		name: "Zorah Magdaros",
-		highRank: 11,
+		highRank: 10,
 		skills: [
 			{
 				id: 20,
@@ -597,7 +597,7 @@ let monsterSeed =[
 	{
 		monsterID: 51,
 		name: "Xeno'jiiva",
-		highRank: 16,
+		highRank: 15,
 		skills: [
 			{
 				id: 20,
@@ -634,7 +634,7 @@ let monsterSeed =[
 	},
 	{
 		name: "Banbaro",
-		masterRank: 3,
+		masterRank: 2,
 		skills: [
 			{
 				id: 21,
@@ -868,7 +868,7 @@ let monsterSeed =[
 	},
 	{
 		name: "Velkhana",
-		masterRank: 17,
+		masterRank: 16,
 		skills: [
 			{
 				id: 22,
@@ -995,7 +995,7 @@ let monsterSeed =[
 	},
 	{
 		name: "Shara Ishvalda",
-		masterRank: 23,
+		masterRank: 22,
 		skills: [
 			{
 				id: 4,
