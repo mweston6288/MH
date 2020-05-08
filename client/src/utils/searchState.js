@@ -8,7 +8,8 @@ import * as apis from "../api/index.js"
 
 
 // Creates the user search and results states.
-const SearchContext = ()=>{
+const SearchContext = ({rank})=>{
+	console.log(rank)
 	// The state of the user's inputs
 	// updates when any search parameter is changed
 	const [searchState, setSearchState] = useState({
@@ -117,13 +118,20 @@ const SearchContext = ()=>{
 			updateArmor(armors);
 		}
 	}
+	// Depending on what rank was received will determine the form users have to fill
 	return(
 		<div>
 			<Form onSubmit={getResponse}>
 				<Form.Group>
-					<HR updateHunterRank={updateHunterRank} />
-					<MR updateMasterRank={updateMasterRank} HR={searchState.hunterRank}/>
-					<MonsterSelector updateMonster={updateMonster} HR={searchState.hunterRank} MR={searchState.masterRank}/>
+					{rank === "MR" ? (
+						<div>
+							<MR updateMasterRank={updateMasterRank} />
+							<HR updateHunterRank={updateHunterRank} rank={rank}/>
+						</div>
+					):
+						<HR updateHunterRank={updateHunterRank} rank={rank}/>
+					}
+					<MonsterSelector updateMonster={updateMonster} HR={searchState.hunterRank} MR={searchState.masterRank} rank={rank}/>
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>

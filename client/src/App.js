@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
 import SearchState from "./utils/searchState"
-import RankTabs from "./components/rankTabs"
+import RankTabs from "./utils/rankTabs"
 
 function App() {
   return (
 	<div>
 		<RankTabs/>
-		<SearchState/>
 	</div>
   );
 }

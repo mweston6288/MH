@@ -1,26 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import Form from "react-bootstrap/Form"
 
 // A menu for Master rank
-// Currently doesn't affact anything. Will eventually be used to filter equipment by availability
-// Will also need to add ability to disable when HR is too low
+// Options are different points where new hunts can be taken
 function MR(props) {
-    const[disabled,setDisabled]=useState();
-    
-    // Disable the Master Rank selector if HUnter rank is less than 16
-    // You cannot play on Master rank beforehand
-    useEffect(()=>{
-        if (props.HR < 16){
-            setDisabled(true)
-        }else{
-            setDisabled(false)
-        }
-    }, [props.HR])
-    
     return (
             <Form.Group>
                 <Form.Label>Master Rank</Form.Label>
-            <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateMasterRank} disabled={disabled}>
+                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateMasterRank}>
                     <option disabled hidden>Rank</option>
                     <option>1</option>
                     <option>2</option>
@@ -44,7 +31,7 @@ function MR(props) {
                     <option>24-49</option>
                     <option>50-69</option>
                     <option>70-99</option>
-                    <option>100+</option>
+                    <option>100-999</option>
                 </Form.Control>
             </Form.Group>
     )

@@ -45,17 +45,28 @@ export const getArmor = (HR, MR, skill) => {
     const rarity = determineRarity(HR,MR);
     return axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+skill.name+`","rarity":{"$lte":`+rarity+`}}`)
 };
-// Get all monsters. Used by the monster selector component
-export const getMonsterList = (HR, MR) => { 
-    return axios.get("./api/monsters/"+HR+"/"+MR)
+// Get low rank monsters
+export const getLRMonsterList = (HR) => { 
+    return axios.get("./api/LRmonsters/"+HR)
 }
+// Get high rank monsters
+export const getHRMonsterList = (HR) => {
+    return axios.get("./api/HRmonsters/" + HR)
+}
+// Get master rank monsters
+export const getMRMonsterList = (MR) => {
+    return axios.get("./api/MRmonsters/" + MR)
+}
+
 // Get a specific monster. Used to get recommended skills
 export const getMonster = (name) => {
     return axios.get("./api/monsters/"+name)
 }
 const apis = {
     getArmor,
-    getMonsterList,
+    getLRMonsterList,
+    getHRMonsterList,
+    getMRMonsterList,
     getMonster
 }
 export default apis;

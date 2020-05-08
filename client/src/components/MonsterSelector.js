@@ -5,18 +5,33 @@ import Form from "react-bootstrap/Form"
 // Make a drop menu of monsters to hunt.
 // Currently uses the monster hunter API but I'll migrate this to my own database
 // later.
-function MonsterSelector({HR,MR, updateMonster}){
+function MonsterSelector({HR, MR, rank, updateMonster}){
     // Stores the list of monsters
     const [monsterList,setMonsterList]=useState([]);
 
     // Get monsters from the database and set them into the monsterlist
-    // HR and MR will limit the search to those that the hunter can hunt
+    // ranks will determine which api search to use
     useEffect(()=>{
-        apis.getMonsterList(HR, MR).then(res=>{
-            setMonsterList(res.data);
-        }).catch(err=>{
-            console.log(err)
-        })
+        if (rank==="LR"){
+            apis.getLRMonsterList(HR).then(res => {
+                setMonsterList(res.data);
+            }).catch(err => {
+                console.log(err)
+            })
+        }else if (rank==="HR"){
+            apis.getHRMonsterList(HR).then(res => {
+                setMonsterList(res.data);
+            }).catch(err => {
+                console.log(err)
+            })
+        }else{
+            apis.getMRMonsterList(MR).then(res => {
+                setMonsterList(res.data);
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
     },[HR, MR])
 
     return(
