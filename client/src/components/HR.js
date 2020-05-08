@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form"
 // Create a select menu form so users can input their current hunter rank
 // Form is divided into three parts depending on if they are doing a low, high or master rank quest
 function HR(props){
-    console.log(props)
     return(
             <Form.Group>
                 <Form.Label>Hunter Rank</Form.Label>

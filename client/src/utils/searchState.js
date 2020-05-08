@@ -9,7 +9,6 @@ import * as apis from "../api/index.js"
 
 // Creates the user search and results states.
 const SearchContext = ({rank})=>{
-	console.log(rank)
 	// The state of the user's inputs
 	// updates when any search parameter is changed
 	const [searchState, setSearchState] = useState({
@@ -35,7 +34,6 @@ const SearchContext = ({rank})=>{
 	const updateHunterRank = (event) => {
 		const value = event.target.value.split("-")
 		setSearchState({ ...searchState, hunterRank: value[0]});
-		console.log(searchState)
 	};
 	const updateMasterRank = (event) => {
 		const value = event.target.value.split("-")
@@ -123,12 +121,9 @@ const SearchContext = ({rank})=>{
 		<div>
 			<Form onSubmit={getResponse}>
 				<Form.Group>
-					{rank === "MR" ? (
-						<div>
-							<MR updateMasterRank={updateMasterRank} />
-							<HR updateHunterRank={updateHunterRank} rank={rank}/>
-						</div>
-					):
+					{rank === "MR" ? 
+						<MR updateMasterRank={updateMasterRank} />
+						:
 						<HR updateHunterRank={updateHunterRank} rank={rank}/>
 					}
 					<MonsterSelector updateMonster={updateMonster} HR={searchState.hunterRank} MR={searchState.masterRank} rank={rank}/>

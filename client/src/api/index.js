@@ -41,7 +41,6 @@ function determineRarity(HR, MR){
 
 // Get armors that have certain skills and are a certain max rarity
 export const getArmor = (HR, MR, skill) => {
-    console.log(skill)
     const rarity = determineRarity(HR,MR);
     return axios.get(`https://mhw-db.com/armor?q={"skills.skillName":"`+skill.name+`","rarity":{"$lte":`+rarity+`}}`)
 };
