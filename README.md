@@ -23,7 +23,7 @@ The app could recommend builds for players based on what they are hunting and wh
 ## Structure
 <index>
 	<App>
-		<RanKTabs>
+		<RankTabs>
 			<SearchState Hunter rank>
                 <Form>
                     <MR?>

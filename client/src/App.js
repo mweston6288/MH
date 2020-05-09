@@ -1,11 +1,14 @@
 import React from 'react';
 import './App.css';
 import RankTabs from "./utils/rankTabs"
+import ArmorContext from "./utils/armorContext"
 
 function App() {
   return (
 	<div>
-		<RankTabs/>
+		<ArmorContext.Provider>
+			  <RankTabs />
+		</ArmorContext.Provider>
 	</div>
   );
 }

@@ -5,6 +5,7 @@ import MR from "../components/MR"
 import ArmorDisplay from "../components/armorDisplay"
 import Form from "react-bootstrap/Form"
 import * as apis from "../api/index.js"
+import Recommend from "./recommend"
 
 
 // Creates the user search and results states.
@@ -25,6 +26,8 @@ const SearchContext = ({rank})=>{
 		gloves: null,
 		legs: null
 	})
+
+	const [skills, setSkills]= useState([]);
 
 	// Update the searchState fields.
 	// These methods are passed to their respective components
@@ -95,8 +98,11 @@ const SearchContext = ({rank})=>{
 			event.preventDefault();
 			try {
 				// Get the full details on the monster I'm looking for
-				const res = await apis.getMonster(searchState.monster);	
-				for(let i=0;i<res.data[0].skills.length;i++){
+				// and set skills to the recommended skills
+				const res = await apis.getMonster(searchState.monster);
+				setSkills(res.data[0].skills)
+				console.log(skills);	
+				/*for(let i=0;i<res.data[0].skills.length;i++){
 					// Get the recommended skills section
 					const skill=res.data[0].skills[i]
 					try{
@@ -109,11 +115,11 @@ const SearchContext = ({rank})=>{
 					}catch(err){
 						console.log(err)
 					}
-				}
+				}*/
 			}catch(err){
 				console.log(err);
 			}
-			updateArmor(armors);
+			//updateArmor(armors);
 		}
 	}
 	// Depending on what rank was received will determine the form users have to fill
@@ -130,6 +136,9 @@ const SearchContext = ({rank})=>{
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>
+			{skills.map(skill=>(
+				<Recommend skill={skill}/>
+			))}
 			<ArmorDisplay armor={recommendedArmor}/>
 		</div>
 	)
