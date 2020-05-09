@@ -137,7 +137,7 @@ const SearchContext = ({rank})=>{
 				</Form.Group>
 			</Form>
 			{skills.map(skill=>(
-				<Recommend skill={skill}/>
+				<Recommend skill={skill} MR ={searchState.masterRank} HR={searchState.hunterRank}/>
 			))}
 			<ArmorDisplay armor={recommendedArmor}/>
 		</div>

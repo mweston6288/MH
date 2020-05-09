@@ -1,11 +1,14 @@
 import React from "react"
 import Accordion from "react-bootstrap/Accordion"
 import Card from "react-bootstrap/Card"
+import SelectArmor from "./selectArmor"
 
 // This will display recommended skills in an accordion component.
 // Click on the component to show a list of armors
-const Recommend = ({skill}) => {
+const Recommend = ({skill, HR, MR}) => {
     console.log(skill)
+    let rank;
+    console.log(rank);
     return(
         <Accordion>
             <Card>
@@ -15,7 +18,9 @@ const Recommend = ({skill}) => {
                     </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey={skill.id}>
-                    <Card.Body>Test</Card.Body>
+                    <Card.Body>
+                        <SelectArmor HR={HR} MR={MR} skill={skill}/>
+                    </Card.Body>
                 </Accordion.Collapse>
             </Card>
         </Accordion>
