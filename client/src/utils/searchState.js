@@ -79,7 +79,7 @@ const SearchContext = ({rank})=>{
 						legs = armor[i]
 					}	
 					break;
-				default:		
+				default:
 			}
 			
 		}
