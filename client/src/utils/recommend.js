@@ -6,9 +6,6 @@ import SelectArmor from "./selectArmor"
 // This will display recommended skills in an accordion component.
 // Click on the component to show a list of armors
 const Recommend = ({skill, HR, MR}) => {
-    console.log(skill)
-    let rank;
-    console.log(rank);
     return(
         <Accordion>
             <Card>

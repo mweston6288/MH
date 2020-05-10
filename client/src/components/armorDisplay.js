@@ -8,13 +8,12 @@ import Gloves from "./armors/gloves"
 import Waist from "./armors/waist"
 import Legs from "./armors/legs"
 import Total from "./armors/total"
-import Armor from "../utils/armorContext"
+import {useArmorContext} from "../utils/armorContext"
 
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
 function ArmorDisplay(){
-    const armor = useContext(Armor)
-    console.log(armor)
+    const armor = useArmorContext()
     return(
         <Container>
             <Row>
@@ -36,7 +35,7 @@ function ArmorDisplay(){
                     <Legs legs={armor.legs} />
                 </Col>
                 <Col className="col-sm-4">
-                    <Total armor={armor} />
+                    <Total/>
                 </Col>
             </Row>
         </Container>

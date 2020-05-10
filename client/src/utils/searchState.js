@@ -101,7 +101,6 @@ const SearchContext = ({rank})=>{
 				// and set skills to the recommended skills
 				const res = await apis.getMonster(searchState.monster);
 				setSkills(res.data[0].skills)
-				console.log(skills);	
 				/*for(let i=0;i<res.data[0].skills.length;i++){
 					// Get the recommended skills section
 					const skill=res.data[0].skills[i]

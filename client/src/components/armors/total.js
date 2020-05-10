@@ -1,8 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
-
-function Total({armor}) {
+import {useArmorContext} from "../../utils/armorContext"
+function Total() {
+	const armor = useArmorContext();
 	let defense = 0;
 	let fireRes =0;
 	let waterRes=0;
@@ -11,7 +12,7 @@ function Total({armor}) {
 	let dragonRes=0;
 	let skills = [];
 	// Go through each piece of armor and add up their stats
-	for (const armorPiece in armor) {
+	for (const armorPiece in armor[0]) {
 		// This is here in case one of the armor fields is null
 		if (armor[armorPiece]){
 			defense += armor[armorPiece].defense.base

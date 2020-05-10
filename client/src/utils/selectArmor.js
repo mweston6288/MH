@@ -1,17 +1,17 @@
 import React, {useState, useEffect, useContext} from "react"
 import {getArmor} from "../api/index.js"
 import Button from "react-bootstrap/Button"
-import RecommendedArmor from "./armorContext"
+import {useArmorContext} from "./armorContext"
 const SelectArmor = ({HR, MR, skill})=>{
 	console.log(skill)
+	const [state, dispatch] = useArmorContext();
 	const [armors, setArmors] = useState([]);
-	const recommendedArmor = useContext(RecommendedArmor);
-	console.log(recommendedArmor)
+
 	// Get the list of armors that fit the given restrictions and add them into the armor state
 	useEffect(()=>{ // useEffect is being used because otherwise, this will run infinitely
 		getArmor(HR, MR, skill)
 			.then(res => {
-				const armorList = []
+				const armorList=[];
 				console.log(res);
 				res.data.forEach(armor => {
 					armorList.push(armor);
@@ -26,23 +26,22 @@ const SelectArmor = ({HR, MR, skill})=>{
 		const armorType = armors[index].type;
 		switch(armorType){
 			case "head":
-				recommendedArmor.head = armors[index];
+				dispatch({type: "head", armor: armors[index]})
 				break;
 			case "chest":
-				recommendedArmor.chest = armors[index];
+				dispatch({ type: "chest", armor: armors[index] })
 				break;				
 			case "gloves":
-				recommendedArmor.gloves = armors[index];
+				dispatch({ type: "gloves", armor: armors[index] })
 				break;
 			case "waist":
-				recommendedArmor.waist = armors[index];
+				dispatch({ type: "waist", armor: armors[index] })
 				break;
 			case "legs":
-				recommendedArmor.legs = armors[index];
+				dispatch({ type: "legs", armor: armors[index] })
 				break;
 			default:
 		}
-		console.log(recommendedArmor)
 	}
 	return (
 		<div>
@@ -56,4 +55,4 @@ const SelectArmor = ({HR, MR, skill})=>{
 	)
 }
 
-export default SelectArmor
+export default SelectArmor;
