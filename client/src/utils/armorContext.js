@@ -15,6 +15,12 @@ const reducer = (state,action)=>{
         case "legs":
             return { ...state, legs: action.armor }
         default:
+            return {
+                head: null,
+                chest: null,
+                waist: null,
+                gloves: null,
+                legs: null}
     }
 }
 
