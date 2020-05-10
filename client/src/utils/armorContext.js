@@ -5,15 +5,15 @@ const { Provider } = ArmorContext;
 const reducer = (state,action)=>{
     switch(action.type){
         case "head":
-            return {...state, head: "action.armor"}
+            return {...state, head: action.armor}
         case "chest":
-            return { ...state, chest: "action.armor" }
+            return { ...state, chest: action.armor }
         case "gloves":
-            return { ...state, gloves: "action.armor" }
+            return { ...state, gloves: action.armor }
         case "waist":
-            return { ...state, waist: "action.armor" }
+            return { ...state, waist: action.armor }
         case "legs":
-            return { ...state, legs: "action.armor" }
+            return { ...state, legs: action.armor }
         default:
     }
 }

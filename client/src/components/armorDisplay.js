@@ -13,7 +13,8 @@ import {useArmorContext} from "../utils/armorContext"
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
 function ArmorDisplay(){
-    const armor = useArmorContext()
+    const [armor] = useArmorContext()
+    console.log(armor)
     return(
         <Container>
             <Row>

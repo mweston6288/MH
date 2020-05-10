@@ -3,7 +3,6 @@ import {getArmor} from "../api/index.js"
 import Button from "react-bootstrap/Button"
 import {useArmorContext} from "./armorContext"
 const SelectArmor = ({HR, MR, skill})=>{
-	console.log(skill)
 	const [state, dispatch] = useArmorContext();
 	const [armors, setArmors] = useState([]);
 
@@ -12,12 +11,10 @@ const SelectArmor = ({HR, MR, skill})=>{
 		getArmor(HR, MR, skill)
 			.then(res => {
 				const armorList=[];
-				console.log(res);
 				res.data.forEach(armor => {
 					armorList.push(armor);
 				})
 				setArmors(armorList);
-				console.log(armors)
 			});        
 	}, [skill])
 	// Use the armor type to determine which element in the context to
@@ -42,6 +39,7 @@ const SelectArmor = ({HR, MR, skill})=>{
 				break;
 			default:
 		}
+		console.log(state)
 	}
 	return (
 		<div>
