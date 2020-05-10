@@ -4,12 +4,13 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint \"**/*.js\" --quiet",
+    "test": "npm run lint",
     "build": "cd client && npm run build",
     "start": "npm run build && node server.js",
     "client": "cd client && npm run start",
     "client-install": "cd client && npm install",
-    "seed":"cd backend && node seed.js",
+    "seed": "cd backend && node seed.js",
     "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
   },
   "keywords": [],
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-react": "^7.19.0",
     "if-env": "^1.0.4",
     "nodemon": "^2.0.3"
   }

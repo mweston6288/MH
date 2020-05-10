@@ -31,17 +31,17 @@ let monsterSeed =[
 		highRank: 11,
 		masterRank: 1,
 		skills:[
-		{
-			id:1,
-			name: "Poison Resistance",
-			level: 3
-		},
+			{
+				id:1,
+				name: "Poison Resistance",
+				level: 3
+			},
 			{
 				id: 9,
 				name: "Earplugs",
 				level: 3
 			}
-	]
+		]
 	},
 	{
 		monsterID: 20,
@@ -82,7 +82,7 @@ let monsterSeed =[
 			{
 				id: 21,
 				name: "Water Resistance",
-				level: 3	
+				level: 3
 			}
 		]
 	},

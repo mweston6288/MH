@@ -11,17 +11,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/monsters", {
-    useNewUrlParser: true,
-    useFindAndModify: false
+	useNewUrlParser: true,
+	useFindAndModify: false
 });
 
-//if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-//}
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static("client/build"));
+}
 
 // routes go here
-app.use(require("./backend/routes/api-routes.js"))
+app.use(require("./backend/routes/api-routes.js"));
 
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}!`);
+	console.log(`App running on port ${PORT}!`);
 });
