@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/monsters", {
 
 // Seeder for the monster database.
 // monsterID refers to the ids at * https://docs.mhw-db.com/
-// Skills refer to skills that a useful against the monster
+// Skills refer to skills that are useful against the monster
 let monsterSeed =[
 	{
 		monsterID: 17,

@@ -39,7 +39,6 @@ const SelectArmor = ({HR, MR, skill})=>{
 				break;
 			default:
 		}
-		console.log(state)
 	}
 	return (
 		<div>

@@ -14,7 +14,6 @@ import {useArmorContext} from "../utils/armorContext"
 // Will update with skills and slots
 function ArmorDisplay(){
     const [armor] = useArmorContext()
-    console.log(armor)
     return(
         <Container>
             <Row>

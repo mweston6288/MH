@@ -10,6 +10,14 @@ function Chest(props) {
                     <Card.Title>
                         No armor selected
                     </Card.Title>
+                    <ListGroup>
+                        <ListGroup.Item>Defense: 0</ListGroup.Item>
+                        <ListGroup.Item>Fire Resistance: 0</ListGroup.Item>
+                        <ListGroup.Item>Water Resistance: 0</ListGroup.Item>
+                        <ListGroup.Item>Ice Resistance: 0</ListGroup.Item>
+                        <ListGroup.Item>Thunder Resistance:0</ListGroup.Item>
+                        <ListGroup.Item>Dragon Resistance: 0</ListGroup.Item>
+                    </ListGroup>
                 </Card.Body>
             </Card>
         )

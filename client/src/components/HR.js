@@ -18,12 +18,7 @@ function HR(props){
                     <option>6</option>
                     <option>7</option>
                     <option>8</option>
-                    <option>10</option>
-                </Form.Control>
-               )}
-            {props.rank === "HR" && (
-                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateHunterRank}>
-                    <option disabled hidden>Rank</option>
+                    <option>10</option>     
                     <option>11</option>
                     <option>12</option>
                     <option>13</option>
@@ -34,10 +29,15 @@ function HR(props){
                     <option>50-99</option>
                     <option>100-999</option>
                 </Form.Control>
-            )}
-            {props.rank === "MR" && (
+               )}
+            {props.rank === "HR" && (
                 <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateHunterRank}>
                     <option disabled hidden>Rank</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
                     <option>16-29</option>
                     <option>30-49</option>
                     <option>50-99</option>
