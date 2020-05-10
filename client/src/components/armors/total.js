@@ -1,8 +1,9 @@
 import React from "react";
 import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
-
-function Total({armor}) {
+import {useArmorContext} from "../../utils/armorContext"
+function Total() {
+	const [armor] = useArmorContext();
 	let defense = 0;
 	let fireRes =0;
 	let waterRes=0;

@@ -20,6 +20,23 @@ The app could recommend builds for players based on what they are hunting and wh
 ## Resources
 * https://docs.mhw-db.com/
 
+## Structure
+<index>
+	<App>
+		<RankTabs>
+			<SearchState Hunter rank>
+                <Form>
+                    <MR?>
+                    <HR?>
+                    <MonsterSelector>
+                </Form>
+                <Recommendation for each skill>
+                    <selectArmor forEach armor>
+                </Recommendation for each skill>
+                <ArmorDisplay>
+		</RankTabs>
+	</App>
+</index>
 # Notes for use
 * for specific searches, follow with ?q={"element":"value"}
 * Ex: get armor with rarity 1: https://mhw-db.com/armor?q={"rarity":"1"}

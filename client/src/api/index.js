@@ -4,7 +4,7 @@ const axios = require("axios");
 // If I can make a more accurate search form, this will be discarded
 function determineRarity(HR, MR){
     // Check if we should search by hunter or master rank
-    if(HR >= 16 && MR >= 1){
+    if(MR >= 1){
         if(MR<=4){
             return 9;
         }

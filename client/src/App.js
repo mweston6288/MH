@@ -1,12 +1,16 @@
 import React from 'react';
 import './App.css';
-import SearchState from "./utils/searchState"
 import RankTabs from "./utils/rankTabs"
+import {ArmorProvider} from "./utils/armorContext"
 
 function App() {
+
   return (
 	<div>
-		<RankTabs/>
+		<div>Test</div>
+		<ArmorProvider>
+			  <RankTabs />
+		</ArmorProvider>
 	</div>
   );
 }
