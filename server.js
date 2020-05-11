@@ -1,7 +1,8 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 8080;
+const routes = require("./backend/routes");
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -15,12 +16,12 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/monsters", {
 	useFindAndModify: false
 });
 
-if (process.env.NODE_ENV === "production") {
+//if (process.env.NODE_ENV === "production") {
 	app.use(express.static("client/build"));
-}
+//}
 
 // routes go here
-app.use(require("./backend/routes/api-routes.js"));
+app.use(routes);
 
 app.listen(PORT, () => {
 	console.log(`App running on port ${PORT}!`);
