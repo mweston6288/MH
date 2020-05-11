@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from "react"
-import {getArmor} from "../api/index.js"
+import {getArmor} from "../api/monsterAPI.js"
 import Button from "react-bootstrap/Button"
 import {useArmorContext} from "./armorContext"
 const SelectArmor = ({HR, MR, skill})=>{
