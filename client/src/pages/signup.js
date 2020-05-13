@@ -7,7 +7,7 @@ import API from "../api/userAPI";
 
 // User sign up page. User will need to log in to save builds.
 // Currently doesn't do anything
-const SignUp = ()=>{
+const SignUp = (props)=>{
 	const userRef = useRef();
 	const passwordRef = useRef();
 	const confirmRef = useRef();
@@ -20,12 +20,19 @@ const SignUp = ()=>{
 			console.log("Passwords don't match");
 			return;
 		}
-		// IMPORTANT: add encryption before passing the password
+		// Call the create user function
 		API.createUser({
 			userName: userRef.current.value,
 			password: passwordRef.current.value
-		});
+		// Update the user status and redirect if successful
+		}).then(response=>{
+			console.log(response)
 
+			if (response.data.status === "Success"){
+				console.log(response)
+				props.history.push("/")
+			}
+		})
 	}
 	return (
 		<Container>

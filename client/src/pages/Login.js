@@ -4,9 +4,10 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom"
 import API from '../api/userAPI';
+import { PromiseProvider } from 'mongoose';
 
 // User login page. User will need to log in to save builds.
-function Login() {
+function Login(props) {
 	const userRef = useRef();
 	const passwordRef = useRef();
 	// Make an API call when form is submitted
@@ -15,8 +16,13 @@ function Login() {
 		API.getUser({
 			userName: userRef.current.value,
 			password: passwordRef.current.value
+		// If login is successful, redirect. For now, it's redirecting
+		// to the main page.
 		}).then(response=>{
-			console.log(response);
+			console.log(response)
+			if (response.data.status === "Success"){
+				props.history.push("/")
+			}
 		})
 	}
 	return (
@@ -24,13 +30,13 @@ function Login() {
 			<Form onSubmit={handleFormSubmit}>
 				<Form.Group>
 					<Form.Label>
-						username
+						Username
 					</Form.Label>
 					<Form.Control required ref={userRef} type="text" placeholder="username"/>
 				</Form.Group>
 				<Form.Group>
 					<Form.Label>
-						password
+						Password
 					</Form.Label>
 					<Form.Control required ref={passwordRef} type="password" placeholder="password"/>
 				</Form.Group>
@@ -40,7 +46,7 @@ function Login() {
 			</Form>
 			<Link to="/">Return</Link>
 			<div>
-				Dont have an account? 
+				Don't have an account? 
 				<Link to="/signup"> Sign up</Link>
 			</div>
 		</Container>
