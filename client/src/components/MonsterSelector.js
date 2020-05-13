@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as apis from "../api/index.js"
+import * as apis from "../api/monsterAPI.js"
 import Form from "react-bootstrap/Form"
 
 // Make a drop menu of monsters to hunt.

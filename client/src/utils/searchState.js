@@ -4,7 +4,7 @@ import HR from "../components/HR"
 import MR from "../components/MR"
 import ArmorDisplay from "../components/armorDisplay"
 import Form from "react-bootstrap/Form"
-import * as apis from "../api/index.js"
+import * as apis from "../api/monsterAPI.js"
 import Recommend from "./recommend"
 import {useArmorContext} from "./armorContext"
 

@@ -37,6 +37,14 @@ The app could recommend builds for players based on what they are hunting and wh
 		</RankTabs>
 	</App>
 </index>
+
+# Note about routing
+* Will need to rewrite routing to better match standards
+* Routes: /api/monsters/(action)
+routes/index.js will hold the /api protion
+routes/api/index.js will hold the /monsters portion
+routes/api/monsters.js will hold the /(action) portion
+controller/monsterController.js will hold what to do at the api route
 # Notes for use
 * for specific searches, follow with ?q={"element":"value"}
 * Ex: get armor with rarity 1: https://mhw-db.com/armor?q={"rarity":"1"}

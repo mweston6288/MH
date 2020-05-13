@@ -8,6 +8,7 @@
     "test": "npm run lint",
     "build": "cd client && npm run build",
     "start": "npm run build && node server.js",
+    "start-client": "cd client && npm run start",
     "client": "cd client && npm run start",
     "client-install": "cd client && npm install",
     "seed": "cd backend && node seed.js",
@@ -17,20 +18,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
-    "mongoose": "^5.9.11",
-    "morgan": "^1.10.0",
-    "react": "^16.13.1"
+    "mongoose": "^5.9.13",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "eslint": "^7.0.0",
     "eslint-config-react-app": "^5.2.1",
     "eslint-plugin-react": "^7.19.0",
-    "if-env": "^1.0.4",
     "nodemon": "^2.0.3"
   }
 }
