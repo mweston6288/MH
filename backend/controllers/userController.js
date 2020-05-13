@@ -9,7 +9,6 @@ module.exports = {
 				res.json({status: "Success", userName: response.userName});
 			})
 			.catch(() => res.json({ status: "Failure"}));
-;
 	},
 	// Get a user based on parameters
 	getUser: function(req,res){
@@ -22,7 +21,8 @@ module.exports = {
 				}else{
 					// Return a success status and username if password checks out
 					// This will update the user login status in the client side
-					res.json({ status: "Success", userName: response.userName });				}
+					res.json({ status: "Success", userName: response.userName });
+				}
 			})
 			.catch(err=>console.log(err));
 	}

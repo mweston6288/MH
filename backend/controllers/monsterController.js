@@ -20,7 +20,7 @@ module.exports = {
 			});
 	},
 	getMR: function (req, res) {
-		Monsters.find({ masterRank: { $lte: req.params.HR } })
+		Monsters.find({ masterRank: { $lte: req.params.MR } })
 			.then(monsters => {
 				res.json(monsters);
 			}).catch((err) => {

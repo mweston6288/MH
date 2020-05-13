@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom"
 import API from '../api/userAPI';
-import { PromiseProvider } from 'mongoose';
 
 // User login page. User will need to log in to save builds.
 function Login(props) {
