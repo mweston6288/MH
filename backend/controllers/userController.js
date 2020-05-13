@@ -5,7 +5,6 @@ module.exports = {
 	createUser: function(req,res){
 		User.create(req.body)
 			.then(response=>{
-				console.log("response",response);
 				res.json({status: "Success", userName: response.userName});
 			})
 			.catch(() => res.json({ status: "Failure"}));

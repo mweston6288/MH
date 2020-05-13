@@ -1,12 +1,21 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom"
 import API from '../api/userAPI';
+import Alert from "react-bootstrap/Alert";
+import {useUserContext} from "../utils/userContext";
 
 // User login page. User will need to log in to save builds.
 function Login(props) {
+	const [state, dispatch] = useUserContext();
+
+	// Track if login failed
+	const [loginStatus, setLoginStatus] = useState({
+		failure: false
+	});
+
 	const userRef = useRef();
 	const passwordRef = useRef();
 	// Make an API call when form is submitted
@@ -18,9 +27,11 @@ function Login(props) {
 		// If login is successful, redirect. For now, it's redirecting
 		// to the main page.
 		}).then(response=>{
-			console.log(response)
 			if (response.data.status === "Success"){
+				dispatch({userName: response.data.userName})
 				props.history.push("/")
+			}else{
+				setLoginStatus({failure:true});
 			}
 		})
 	}
@@ -43,6 +54,15 @@ function Login(props) {
 					<Button type="submit">Submit</Button>
 				</Form.Group>
 			</Form>
+			<div>
+				{
+					loginStatus.failure &&
+					<Alert variant="danger">
+						Incorrect Username or Password
+					</Alert>
+				}
+			</div>
+
 			<Link to="/">Return</Link>
 			<div>
 				Don't have an account? 

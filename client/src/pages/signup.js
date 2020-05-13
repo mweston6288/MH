@@ -1,13 +1,25 @@
-import React, {useRef}from 'react';
+import React, {useRef, useState}from 'react';
 import Form from 'react-bootstrap/Form';
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom"
 import Button from "react-bootstrap/Button"
 import API from "../api/userAPI";
+import Alert from "react-bootstrap/Alert";
+import { useUserContext } from "../utils/userContext";
+
 
 // User sign up page. User will need to log in to save builds.
 // Currently doesn't do anything
 const SignUp = (props)=>{
+	const [state, dispatch] = useUserContext();
+
+	// track if signup failed for some reason
+	// Used to spawn an alert if either is true
+	const [loginStatus, setLoginStatus] = useState({
+		UserFail: false,
+		PasswordFail: false
+	})
+
 	const userRef = useRef();
 	const passwordRef = useRef();
 	const confirmRef = useRef();
@@ -17,7 +29,7 @@ const SignUp = (props)=>{
 		event.preventDefault();
 		// Confirm password fields match
 		if (passwordRef.current.value !== confirmRef.current.value){
-			console.log("Passwords don't match");
+			setLoginStatus({ UserFail: false, PasswordFail: true })
 			return;
 		}
 		// Call the create user function
@@ -26,11 +38,11 @@ const SignUp = (props)=>{
 			password: passwordRef.current.value
 		// Update the user status and redirect if successful
 		}).then(response=>{
-			console.log(response)
-
 			if (response.data.status === "Success"){
-				console.log(response)
+				dispatch({ userName: response.data.userName })
 				props.history.push("/")
+			}else{
+				setLoginStatus({UserFail:true, PasswordFail:false})
 			}
 		})
 	}
@@ -60,6 +72,23 @@ const SignUp = (props)=>{
 				</Form.Group>
 
 			</Form>
+			<div>
+				{
+					loginStatus.UserFail &&
+					<Alert variant="danger">
+						Username already taken
+					</Alert>
+				}
+			</div>
+			<div>
+				{
+					loginStatus.PasswordFail &&
+					<Alert variant="danger">
+						Password fields do not match
+					</Alert>
+				}
+			</div>
+
 			<Link to="/">Return</Link>
 			<div>
 				Already have an account? 
