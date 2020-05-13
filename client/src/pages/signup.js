@@ -5,10 +5,14 @@ import { Link } from "react-router-dom"
 import Button from "react-bootstrap/Button"
 import API from "../api/userAPI";
 import Alert from "react-bootstrap/Alert";
+import { useUserContext } from "../utils/userContext";
+
 
 // User sign up page. User will need to log in to save builds.
 // Currently doesn't do anything
 const SignUp = (props)=>{
+	const [state, dispatch] = useUserContext();
+
 	// track if signup failed for some reason
 	// Used to spawn an alert if either is true
 	const [loginStatus, setLoginStatus] = useState({
@@ -34,10 +38,8 @@ const SignUp = (props)=>{
 			password: passwordRef.current.value
 		// Update the user status and redirect if successful
 		}).then(response=>{
-			console.log(response)
-
 			if (response.data.status === "Success"){
-				console.log(response)
+				dispatch({ userName: response.data.userName })
 				props.history.push("/")
 			}else{
 				setLoginStatus({UserFail:true, PasswordFail:false})

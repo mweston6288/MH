@@ -5,10 +5,12 @@ import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom"
 import API from '../api/userAPI';
 import Alert from "react-bootstrap/Alert";
-
+import {useUserContext} from "../utils/userContext";
 
 // User login page. User will need to log in to save builds.
 function Login(props) {
+	const [state, dispatch] = useUserContext();
+
 	// Track if login failed
 	const [loginStatus, setLoginStatus] = useState({
 		failure: false
@@ -27,6 +29,7 @@ function Login(props) {
 		}).then(response=>{
 			console.log(response)
 			if (response.data.status === "Success"){
+				dispatch({userName: response.data.userName})
 				props.history.push("/")
 			}else{
 				setLoginStatus({failure:true});
