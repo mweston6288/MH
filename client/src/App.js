@@ -8,7 +8,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/signup";
 
 function App() {
-
   return (
 	  <Router>
 		  <div>
