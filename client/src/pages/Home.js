@@ -3,6 +3,7 @@ import RankTabs from "../utils/rankTabs"
 import LoginButton from "../components/loginButton"
 import { useUserContext } from "../utils/userContext";
 import SaveButton from "../components/saveButton"
+import { Link } from 'react-router-dom';
 
 // The main page where users can create a build
 // Right now, everything happens to be under the rank tabs but
@@ -12,7 +13,10 @@ function Home() {
 	return (
 		<div>
 			{state.authenticated ?
-				<SaveButton />
+				<div>
+					<SaveButton />
+					<Link to="/builds">Test</Link>
+				</div>
 				:
 				<LoginButton />
 			}
