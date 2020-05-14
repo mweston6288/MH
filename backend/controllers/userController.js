@@ -1,5 +1,5 @@
 const User = require("../models/users.js");
-
+const Build = require("../models/builds");
 module.exports = {
 	// Create a new user
 	createUser: function(req,res){
@@ -24,5 +24,9 @@ module.exports = {
 				}
 			})
 			.catch(err=>console.log(err));
+	},
+	addBuild: function(req,res){
+		console.log("req.body:",req.body);
+		Build.create(req.body);
 	}
 };

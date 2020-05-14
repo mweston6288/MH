@@ -7,4 +7,7 @@ router.route("/post")
 router.route("/get")
 	.post(User.getUser);
 
+router.route("/build")
+	.post(User.addBuild);
+
 module.exports = router;

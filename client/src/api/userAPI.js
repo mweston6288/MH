@@ -9,5 +9,9 @@ export default {
 	// to add the user data in the url
 	getUser: function(userData){
 		return axios.post("/api/user/get", userData);
+	},
+	saveBuild: function(buildData){
+		return axios.post("/api/user/build", buildData)
 	}
+
 }

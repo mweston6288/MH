@@ -1,14 +1,19 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { useUserContext } from "../utils/userContext";
+import { useArmorContext } from "../utils/armorContext";
+import API from "../api/userAPI.js"
+
 
 function SaveButton() {
-	const [state] = useUserContext();
-	// If no one is logged in, display a log in button
-	// Otherwise display the user's name
+	const [state] = useArmorContext();
+
+	const saveBuild = (event)=>{
+		event.preventDefault();
+		API.saveBuild(state);
+	}
 	return (
-		<Button>
+		<Button onClick={saveBuild}>
 			Save
 		</Button>
 	)
