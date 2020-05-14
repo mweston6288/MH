@@ -10,4 +10,7 @@ router.route("/get")
 router.route("/:userName")
 	.post(User.addBuild);
 
+router.route("/build/:id")
+	.get(User.getBuild);
+
 module.exports = router;

@@ -10,7 +10,6 @@ import {useUserContext} from "../utils/userContext";
 // User login page. User will need to log in to save builds.
 function Login(props) {
 	const [state, dispatch] = useUserContext();
-	console.log(state);
 
 	// Track if login failed
 	const [loginStatus, setLoginStatus] = useState({
@@ -28,8 +27,9 @@ function Login(props) {
 		// If login is successful, redirect. For now, it's redirecting
 		// to the main page.
 		}).then(response=>{
+			console.log(response);
 			if (response.data.status === "Success"){
-				dispatch({userName: response.data.userName})
+				dispatch({userName: response.data.userName, builds:response.data.builds})
 				props.history.push("/")
 			}else{
 				setLoginStatus({failure:true});

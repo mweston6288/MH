@@ -3,7 +3,7 @@ import React, { useReducer, useContext, createContext } from "react";
 const UserContext = createContext();
 const { Provider } = UserContext;
 const reducer = (state, action) => {
-	return { authenticated: true, userName: action.userName }
+	return { authenticated: true, userName: action.userName, builds: action.builds }
 }
 
 // Stores the currently selected armor for users

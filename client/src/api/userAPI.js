@@ -13,5 +13,8 @@ export default {
 	// Save a build to the user
 	saveBuild: function(userName, buildData){
 		return axios.post("/api/user/"+ userName, buildData)
+	},
+	getBuild: function(buildID){
+		return axios.get("/api/user/build/" + buildID)
 	}
 }

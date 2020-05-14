@@ -14,13 +14,14 @@ module.exports = {
 		// FInd a single user with matching name
 		User.findOne({userName:req.body.userName})
 			.then(response=>{
+				console.log(response);
 				// Check the user password works with the provided password
 				if(!response || !response.checkPassword(req.body.password)){
 					res.json({ status: "Failure" });
 				}else{
 					// Return a success status and username if password checks out
 					// This will update the user login status in the client side
-					res.json({ status: "Success", userName: response.userName });
+					res.json({ status: "Success", userName: response.userName, builds: response.builds });
 				}
 			})
 			.catch(err=>console.log(err));
@@ -58,5 +59,11 @@ module.exports = {
 					res.json(response);
 				});
 		});
+	},
+	getBuild: function({params}, res){
+		Build.findById(params.id)
+			.then(response=>{
+				res.json(response);
+			});
 	}
 };

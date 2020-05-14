@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 // I'll reorganize it later.
 function Home() {
 	const [state] = useUserContext();
+	console.log(state)
 	return (
 		<div>
 			{state.authenticated ?
