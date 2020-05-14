@@ -25,8 +25,38 @@ module.exports = {
 			})
 			.catch(err=>console.log(err));
 	},
-	addBuild: function(req,res){
-		console.log("req.body:",req.body);
-		Build.create(req.body);
+	// Add a build to the user
+	addBuild: function({body, params},res){
+		let headID, chestID, glovesID, waistID, legsID;
+		// Ensure there are actual elements
+		if(body.head){
+			headID = body.head.id;
+		}
+		if (body.chest) {
+			chestID = body.chest.id;
+		}
+		if (body.gloves) {
+			glovesID = body.gloves.id;
+		}
+		if (body.waist) {
+			waistID = body.waist.id;
+		}
+		if (body.legs) {
+			legsID = body.legs.id;
+		}
+		// Create a build in the DB
+		Build.create({
+			headID: headID,
+			chestID: chestID,
+			glovesID: glovesID,
+			waistID: waistID,
+			legsID: legsID
+		}).then(({_id})=>{
+			// Add the build id to the user
+			User.findOneAndUpdate({ userName: params.userName }, { $push: { builds: _id } })
+				.then(response => {
+					res.json(response);
+				});
+		});
 	}
 };

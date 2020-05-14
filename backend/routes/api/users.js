@@ -7,7 +7,7 @@ router.route("/post")
 router.route("/get")
 	.post(User.getUser);
 
-router.route("/build")
+router.route("/:userName")
 	.post(User.addBuild);
 
 module.exports = router;

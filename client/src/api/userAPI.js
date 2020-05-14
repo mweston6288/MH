@@ -10,8 +10,8 @@ export default {
 	getUser: function(userData){
 		return axios.post("/api/user/get", userData);
 	},
-	saveBuild: function(buildData){
-		return axios.post("/api/user/build", buildData)
+	// Save a build to the user
+	saveBuild: function(userName, buildData){
+		return axios.post("/api/user/"+ userName, buildData)
 	}
-
 }
