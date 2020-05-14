@@ -12,7 +12,14 @@ const userSchema = new Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	// User builds
+	builds: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Builds"
+		}
+	]
 });
 
 // Compare a given password to the encrypted password for a match
