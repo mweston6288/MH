@@ -2,8 +2,22 @@ import React from "react";
 import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
 import {useArmorContext} from "../../utils/armorContext"
-function Total() {
-	const [armor] = useArmorContext();
+function Total(props) {
+	let armor;
+	const [armorContext] = useArmorContext();
+	if (props.build) {
+		armor = {
+			head: props.head,
+			chest: props.chest,
+			gloves: props.gloves,
+			waist: props.wais,
+			legs: props.legs
+		};
+	}else{
+		armor = armorContext;
+	}
+	console.log(armor);
+
 	let defense = 0;
 	let fireRes =0;
 	let waterRes=0;

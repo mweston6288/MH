@@ -22,44 +22,43 @@ function BuildDisplay(props) {
 	useEffect(()=>{
 		if(props.headID){
 			Axios.get(`http://mhw-db.com/armor?q={"id":`+props.headID+`}`)
-				.then(response=>{
+				.then(async response=>{
 					console.log(response);
-					setHead(response.data[0]);
+					await setHead(response.data[0])
+					console.log(head)
 				})
 		}
 		if (props.chestID) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.chestID + `}`)
 				.then(response => {
 					console.log(response);
-					setChest(response.data[0]);
-
+					setChest(response.data[0])
 				})
 		}
 		if (props.glovesID) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.glovesID + `}`)
 				.then(response => {
 					console.log(response);
-					setGloves(response.data[0]);
-
+					setGloves(response.data[0])
 				})
 		}
 		if (props.waistID) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.waistID + `}`)
 				.then(response => {
 					console.log(response);
-					setWaist(response.data[0]);
-
+					setWaist(response.data[0])
 				})
 		}
 		if (props.legsID) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.legsID + `}`)
 				.then(response => {
 					console.log(response);
-					setLegs(response.data[0]);
+					setLegs(response.data[0])
 				})
 		}
 	}, [props])
 	console.log(head);
+
 	return (
 		<Container>
 			<Row>
@@ -81,7 +80,7 @@ function BuildDisplay(props) {
 					<Legs legs={legs} />
 				</Col>
 				<Col className="col-sm-4">
-					<Total />
+					<Total build="true" head={head} chest={chest} gloves={gloves} waist={waist} legs={legs}/>
 				</Col>
 			</Row>
 		</Container>
