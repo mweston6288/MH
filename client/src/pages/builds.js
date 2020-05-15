@@ -4,6 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import API from '../api/userAPI';
+import BuildDisplay from "../components/buildDisplay"
 
 function Builds(){
 	const [userState] = useUserContext();
@@ -34,7 +35,7 @@ function Builds(){
 						</Card.Header>
 						<Accordion.Collapse>
 							<Card.Body>
-
+								<BuildDisplay headID={build.headID} chestID={build.chestID} glovesID={build.glovesID} waistID={build.waistID} legsID={build.legsID}/>
 							</Card.Body>
 						</Accordion.Collapse>
 					</Card>
