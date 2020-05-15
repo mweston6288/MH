@@ -21,7 +21,7 @@ module.exports = {
 				}else{
 					// Return a success status and username if password checks out
 					// This will update the user login status in the client side
-					res.json({ status: "Success", userName: response.userName, builds: response.builds });
+					res.json({ status: "Success", userName: response.userName, _id: response._id});
 				}
 			})
 			.catch(err=>console.log(err));
@@ -56,14 +56,16 @@ module.exports = {
 			// Add the build id to the user
 			User.findOneAndUpdate({ userName: params.userName }, { $push: { builds: _id } })
 				.then(response => {
-					res.json(response);
+					console.log("AfterUpdate:",response);
+					res.json(_id);
 				});
 		});
 	},
-	getBuild: function({params}, res){
-		Build.findById(params.id)
+	getBuilds: function({params}, res){
+		User.findById(params.id).populate("builds")
 			.then(response=>{
-				res.json(response);
+				console.log(response);
+				res.json(response.builds);
 			});
 	}
 };

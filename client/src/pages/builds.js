@@ -9,15 +9,12 @@ function Builds(){
 	const [userState] = useUserContext();
 	const [builds, setBuilds] = useState([]);
 	useEffect(()=>{
-		userState.builds.forEach(build=>{
-			API.getBuild(build)
-				.then(response=>{
-					console.log(response.data);
-					setBuilds([...builds, response.data]);
-					console.log(builds);
-				})
-		})
-	}, [userState]);
+		API.getBuilds(userState._id)
+		.then(response=>{
+			setBuilds(response.data);
+			console.log(response);
+		})		
+	}, []);
 	console.log(builds);
 
 	return(

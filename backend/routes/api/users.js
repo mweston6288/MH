@@ -10,7 +10,7 @@ router.route("/get")
 router.route("/:userName")
 	.post(User.addBuild);
 
-router.route("/build/:id")
-	.get(User.getBuild);
+router.route("/builds/:id")
+	.get(User.getBuilds);
 
 module.exports = router;
