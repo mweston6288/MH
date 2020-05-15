@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -13,22 +13,25 @@ import Axios from "axios"
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
 function BuildDisplay(props) {
-	console.log(props);	
-	let head=null, chest=null,gloves=null,waist=null,legs=null;
-
+	console.log(props);
+	const [head, setHead] = useState();
+	const [chest, setChest] = useState();
+	const [gloves, setGloves] = useState();
+	const [waist, setWaist] = useState();
+	const [legs, setLegs] = useState();
 	useEffect(()=>{
 		if(props.headID){
 			Axios.get(`http://mhw-db.com/armor?q={"id":`+props.headID+`}`)
 				.then(response=>{
 					console.log(response);
-					head = response.data[0];
+					setHead(response.data[0]);
 				})
 		}
 		if (props.chestID) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.chestID + `}`)
 				.then(response => {
 					console.log(response);
-					chest = response.data[0];
+					setChest(response.data[0]);
 
 				})
 		}
@@ -36,7 +39,7 @@ function BuildDisplay(props) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.glovesID + `}`)
 				.then(response => {
 					console.log(response);
-					gloves = response.data[0];
+					setGloves(response.data[0]);
 
 				})
 		}
@@ -44,7 +47,7 @@ function BuildDisplay(props) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.waistID + `}`)
 				.then(response => {
 					console.log(response);
-					waist = response.data[0];
+					setWaist(response.data[0]);
 
 				})
 		}
@@ -52,11 +55,11 @@ function BuildDisplay(props) {
 			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.legsID + `}`)
 				.then(response => {
 					console.log(response);
-					legs = response.data[0];
-
+					setLegs(response.data[0]);
 				})
 		}
-	})
+	}, [props])
+	console.log(head);
 	return (
 		<Container>
 			<Row>
