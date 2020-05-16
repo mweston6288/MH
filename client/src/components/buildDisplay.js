@@ -9,6 +9,8 @@ import Waist from "./armors/waist"
 import Legs from "./armors/legs"
 import Total from "./armors/total"
 import Axios from "axios"
+import Button from "react-bootstrap/Button";
+import { useArmorContext } from "../utils/armorContext";
 
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
@@ -19,6 +21,7 @@ function BuildDisplay(props) {
 	const [gloves, setGloves] = useState();
 	const [waist, setWaist] = useState();
 	const [legs, setLegs] = useState();
+	const [armorContext, dispatch] = useArmorContext();
 	useEffect(()=>{
 		if(props.headID){
 			Axios.get(`http://mhw-db.com/armor?q={"id":`+props.headID+`}`)
@@ -59,6 +62,11 @@ function BuildDisplay(props) {
 	}, [props])
 	console.log(head);
 
+	function handleEdit(event){
+		event.preventDefault();
+		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs})
+	}
+
 	return (
 		<Container>
 			<Row>
@@ -83,6 +91,9 @@ function BuildDisplay(props) {
 					<Total build="true" head={head} chest={chest} gloves={gloves} waist={waist} legs={legs}/>
 				</Col>
 			</Row>
+			<Button onClick={handleEdit}>
+				Edit Build
+			</Button>
 		</Container>
 	)
 }
