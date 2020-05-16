@@ -38,6 +38,12 @@ The app could recommend builds for players based on what they are hunting and wh
 	</App>
 </index>
 
+# Plan to get builds
+* Add userID to user Context
+* Create API getBuilds "/api/user/builds/:id" pass user ID
+* Get User Api populated with build IDs. Return builds
+* Save results to build State in build page
+
 # Note about routing
 * Will need to rewrite routing to better match standards
 * Routes: /api/monsters/(action)

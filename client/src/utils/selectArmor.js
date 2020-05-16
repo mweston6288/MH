@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react"
+import React, {useState, useEffect} from "react"
 import {getArmor} from "../api/monsterAPI.js"
 import Button from "react-bootstrap/Button"
 import {useArmorContext} from "./armorContext"
@@ -16,8 +16,8 @@ const SelectArmor = ({HR, MR, skill})=>{
 				})
 				setArmors(armorList);
 			});        
-	}, [skill])
-	// Use the armor type to determine which element in the context to
+	}, [skill, HR, MR])
+	// Use the armor type to determine which element in the context to update
 	const addArmor=(event)=>{
 		const index = event.target.id;
 		const armorType = armors[index].type;

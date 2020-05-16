@@ -2,8 +2,25 @@ import React from "react";
 import Card from "react-bootstrap/Card"
 import ListGroup from "react-bootstrap/ListGroup"
 import {useArmorContext} from "../../utils/armorContext"
-function Total() {
-	const [armor] = useArmorContext();
+function Total(props) {
+	let armor;
+	const [armorContext] = useArmorContext();
+	// Total is used in armorDisplay to calculate the value of the build being
+	// created and in buildDisplay to calculate the value of a saved build
+	// In buildDisplay, a boolean called build is passed along with the build's gear.
+	// if props.build is true, Total will use the passed in armor,
+	// Otherwise it will use the native armorContext
+	if (props.build) {
+		armor = {
+			head: props.head,
+			chest: props.chest,
+			gloves: props.gloves,
+			waist: props.waist,
+			legs: props.legs
+		};
+	}else{
+		armor = armorContext.armor;
+	}
 	let defense = 0;
 	let fireRes =0;
 	let waterRes=0;

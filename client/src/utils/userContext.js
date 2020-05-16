@@ -2,15 +2,18 @@ import React, { useReducer, useContext, createContext } from "react";
 
 const UserContext = createContext();
 const { Provider } = UserContext;
+// update authentication status, username, and userID
+// TODO: Make a sign out condition that resets everything
 const reducer = (state, action) => {
-	return { authenticated: true, userName: action.userName }
+	return { authenticated: true, userName: action.userName, _id:action._id }
 }
 
 // Stores the currently selected armor for users
 const UserProvider = ({ value = [], ...props }) => {
 	const [state, dispatch] = useReducer(reducer, {
 		authenticated: false,
-		userName: ""
+		userName: "",
+		_id:"",
 	});
 	return <Provider value={[state, dispatch]}{...props} />
 }

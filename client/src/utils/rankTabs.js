@@ -4,6 +4,7 @@ import Tabs from "react-bootstrap/Tabs";
 import SearchState from "./searchState"
 // Create tabs for low, high, and master rank
 const Rank = ()=>{
+    // default is low rank
     const [rank, setRank] = useState("LR");
 
     return (

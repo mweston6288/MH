@@ -6,9 +6,8 @@ import {UserProvider} from "./utils/userContext";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/signup";
-
+import Builds from "./pages/builds"
 function App() {
-
   return (
 	  <Router>
 		  <div>
@@ -18,6 +17,7 @@ function App() {
 						<Route exact path="/" component={Home} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/signup" component={Signup} />
+						<Route exact path="/builds" component={Builds}/>
 						<Route component={Home} />
 					</Switch>
 				</ArmorProvider>
