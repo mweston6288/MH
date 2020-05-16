@@ -27,7 +27,6 @@ module.exports = {
 	},
 	// Add a build to the user
 	addBuild: function({body, params},res){
-		console.log(body)
 		const {armor} = body;
 		let headID, chestID, glovesID, waistID, legsID;
 		// Ensure there are actual elements
@@ -62,18 +61,19 @@ module.exports = {
 				});
 		});
 	},
+	// Get builds belonging to a specific user
 	getBuilds: function({params}, res){
 		User.findById(params.id).populate("builds")
 			.then(response=>{
 				res.json(response.builds);
 			});
 	},
+	// Update a build
 	updateBuild: function({body, params}, res){
-		console.log(params);
-		console.log(body);
 		const {armor} = body;
 		let headID, chestID, glovesID, waistID, legsID;
 		// Ensure there are actual elements
+		// and set them to the values we need
 		if (armor.head) {
 			headID = armor.head.id;
 		}
@@ -89,6 +89,7 @@ module.exports = {
 		if (armor.legs) {
 			legsID = armor.legs.id;
 		}
+		// Find and update the build
 		Build.findOneAndUpdate({ _id: params.id }, {
 			headID: headID,
 			chestID: chestID,
@@ -97,7 +98,6 @@ module.exports = {
 			legsID: legsID,
 			name: body.name
 		}).then(response=>{
-			console.log(response);
 			res.json(response);
 		}).catch(err=>console.log(err));
 	}

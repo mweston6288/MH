@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React from "react";
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -14,15 +14,16 @@ import { useUserContext } from "../utils/userContext";
 import LoginButton from "./loginButton";
 import Button from "react-bootstrap/Button";
 
-// Display the selected armor. Currently displays names and stats
-// Will update with skills and slots
+// Display the selected armor. Displays name, skills and stats
 function ArmorDisplay(){
     const [{armor, name}, dispatch] = useArmorContext();
     const [user] = useUserContext();
+    // Update build name in ArmorContext
     function handleChange(event){
         event.preventDefault();
         dispatch({type:"name", name: event.target.value})
     }
+    // Reset the build
     function handleReset(event){
         event.preventDefault();
         dispatch({type:"reset"});
@@ -30,7 +31,7 @@ function ArmorDisplay(){
     return(
         <div>
             <Container>
-                <input type="text" onChange={handleChange} placeholder={name}/>
+                <input type="text" onChange={handleChange} value={name}/>
                 <Row>
                     <Col className="col-sm-4">
                         <Head head={armor.head}/>
@@ -54,7 +55,7 @@ function ArmorDisplay(){
                     </Col>
                 </Row>
             </Container>
-            {
+            {// User can only save builds if logged in
                 user.authenticated ? 
                     <SaveButton/>
                     :

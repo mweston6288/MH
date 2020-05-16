@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import MonsterSelector from "../components/MonsterSelector"
 import HR from "../components/HR"
 import MR from "../components/MR"
-import ArmorDisplay from "../components/armorDisplay"
 import Form from "react-bootstrap/Form"
 import * as apis from "../api/monsterAPI.js"
 import Recommend from "./recommend"
-import {useArmorContext} from "./armorContext"
 
 // Creates the user search and results states.
 const SearchContext = ({rank})=>{
@@ -17,7 +15,6 @@ const SearchContext = ({rank})=>{
 		hunterRank:0,
 		masterRank:0,
 	});
-	const [state,dispatch]=useArmorContext();
 	const [skills, setSkills]= useState([]);
 
 	// Update the searchState fields.
@@ -37,8 +34,8 @@ const SearchContext = ({rank})=>{
 	// the requirements. Currently filters armor by skills in the monster's "ailments.protection"
 	// field.
 	const getResponse = async (event)=>{
+		event.preventDefault();
 		if(searchState.monster){
-			event.preventDefault();
 			try {
 				// Get the full details on the monster I'm looking for
 				// and set skills to the recommended skills
@@ -48,7 +45,6 @@ const SearchContext = ({rank})=>{
 				console.log(err);
 			}
 		}
-		//dispatch({type: "reset"});
 	}
 	// Depending on what rank was received will determine the form users have to fill
 	return(

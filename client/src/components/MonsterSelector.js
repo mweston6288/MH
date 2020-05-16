@@ -32,7 +32,7 @@ function MonsterSelector({HR, MR, rank, updateMonster}){
             })
         }
 
-    },[HR, MR])
+    },[HR, MR, rank])
 
     return(
         <Form.Group>

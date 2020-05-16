@@ -4,11 +4,14 @@ const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+	// username will be unique
 	userName: {
 		type: String,
 		required: true,
 		unique: "Username is taken"
 	},
+	// Since password is encrypted beforehand,
+	// there's no point in verifying it here
 	password: {
 		type: String,
 		required: true

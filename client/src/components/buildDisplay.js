@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
@@ -11,18 +11,22 @@ import Total from "./armors/total"
 import Axios from "axios"
 import Button from "react-bootstrap/Button";
 import { useArmorContext } from "../utils/armorContext";
-import { Link } from "react-router-dom";
 
-// Display the selected armor. Currently displays names and stats
-// Will update with skills and slots
+// Display the build armor
 function BuildDisplay(props) {
 	const {build} = props;
+	// Since setState does not play well with multiple asyncronous calls
+	// trying to edit the same variable, I've opted to save all armor
+	// pieces into their own states
 	const [head, setHead] = useState();
 	const [chest, setChest] = useState();
 	const [gloves, setGloves] = useState();
 	const [waist, setWaist] = useState();
 	const [legs, setLegs] = useState();
 	const [armorContext, dispatch] = useArmorContext();
+	// Checks if any particular armor pieces are in the build
+	// and then calls mhw-db to get the armor associated with the id
+	// Then it saves the result to the appropriate state above
 	useEffect(()=>{
 		if(build.headID){
 			Axios.get(`http://mhw-db.com/armor?q={"id":`+build.headID+`}`)
@@ -55,11 +59,11 @@ function BuildDisplay(props) {
 				})
 		}
 	}, [build])
-
+	// If you click edit build, the saved build overwrites whatever is in the
+	// current armor context, then it redirects to the home page
 	function handleEdit(event){
 		event.preventDefault();
 		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs, name: build.name, _id:build._id})
-		console.log(props.history)
 		props.history.push("/")
 	}
 

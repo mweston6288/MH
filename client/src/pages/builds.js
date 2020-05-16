@@ -6,19 +6,24 @@ import Card from 'react-bootstrap/Card';
 import API from '../api/userAPI';
 import BuildDisplay from "../components/buildDisplay"
 
+// Main page for the user's saved builds
 function Builds(props){
 	const [userState] = useUserContext();
 	const [builds, setBuilds] = useState([]);
+	// Get the user builds and store them in an array
 	useEffect(()=>{
 		API.getBuilds(userState._id)
 		.then(response=>{
 			setBuilds(response.data);
-		})		
-	}, []);
+		})
+	}, [userState._id]);
 
 	return(
 		<div>
-			{ userState.authenticated ?
+			{ // If user is not signed in, redirect to the login page
+			// BuildDisplay needs the props history in order to redirect to / 
+			// when user wants to edit a build
+			userState.authenticated ?
 			<div>
 				<Link to="/">
 					Return
@@ -40,7 +45,6 @@ function Builds(props){
 				</Accordion>
 				))}
 				</div>
-
 				:
 				<Redirect to="/login"/>
 			}

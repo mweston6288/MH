@@ -1,8 +1,6 @@
 import React from 'react';
 import RankTabs from "../utils/rankTabs"
-import LoginButton from "../components/loginButton"
 import { useUserContext } from "../utils/userContext";
-import SaveButton from "../components/saveButton"
 import { Link } from 'react-router-dom';
 import ArmorDisplay from '../components/armorDisplay';
 
@@ -13,7 +11,9 @@ function Home() {
 	const [state] = useUserContext();
 	return (
 		<div>
-			{state.authenticated ?
+			{// Display option to log in or view builds depending on login status
+			// TODO: add a logout feature.
+			state.authenticated ?
 				<div>
 					<div>Hello {state.userName}</div>
 					<Link to="/builds">View Builds</Link>

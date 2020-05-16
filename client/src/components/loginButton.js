@@ -6,7 +6,6 @@ import { useUserContext } from "../utils/userContext";
 function LoginButton(){
 	const [state] = useUserContext();
 	// If no one is logged in, display a log in button
-	// Otherwise display the user's name
 	return(
 		<Link to="/login">
 			<Button>
