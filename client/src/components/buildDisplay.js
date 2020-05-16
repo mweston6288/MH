@@ -11,11 +11,12 @@ import Total from "./armors/total"
 import Axios from "axios"
 import Button from "react-bootstrap/Button";
 import { useArmorContext } from "../utils/armorContext";
+import { Link } from "react-router-dom";
 
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
-function BuildDisplay({build}) {
-	console.log(build);
+function BuildDisplay(props) {
+	const {build} = props;
 	const [head, setHead] = useState();
 	const [chest, setChest] = useState();
 	const [gloves, setGloves] = useState();
@@ -58,6 +59,8 @@ function BuildDisplay({build}) {
 	function handleEdit(event){
 		event.preventDefault();
 		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs, name: build.name, _id:build._id})
+		console.log(props.history)
+		props.history.push("/")
 	}
 
 	return (

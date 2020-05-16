@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import API from '../api/userAPI';
 import BuildDisplay from "../components/buildDisplay"
 
-function Builds(){
+function Builds(props){
 	const [userState] = useUserContext();
 	const [builds, setBuilds] = useState([]);
 	useEffect(()=>{
@@ -33,7 +33,7 @@ function Builds(){
 						</Card.Header>
 						<Accordion.Collapse eventKey={build._id}>
 							<Card.Body>
-								<BuildDisplay build={build}/>
+								<BuildDisplay build={build} history={props.history}/>
 							</Card.Body>
 						</Accordion.Collapse>
 					</Card>

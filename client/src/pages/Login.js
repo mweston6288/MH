@@ -9,6 +9,7 @@ import {useUserContext} from "../utils/userContext";
 
 // User login page. User will need to log in to save builds.
 function Login(props) {
+	console.log(props)
 	const [state, dispatch] = useUserContext();
 
 	// Track if login failed
