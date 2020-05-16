@@ -12,6 +12,7 @@ import {useArmorContext} from "../utils/armorContext"
 import SaveButton from "./saveButton"
 import { useUserContext } from "../utils/userContext";
 import LoginButton from "./loginButton";
+import Button from "react-bootstrap/Button";
 
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
@@ -21,6 +22,10 @@ function ArmorDisplay(){
     function handleChange(event){
         event.preventDefault();
         dispatch({type:"name", name: event.target.value})
+    }
+    function handleReset(event){
+        event.preventDefault();
+        dispatch({type:"reset"});
     }
     return(
         <div>
@@ -55,6 +60,7 @@ function ArmorDisplay(){
                     :
                     <LoginButton/>        
             }
+            <Button onClick={handleReset}>Reset</Button>
         </div>
     )
 }
