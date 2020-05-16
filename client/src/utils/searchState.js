@@ -48,7 +48,7 @@ const SearchContext = ({rank})=>{
 				console.log(err);
 			}
 		}
-		dispatch({type: "reset"});
+		//dispatch({type: "reset"});
 	}
 	// Depending on what rank was received will determine the form users have to fill
 	return(
@@ -67,7 +67,6 @@ const SearchContext = ({rank})=>{
 			{skills.map(skill=>(
 				<Recommend skill={skill} MR ={searchState.masterRank} HR={searchState.hunterRank}/>
 			))}
-			<ArmorDisplay/>
 		</div>
 	)
 }

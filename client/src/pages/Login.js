@@ -27,7 +27,6 @@ function Login(props) {
 		// If login is successful, redirect. For now, it's redirecting
 		// to the main page.
 		}).then(response=>{
-			console.log(response);
 			if (response.data.status === "Success"){
 				dispatch({userName: response.data.userName, _id:response.data._id})
 				props.history.push("/")

@@ -3,48 +3,72 @@ import React, {useReducer, useContext, createContext}from "react";
 const ArmorContext = createContext();
 const { Provider } = ArmorContext;
 const reducer = (state,action)=>{
+	const armor = state.armor;
 	switch(action.type){
 		case "head":
-			return {...state, head: action.armor}
+			armor.head = action.armor;
+			return {...state, armor: armor}
 		case "chest":
-			return { ...state, chest: action.armor}
+			armor.chest = action.armor;
+			return { ...state, armor: armor}
 		case "gloves":
-			return { ...state, gloves: action.armor }
+			armor.gloves = action.armor;
+			return { ...state, armor: armor }
 		case "waist":
-			return { ...state, waist: action.armor }
+			armor.waist = action.armor;
+			return { ...state, armor: armor }
 		case "legs":
-			return { ...state, legs: action.armor }
+			armor.legs = action.armor;
+			return { ...state, armor: armor }
+		case "name":
+			return {...state, name: action.name}
 		case "edit":
 			return {
-				head: null,
-				chest: null,
-				waist: null,
-				gloves: null,
-				legs: null,
-				head: action.head,
-				chest: action.chest,
-				gloves: action.gloves,
-				waist: action.waist,
-				legs: action.legs,
+				...state,
+				armor:{
+					head: null,
+					chest: null,
+					waist: null,
+					gloves: null,
+					legs: null,
+					head: action.head,
+					chest: action.chest,
+					gloves: action.gloves,
+					waist: action.waist,
+					legs: action.legs,
+				},
+				name: action.name,
+				_id: action._id
 			}
+		case "save":
+			return {...state, _id: action._id}
 		default:
 			return {
-				head: null,
-				chest: null,
-				waist: null,
-				gloves: null,
-				legs: null}
+				armor: {
+					head: null,
+					chest: null,
+					waist: null,
+					gloves: null,
+					legs: null
+				},
+				name: "build",
+				_id: ""
+			}
 	}
 }
 
 // Stores the currently selected armor for users
 const ArmorProvider = ({ value = [], ...props })=>{
 	const [state, dispatch]=useReducer(reducer,{
-		head: null,
-		chest: null,
-		waist: null,
-		gloves: null,
-		legs: null
+		armor: {
+			head: null,
+			chest: null,
+			waist: null,
+			gloves: null,
+			legs: null
+		},
+		name:"build",
+		_id:""
 	});
 	return <Provider value={[state, dispatch]}{...props} />
 }

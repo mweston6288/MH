@@ -11,6 +11,7 @@ router.route("/:userName")
 	.post(User.addBuild);
 
 router.route("/builds/:id")
-	.get(User.getBuilds);
+	.get(User.getBuilds)
+	.put(User.updateBuild);
 
 module.exports = router;

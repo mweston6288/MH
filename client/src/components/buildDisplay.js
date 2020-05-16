@@ -14,8 +14,8 @@ import { useArmorContext } from "../utils/armorContext";
 
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
-function BuildDisplay(props) {
-	console.log(props);
+function BuildDisplay({build}) {
+	console.log(build);
 	const [head, setHead] = useState();
 	const [chest, setChest] = useState();
 	const [gloves, setGloves] = useState();
@@ -23,48 +23,41 @@ function BuildDisplay(props) {
 	const [legs, setLegs] = useState();
 	const [armorContext, dispatch] = useArmorContext();
 	useEffect(()=>{
-		if(props.headID){
-			Axios.get(`http://mhw-db.com/armor?q={"id":`+props.headID+`}`)
-				.then(async response=>{
-					console.log(response);
-					await setHead(response.data[0])
-					console.log(head)
+		if(build.headID){
+			Axios.get(`http://mhw-db.com/armor?q={"id":`+build.headID+`}`)
+				.then(response=>{
+					setHead(response.data[0])
 				})
 		}
-		if (props.chestID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.chestID + `}`)
+		if (build.chestID) {
+			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.chestID + `}`)
 				.then(response => {
-					console.log(response);
 					setChest(response.data[0])
 				})
 		}
-		if (props.glovesID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.glovesID + `}`)
+		if (build.glovesID) {
+			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.glovesID + `}`)
 				.then(response => {
-					console.log(response);
 					setGloves(response.data[0])
 				})
 		}
-		if (props.waistID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.waistID + `}`)
+		if (build.waistID) {
+			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.waistID + `}`)
 				.then(response => {
-					console.log(response);
 					setWaist(response.data[0])
 				})
 		}
-		if (props.legsID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + props.legsID + `}`)
+		if (build.legsID) {
+			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.legsID + `}`)
 				.then(response => {
-					console.log(response);
 					setLegs(response.data[0])
 				})
 		}
-	}, [props])
-	console.log(head);
+	}, [build])
 
 	function handleEdit(event){
 		event.preventDefault();
-		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs})
+		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs, name: build.name, _id:build._id})
 	}
 
 	return (

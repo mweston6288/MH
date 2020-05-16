@@ -13,10 +13,8 @@ function Builds(){
 		API.getBuilds(userState._id)
 		.then(response=>{
 			setBuilds(response.data);
-			console.log(response);
 		})		
 	}, []);
-	console.log(builds);
 
 	return(
 		<div>
@@ -35,7 +33,7 @@ function Builds(){
 						</Card.Header>
 						<Accordion.Collapse eventKey={build._id}>
 							<Card.Body>
-								<BuildDisplay headID={build.headID} chestID={build.chestID} glovesID={build.glovesID} waistID={build.waistID} legsID={build.legsID}/>
+								<BuildDisplay build={build}/>
 							</Card.Body>
 						</Accordion.Collapse>
 					</Card>

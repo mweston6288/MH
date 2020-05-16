@@ -14,7 +14,6 @@ module.exports = {
 		// FInd a single user with matching name
 		User.findOne({userName:req.body.userName})
 			.then(response=>{
-				console.log(response);
 				// Check the user password works with the provided password
 				if(!response || !response.checkPassword(req.body.password)){
 					res.json({ status: "Failure" });
@@ -58,8 +57,7 @@ module.exports = {
 		}).then(({_id})=>{
 			// Add the build id to the user
 			User.findOneAndUpdate({ userName: params.userName }, { $push: { builds: _id } })
-				.then(response => {
-					console.log("AfterUpdate:",response);
+				.then(() => {
 					res.json(_id);
 				});
 		});
@@ -67,8 +65,40 @@ module.exports = {
 	getBuilds: function({params}, res){
 		User.findById(params.id).populate("builds")
 			.then(response=>{
-				console.log(response);
 				res.json(response.builds);
 			});
+	},
+	updateBuild: function({body, params}, res){
+		console.log(params);
+		console.log(body);
+		const {armor} = body;
+		let headID, chestID, glovesID, waistID, legsID;
+		// Ensure there are actual elements
+		if (armor.head) {
+			headID = armor.head.id;
+		}
+		if (armor.chest) {
+			chestID = armor.chest.id;
+		}
+		if (armor.gloves) {
+			glovesID = armor.gloves.id;
+		}
+		if (armor.waist) {
+			waistID = armor.waist.id;
+		}
+		if (armor.legs) {
+			legsID = armor.legs.id;
+		}
+		Build.findOneAndUpdate({ _id: params.id }, {
+			headID: headID,
+			chestID: chestID,
+			glovesID: glovesID,
+			waistID: waistID,
+			legsID: legsID,
+			name: body.name
+		}).then(response=>{
+			console.log(response);
+			res.json(response);
+		}).catch(err=>console.log(err));
 	}
 };

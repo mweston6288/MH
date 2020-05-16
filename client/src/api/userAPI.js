@@ -16,5 +16,8 @@ export default {
 	},
 	getBuilds: function(userID){
 		return axios.get("/api/user/builds/" + userID)
+	},
+	updateBuild: function(buildData){
+		return axios.put("/api/user/builds/"+buildData._id, buildData)
 	}
 }

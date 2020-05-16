@@ -39,7 +39,6 @@ const SignUp = (props)=>{
 		// Update the user status and redirect if successful
 		}).then(response=>{
 			if (response.data.status === "Success"){
-				console.log(response)
 				dispatch({ userName: response.data.userName, _id: response.data._id })
 				props.history.push("/")
 			}else{

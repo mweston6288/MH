@@ -16,19 +16,16 @@ import LoginButton from "./loginButton";
 // Display the selected armor. Currently displays names and stats
 // Will update with skills and slots
 function ArmorDisplay(){
-    const [armor, dispatch] = useArmorContext();
+    const [{armor, name}, dispatch] = useArmorContext();
     const [user] = useUserContext();
-    const [name, setName] = useState();
     function handleChange(event){
         event.preventDefault();
-        console.log(event);
-        setName(event.target.value)
-        console.log(name);
+        dispatch({type:"name", name: event.target.value})
     }
     return(
         <div>
             <Container>
-                <input type="text" onChange={handleChange}></input>
+                <input type="text" onChange={handleChange} placeholder={name}/>
                 <Row>
                     <Col className="col-sm-4">
                         <Head head={armor.head}/>
@@ -54,7 +51,7 @@ function ArmorDisplay(){
             </Container>
             {
                 user.authenticated ? 
-                    <SaveButton name={name}/>
+                    <SaveButton/>
                     :
                     <LoginButton/>        
             }

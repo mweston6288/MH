@@ -14,9 +14,8 @@ function Total(props) {
 			legs: props.legs
 		};
 	}else{
-		armor = armorContext;
+		armor = armorContext.armor;
 	}
-	console.log(armor);
 
 	let defense = 0;
 	let fireRes =0;

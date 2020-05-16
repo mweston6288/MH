@@ -3,7 +3,6 @@ import React, { useReducer, useContext, createContext } from "react";
 const UserContext = createContext();
 const { Provider } = UserContext;
 const reducer = (state, action) => {
-	console.log(action)
 	return { authenticated: true, userName: action.userName, _id:action._id }
 }
 
