@@ -15,11 +15,11 @@ function Home() {
 		<div>
 			{state.authenticated ?
 				<div>
-					<SaveButton />
-					<Link to="/builds">Test</Link>
+					<div>Hello {state.userName}</div>
+					<Link to="/builds">View Builds</Link>
 				</div>
 				:
-				<LoginButton />
+				<Link to="/login">Log in</Link>
 			}
 			<RankTabs />
 		</div>

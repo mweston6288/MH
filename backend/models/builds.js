@@ -7,7 +7,8 @@ const buildSchema = new Schema({
 	chestID: Number,
 	glovesID: Number,
 	waistID: Number,
-	legsID: Number
+	legsID: Number,
+	name: String
 });
 const Builds = mongoose.model("Builds", buildSchema);
 

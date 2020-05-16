@@ -29,11 +29,11 @@ function Builds(){
 				<Accordion>
 					<Card>
 						<Card.Header>
-							<Accordion.Toggle as={Card.Header}>
-								{build._id}
+							<Accordion.Toggle as={Card.Header} eventKey={build._id}>
+								{build.name}
 							</Accordion.Toggle>
 						</Card.Header>
-						<Accordion.Collapse>
+						<Accordion.Collapse eventKey={build._id}>
 							<Card.Body>
 								<BuildDisplay headID={build.headID} chestID={build.chestID} glovesID={build.glovesID} waistID={build.waistID} legsID={build.legsID}/>
 							</Card.Body>

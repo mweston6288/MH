@@ -5,16 +5,16 @@ import { useArmorContext } from "../utils/armorContext";
 import API from "../api/userAPI.js"
 
 // Creates a button that saves user created builds
-function SaveButton() {
+function SaveButton(props) {
 	const [armorState] = useArmorContext();
 	const [userState, dispatch] = useUserContext();
 
 	const saveBuild = (event)=>{
 		event.preventDefault();
-		API.saveBuild(userState.userName, armorState)
+		const buildData = ({armor: armorState, name: props.name});
+		API.saveBuild(userState.userName, buildData)
 		.then(response=>{
 			console.log(response)
-			dispatch({type: "addBuild", _id: response.data})
 		})
 	}
 	return (
