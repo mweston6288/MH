@@ -1,17 +1,33 @@
-import React from "react"
+import React, { useState } from "react"
 import Accordion from "react-bootstrap/Accordion"
 import Card from "react-bootstrap/Card"
 import SelectArmor from "./selectArmor"
 import { useSearchContext } from "./searchContext"
+import Form from "react-bootstrap/Form"
 
 // This will display recommended skills in an accordion component.
 // Click on the component to show a list of armors
 const Recommend = () => {
     const [{skills, hunterRank, masterRank}] = useSearchContext();
+    const [skill, setSkill] = useState();
+    const updateSkill = event=>{
+        setSkill(event.target.value);
+        console.log(skill)
+    }
     return(
         <div>
-            {skills.map(skill=>(
-        <Accordion>
+            <Form.Group>
+                <Form.Control as="select" onChange={updateSkill}>
+                    <option disabled hidden>Skills</option>
+                    {skills.map(skill => (
+                        <option>{skill.name}</option>
+                    ))}
+                </Form.Control>
+            </Form.Group>
+            {skill &&
+            <SelectArmor HR={hunterRank} MR={masterRank} skill={skill} />
+            }
+{/*        <Accordion>
             <Card>
                 <Card.Header>
                     <Accordion.Toggle as={Card.Header} eventKey={skill.id}>
@@ -24,8 +40,7 @@ const Recommend = () => {
                     </Card.Body>
                 </Accordion.Collapse>
             </Card>
-        </Accordion>
-            ))}
+</Accordion>*/}
         </div>
     )
 }

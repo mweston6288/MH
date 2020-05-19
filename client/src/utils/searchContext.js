@@ -6,7 +6,7 @@ const {Provider} = searchContext;
 const reducer = (state, action) => {
 	switch(action.type){
 		case "changeRank":
-			return {...state, rank: action.rank};
+			return {...state, rank: action.rank, monster: "", hunterRank: 0, masterRank: 0, skills: []};
 		case "updateMonster":
 			return {...state, monster: action.monster};
 		case "updateMR":
