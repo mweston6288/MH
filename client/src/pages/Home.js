@@ -49,6 +49,13 @@ function Home() {
 				<Row>
 					<Col md={{span:10, offset:1}}>
 						<RankTabs />
+					</Col>
+				</Row>
+				<Row>
+					<Col md={{span:6}}>
+					
+					</Col>
+					<Col>
 						<ArmorDisplay />
 					</Col>
 				</Row>
