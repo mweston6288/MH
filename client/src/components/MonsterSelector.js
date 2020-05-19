@@ -1,39 +1,44 @@
 import React, { useState, useEffect } from "react";
 import * as apis from "../api/monsterAPI.js"
 import Form from "react-bootstrap/Form"
+import { useSearchContext } from "../utils/searchContext.js";
 
 // Make a drop menu of monsters to hunt.
 // Currently uses the monster hunter API but I'll migrate this to my own database
 // later.
-function MonsterSelector({HR, MR, rank, updateMonster}){
+function MonsterSelector(){
     // Stores the list of monsters
     const [monsterList,setMonsterList]=useState([]);
+    const [{ monster,hunterRank, masterRank, rank }, dispatch] = useSearchContext();
 
     // Get monsters from the database and set them into the monsterlist
     // ranks will determine which api search to use
     useEffect(()=>{
         if (rank==="LR"){
-            apis.getLRMonsterList(HR).then(res => {
+            apis.getLRMonsterList(hunterRank).then(res => {
                 setMonsterList(res.data);
             }).catch(err => {
                 console.log(err)
             })
         }else if (rank==="HR"){
-            apis.getHRMonsterList(HR).then(res => {
+            apis.getHRMonsterList(hunterRank).then(res => {
                 setMonsterList(res.data);
             }).catch(err => {
                 console.log(err)
             })
         }else{
-            apis.getMRMonsterList(MR).then(res => {
+            apis.getMRMonsterList(masterRank).then(res => {
                 setMonsterList(res.data);
             }).catch(err => {
                 console.log(err)
             })
         }
 
-    },[HR, MR, rank])
-
+    },[hunterRank, masterRank, rank])
+    const updateMonster = (event) => {
+        dispatch({ type: "updateMonster", monster: event.target.value })
+        console.log(monster);
+    };
     return(
         <Form.Group>
             <Form.Label>Select Monster</Form.Label>

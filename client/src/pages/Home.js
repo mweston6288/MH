@@ -6,6 +6,7 @@ import ArmorDisplay from '../components/armorDisplay';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Recommend from '../utils/recommend';
 
 // The main page where users can create a build
 // Right now, everything happens to be under the rank tabs but
@@ -53,7 +54,8 @@ function Home() {
 				</Row>
 				<Row>
 					<Col md={{span:6}}>
-					
+						{//<Recommend/>
+						}
 					</Col>
 					<Col>
 						<ArmorDisplay />

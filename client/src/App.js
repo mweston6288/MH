@@ -7,21 +7,24 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/signup";
 import Builds from "./pages/builds"
+import { SearchProvider } from './utils/searchContext';
 function App() {
   return (
 	  <Router>
 		  <div>
-			  <UserProvider>
-				<ArmorProvider>
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/login" component={Login} />
-						<Route exact path="/signup" component={Signup} />
-						<Route exact path="/builds" component={Builds}/>
-						<Route component={Home} />
-					</Switch>
-				</ArmorProvider>
-			  </UserProvider>
+			<UserProvider>
+				<SearchProvider>
+					<ArmorProvider>
+						<Switch>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/login" component={Login} />
+							<Route exact path="/signup" component={Signup} />
+							<Route exact path="/builds" component={Builds}/>
+							<Route component={Home} />
+						</Switch>
+					</ArmorProvider>
+				</SearchProvider>
+			</UserProvider>
 		  </div>
 	  </Router>
   );

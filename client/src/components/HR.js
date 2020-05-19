@@ -1,14 +1,21 @@
 import React from "react";
 import Form from "react-bootstrap/Form"
+import { useSearchContext } from "../utils/searchContext";
 
 // Create a select menu form so users can input their current hunter rank
 // Form is divided into three parts depending on if they are doing a low, high or master rank quest
-function HR(props){
+function HR(){
+    const [{ rank, hunterRank }, dispatch] = useSearchContext();
+    const updateHunterRank = (event) => {
+        const value = event.target.value.split("-")
+        dispatch({ type: "updateHR", HR: value[0] })
+        console.log(hunterRank);
+    }
     return(
             <Form.Group>
                 <Form.Label>Hunter Rank</Form.Label>
-               {props.rank === "LR" && (                
-                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateHunterRank}>
+               {rank === "LR" && (                
+                <Form.Control as="select" custom defaultValue="Rank" onChange={updateHunterRank}>
                     <option disabled hidden>Rank</option>    
                     <option>1</option>
                     <option>2</option>
@@ -30,8 +37,8 @@ function HR(props){
                     <option>100-999</option>
                 </Form.Control>
                )}
-            {props.rank === "HR" && (
-                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateHunterRank}>
+            {rank === "HR" && (
+                <Form.Control as="select" custom defaultValue="Rank" onChange={updateHunterRank}>
                     <option disabled hidden>Rank</option>
                     <option>11</option>
                     <option>12</option>
