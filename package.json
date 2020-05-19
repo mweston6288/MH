@@ -12,7 +12,8 @@
     "client": "cd client && npm run start",
     "client-install": "cd client && npm install",
     "seed": "cd backend && node seed.js",
-    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
+    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\"",
+    "heroku-postbuild": "npm run seed"
   },
   "keywords": [],
   "author": "",
