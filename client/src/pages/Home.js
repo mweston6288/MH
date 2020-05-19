@@ -45,8 +45,15 @@ function Home() {
 					</Row>
 				</Container>
 			}
-			<RankTabs />
-			<ArmorDisplay/>
+			<Container>
+				<Row>
+					<Col md={{span:10, offset:1}}>
+						<RankTabs />
+						<ArmorDisplay />
+					</Col>
+				</Row>
+			</Container>
+
 
 		</div>
 	);
