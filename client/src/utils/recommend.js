@@ -14,16 +14,19 @@ const Recommend = () => {
         setSkill(event.target.value);
         console.log(skill)
     }
+    console.log(skills)
     return(
         <div>
+            {skills.length > 0 &&
             <Form.Group>
                 <Form.Control as="select" onChange={updateSkill}>
-                    <option disabled hidden>Skills</option>
+                    <option disabled selected hidden>Skills</option>
                     {skills.map(skill => (
                         <option>{skill.name}</option>
                     ))}
                 </Form.Control>
             </Form.Group>
+}
             {skill &&
             <SelectArmor HR={hunterRank} MR={masterRank} skill={skill} />
             }

@@ -34,7 +34,7 @@ function MonsterSelector(){
             })
         }
 
-    },[hunterRank, masterRank, rank])
+    },[hunterRank, masterRank])
     const updateMonster = (event) => {
         dispatch({ type: "updateMonster", monster: event.target.value })
         console.log(monster);
@@ -43,7 +43,7 @@ function MonsterSelector(){
         <Form.Group>
             <Form.Label>Select Monster</Form.Label>
             <Form.Control as="select" custom defaultValue="Monster" onChange={updateMonster}>
-                <option disabled hidden>Monster</option>
+                {!monster && <option disabled selected hidden>Monster</option>}
                 {monsterList.map(monster=>(
                     <option key={monster._id}>{monster.name}</option>
                 ))}
