@@ -3,13 +3,17 @@ import {getArmor} from "../api/monsterAPI.js"
 import Button from "react-bootstrap/Button"
 import {useArmorContext} from "./armorContext"
 const SelectArmor = ({HR, MR, skill})=>{
+	console.log(HR)
+	console.log(MR)
+	console.log(skill)
 	const [state, dispatch] = useArmorContext();
 	const [armors, setArmors] = useState([]);
-
+	console.log(armors);
 	// Get the list of armors that fit the given restrictions and add them into the armor state
 	useEffect(()=>{ // useEffect is being used because otherwise, this will run infinitely
 		getArmor(HR, MR, skill)
 			.then(res => {
+				console.log(res);
 				const armorList=[];
 				res.data.forEach(armor => {
 					armorList.push(armor);
