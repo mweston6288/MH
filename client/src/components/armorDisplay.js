@@ -13,6 +13,13 @@ import SaveButton from "./saveButton"
 import { useUserContext } from "../utils/userContext";
 import LoginButton from "./loginButton";
 import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
+import def from "../images/mhw-defense_s.png"
+import fire from "../images/mhw-fire-damage_s.png"
+import water from "../images/mhw-water-elemental-damage_s.png"
+import ice from "../images/mhw-ice-damage_s.png"
+import thunder from "../images/mhw-thunder-damage_s.png"
+import dragon from "../images/mhw-dragon-damage_s.png"
 
 // Display the selected armor. Displays name, skills and stats
 function ArmorDisplay(){
@@ -30,8 +37,28 @@ function ArmorDisplay(){
     }
     return(
         <div>
-            <Container>
-                <input type="text" onChange={handleChange} value={name}/>
+            <input type="text" onChange={handleChange} value={name} />
+            <Table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th><img src={def}/></th>
+                        <th><img src={fire} /></th>
+                        <th><img src={water} /></th>
+                        <th><img src={thunder} /></th>
+                        <th><img src={ice} /></th>
+                        <th><img src={dragon} /></th>
+                    </tr>
+                </thead>
+                    <Head head={armor.head} />
+                    <Chest chest={armor.chest} />
+                    <Gloves gloves={armor.gloves} />
+                    <Waist waist={armor.waist} />
+                    <Legs legs={armor.legs} />
+            </Table>
+            <Total />
+
+         {/*   <Container>
                 <Row>
                     <Col className="col-sm-4">
                         <Head head={armor.head}/>
@@ -54,7 +81,7 @@ function ArmorDisplay(){
                         <Total/>
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
             {// User can only save builds if logged in
                 user.authenticated ? 
                     <SaveButton/>
