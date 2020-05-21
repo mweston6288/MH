@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import MonsterSelector from "../components/MonsterSelector"
 import HR from "../components/HR"
 import MR from "../components/MR"
 import Form from "react-bootstrap/Form"
 import * as apis from "../api/monsterAPI.js"
-import Recommend from "./recommend"
 import { useSearchContext } from "./searchContext";
 
 // Creates the user search and results states.
@@ -13,20 +12,6 @@ const SearchContext = ()=>{
 	// updates when any search parameter is changed
 	const [{rank, monster, masterRank, hunterRank, skills}, dispatch] = useSearchContext();
 
-	// Update the searchState fields.
-	// These methods are passed to their respective components
-	const updateMonster = (event)=>{
-		dispatch({type: "updateMonster", monster: event.target.value})
-		console.log(monster);
-	};
-	const updateHunterRank = (event) => {
-		const value = event.target.value.split("-")
-	};
-	const updateMasterRank = (event) => {
-		console.log(event);
-		const value = event.target.value.split("-")
-		dispatch({ type: "updateMR", MR:value })
-	}
 	// Take the search state and use it to find all armors that fit
 	// the requirements. Currently filters armor by skills in the monster's "ailments.protection"
 	// field.

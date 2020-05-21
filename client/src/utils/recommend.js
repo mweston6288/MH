@@ -1,6 +1,4 @@
 import React, { useState } from "react"
-import Accordion from "react-bootstrap/Accordion"
-import Card from "react-bootstrap/Card"
 import SelectArmor from "./selectArmor"
 import { useSearchContext } from "./searchContext"
 import Form from "react-bootstrap/Form"

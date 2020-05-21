@@ -1,7 +1,4 @@
 import React from "react";
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
 import Head from "./armors/head"
 import Chest from "./armors/chest"
 import Gloves from "./armors/gloves"
@@ -20,6 +17,7 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
+import SkillDisplay from "./SkillDisplay";
 
 // Display the selected armor. Displays name, skills and stats
 function ArmorDisplay(){
@@ -42,19 +40,25 @@ function ArmorDisplay(){
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th><img src={def}/></th>
-                        <th><img src={fire} /></th>
-                        <th><img src={water} /></th>
-                        <th><img src={thunder} /></th>
-                        <th><img src={ice} /></th>
-                        <th><img src={dragon} /></th>
+                        <th><img src={def} title="defense" alt="defense"/>
+                        </th>
+                        <th><img src={fire} title="fire resistance" alt="fire"/></th>
+                        <th><img src={water} title="water resistance" alt="water"/></th>
+                        <th><img src={thunder} title="thunder resistance" alt="thunder"/></th>
+                        <th><img src={ice} title="ice resistance" alt="ice"/></th>
+                        <th><img src={dragon} title="dragon resistance" alt="dragon"/></th>
                     </tr>
                 </thead>
-                    <Head head={armor.head} />
-                    <Chest chest={armor.chest} />
-                    <Gloves gloves={armor.gloves} />
-                    <Waist waist={armor.waist} />
-                    <Legs legs={armor.legs} />
+                <Head head={armor.head} />
+                <SkillDisplay armor={armor.head}/>
+                <Chest chest={armor.chest} />
+                <SkillDisplay armor={armor.chest} />
+                <Gloves gloves={armor.gloves} />
+                <SkillDisplay armor={armor.gloves} />
+                <Waist waist={armor.waist} />
+                <SkillDisplay armor={armor.waist} />
+                <Legs legs={armor.legs} />
+                <SkillDisplay armor={armor.legs} />
             </Table>
             <Total />
 

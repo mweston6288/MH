@@ -34,7 +34,7 @@ function MonsterSelector(){
             })
         }
 
-    },[hunterRank, masterRank])
+    },[hunterRank, masterRank, rank])
     const updateMonster = (event) => {
         dispatch({ type: "updateMonster", monster: event.target.value })
         console.log(monster);

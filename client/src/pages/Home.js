@@ -27,7 +27,7 @@ function Home() {
 				<Container>
 					<Row>
 						<Col md={{span: 2, offset:7}}>
-							<a>Hello {state.userName}</a>
+							<div>Hello {state.userName}</div>
 						</Col>
 						<Col md={{ span: 2}}>
 							<Link to="/builds">Your Builds</Link>
