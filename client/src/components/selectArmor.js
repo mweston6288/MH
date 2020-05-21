@@ -8,7 +8,6 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
-import SkillDisplay from "./SkillDisplay";
 
 const SelectArmor = ({HR, MR, skill})=>{
 	console.log(HR)

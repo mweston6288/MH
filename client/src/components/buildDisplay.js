@@ -12,6 +12,15 @@ import Axios from "axios"
 import Button from "react-bootstrap/Button";
 import { useArmorContext } from "../utils/armorContext";
 
+import Table from "react-bootstrap/Table";
+import def from "../images/mhw-defense_s.png"
+import fire from "../images/mhw-fire-damage_s.png"
+import water from "../images/mhw-water-elemental-damage_s.png"
+import ice from "../images/mhw-ice-damage_s.png"
+import thunder from "../images/mhw-thunder-damage_s.png"
+import dragon from "../images/mhw-dragon-damage_s.png"
+import SkillDisplay from "./SkillDisplay";
+
 // Display the build armor
 function BuildDisplay(props) {
 	const {build} = props;
@@ -68,7 +77,36 @@ function BuildDisplay(props) {
 	}
 
 	return (
-		<Container>
+		<div>
+		<Table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th><img src={def} title="defense" alt="defense" />
+					</th>
+					<th><img src={fire} title="fire resistance" alt="fire" /></th>
+					<th><img src={water} title="water resistance" alt="water" /></th>
+					<th><img src={thunder} title="thunder resistance" alt="thunder" /></th>
+					<th><img src={ice} title="ice resistance" alt="ice" /></th>
+					<th><img src={dragon} title="dragon resistance" alt="dragon" /></th>
+				</tr>
+			</thead>
+			<Head head={head} />
+			<SkillDisplay armor={head} />
+			<Chest chest={chest} />
+			<SkillDisplay armor={chest} />
+			<Gloves gloves={gloves} />
+			<SkillDisplay armor={gloves} />
+			<Waist waist={waist} />
+			<SkillDisplay armor={waist} />
+			<Legs legs={legs} />
+			<SkillDisplay armor={legs} />
+		</Table>
+		<Total />
+			<Button onClick={handleEdit}>
+				Edit Build
+			</Button>
+		{/*<Container>
 			<Row>
 				<Col className="col-sm-4">
 					<Head head={head}/>
@@ -95,6 +133,7 @@ function BuildDisplay(props) {
 				Edit Build
 			</Button>
 		</Container>
-	)
+		*/}
+		</div>)
 }
 export default BuildDisplay;

@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Recommend from '../utils/recommend';
+import Button from 'react-bootstrap/Button';
 
 // The main page where users can create a build
 // Right now, everything happens to be under the rank tabs but
@@ -33,7 +34,7 @@ function Home() {
 							<Link to="/builds">Your Builds</Link>
 						</Col>
 						<Col>
-							<a href="#" onClick={handleLogout}>Logout</a>
+							<Button onClick={handleLogout} backgorund="none" border="none" padding="0">Logout</Button>
 						</Col>
 					</Row>
 				</Container>
