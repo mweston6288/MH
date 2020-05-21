@@ -10,7 +10,6 @@ const Rank = ()=>{
 
     function setRank(key){
         dispatch({type:"changeRank", rank:key})
-        console.log(rank)
     }
     return (
         <div>

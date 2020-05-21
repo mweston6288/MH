@@ -9,7 +9,6 @@ function HR(){
     const updateHunterRank = (event) => {
         const value = event.target.value.split("-")
         dispatch({ type: "updateHR", HR: value[0] })
-        console.log(hunterRank);
     }
     return(
             <Form.Group>

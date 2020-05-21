@@ -10,9 +10,9 @@ const reducer = (state, action) => {
 		case "updateMonster":
 			return {...state, monster: action.monster};
 		case "updateMR":
-			return {...state, masterRank: action.MR, monster: ""};
+			return { ...state, masterRank: action.MR, monster: "", skills: []};
 		case "updateHR":
-			return { ...state, hunterRank: action.HR, monster: "" };
+			return { ...state, hunterRank: action.HR, monster: "",skills: [] };
 		case "updateSkills":
 			return { ...state, skills: action.skills };
 		default:

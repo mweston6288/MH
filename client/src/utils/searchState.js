@@ -17,11 +17,6 @@ const SearchContext = ()=>{
 	// field.
 	const getResponse = async (event)=>{
 		event.preventDefault();
-		console.log(monster)
-		console.log(hunterRank)
-		console.log(masterRank)
-		console.log(rank)
-		console.log(skills)
 		if(monster){
 			try {
 				// Get the full details on the monster I'm looking for
@@ -43,8 +38,7 @@ const SearchContext = ()=>{
 						:
 						<HR/>
 					}
-					{<MonsterSelector/>
-}
+					<MonsterSelector/>
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>

@@ -9,7 +9,6 @@ function MR() {
     const updateMasterRank = (event)=>{
         const value = event.target.value.split("-")
         dispatch({type: "updateMR", MR: value[0]})
-        console.log(masterRank);
     }
     return (
             <Form.Group>

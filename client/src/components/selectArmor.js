@@ -10,17 +10,13 @@ import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
 
 const SelectArmor = ({HR, MR, skill})=>{
-	console.log(HR)
-	console.log(MR)
-	console.log(skill)
+
 	const [state, dispatch] = useArmorContext();
 	const [armors, setArmors] = useState([]);
-	console.log(armors);
 	// Get the list of armors that fit the given restrictions and add them into the armor state
 	useEffect(()=>{ // useEffect is being used because otherwise, this will run infinitely
 		getArmor(HR, MR, skill)
 			.then(res => {
-				console.log(res);
 				const armorList=[];
 				res.data.forEach(armor => {
 					armorList.push(armor);
