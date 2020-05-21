@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import SelectArmor from "./selectArmor"
+import SelectArmor from "../components/selectArmor"
 import { useSearchContext } from "./searchContext"
 import Form from "react-bootstrap/Form"
 
