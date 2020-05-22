@@ -13,10 +13,7 @@ const Recommend = () => {
     }, [skills])
     const updateSkill = event=>{
         setSkill(event.target.value);
-        console.log(skill)
     }
-    console.log(skill)
-    console.log(skills)
     return(
         <div>
             {skills.length > 0 &&

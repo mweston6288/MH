@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import API from '../api/userAPI';
 import BuildDisplay from "../components/buildDisplay"
+import SavedBuild from '../components/savedBuild';
 
 // Main page for the user's saved builds
 function Builds(props){
@@ -29,22 +30,9 @@ function Builds(props){
 					Return
 				</Link>
 				{builds.map(build=>(
-				<Accordion>
-					<Card>
-						<Card.Header>
-							<Accordion.Toggle as={Card.Header} eventKey={build._id}>
-								{build.name}
-							</Accordion.Toggle>
-						</Card.Header>
-						<Accordion.Collapse eventKey={build._id}>
-							<Card.Body>
-								<BuildDisplay build={build} history={props.history}/>
-							</Card.Body>
-						</Accordion.Collapse>
-					</Card>
-				</Accordion>
+					<SavedBuild build={build} history={props.history}/>
 				))}
-				</div>
+			</div>
 				:
 				<Redirect to="/login"/>
 			}

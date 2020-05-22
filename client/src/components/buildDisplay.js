@@ -24,6 +24,7 @@ import SkillDisplay from "./SkillDisplay";
 // Display the build armor
 function BuildDisplay(props) {
 	const {build} = props;
+	const {search}=props;
 	// Since setState does not play well with multiple asyncronous calls
 	// trying to edit the same variable, I've opted to save all armor
 	// pieces into their own states
@@ -33,41 +34,44 @@ function BuildDisplay(props) {
 	const [waist, setWaist] = useState();
 	const [legs, setLegs] = useState();
 	const [armorContext, dispatch] = useArmorContext();
+
 	// Checks if any particular armor pieces are in the build
 	// and then calls mhw-db to get the armor associated with the id
 	// Then it saves the result to the appropriate state above
 	useEffect(()=>{
-		if(build.headID){
-			Axios.get(`http://mhw-db.com/armor?q={"id":`+build.headID+`}`)
-				.then(response=>{
-					setHead(response.data[0])
-				})
+		if (search){
+			if(build.headID){
+				Axios.get(`http://mhw-db.com/armor?q={"id":`+build.headID+`}`)
+					.then(response=>{
+						setHead(response.data[0])
+					})
+			}
+			if (build.chestID) {
+				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.chestID + `}`)
+					.then(response => {
+						setChest(response.data[0])
+					})
+			}
+			if (build.glovesID) {
+				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.glovesID + `}`)
+					.then(response => {
+						setGloves(response.data[0])
+					})
+			}
+			if (build.waistID) {
+				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.waistID + `}`)
+					.then(response => {
+						setWaist(response.data[0])
+					})
+			}
+			if (build.legsID) {
+				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.legsID + `}`)
+					.then(response => {
+						setLegs(response.data[0])
+					})
+			}
 		}
-		if (build.chestID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.chestID + `}`)
-				.then(response => {
-					setChest(response.data[0])
-				})
-		}
-		if (build.glovesID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.glovesID + `}`)
-				.then(response => {
-					setGloves(response.data[0])
-				})
-		}
-		if (build.waistID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.waistID + `}`)
-				.then(response => {
-					setWaist(response.data[0])
-				})
-		}
-		if (build.legsID) {
-			Axios.get(`http://mhw-db.com/armor?q={"id":` + build.legsID + `}`)
-				.then(response => {
-					setLegs(response.data[0])
-				})
-		}
-	}, [build])
+	}, [build, search])
 	// If you click edit build, the saved build overwrites whatever is in the
 	// current armor context, then it redirects to the home page
 	function handleEdit(event){
