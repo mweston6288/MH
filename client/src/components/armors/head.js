@@ -1,48 +1,36 @@
 import React from "react";
-import Card from "react-bootstrap/Card"
-import ListGroup from "react-bootstrap/ListGroup"
+import SkillDisplay from "../SkillDisplay";
 
 function Head(props){
     if (!props.head){
         return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        No armor selected
-                    </Card.Title>
-                    <ListGroup>
-                        <ListGroup.Item>Defense: 0</ListGroup.Item>
-                        <ListGroup.Item>Fire Resistance: 0</ListGroup.Item>
-                        <ListGroup.Item>Water Resistance: 0</ListGroup.Item>
-                        <ListGroup.Item>Ice Resistance: 0</ListGroup.Item>
-                        <ListGroup.Item>Thunder Resistance:0</ListGroup.Item>
-                        <ListGroup.Item>Dragon Resistance: 0</ListGroup.Item>
-                    </ListGroup>
-                </Card.Body>
-            </Card>
+            <tbody>
+                <td>None selected</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>
+                    <SkillDisplay armor={props.head}/>
+                </td>
+            </tbody>
         )
     }else{
         return(
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        {props.head.name}
-                    </Card.Title>
-                    <ListGroup>
-                        <ListGroup.Item>Defense: {props.head.defense.base}</ListGroup.Item>
-                        <ListGroup.Item>Fire Resistance: {props.head.resistances.fire}</ListGroup.Item>
-                        <ListGroup.Item>Water Resistance: {props.head.resistances.water}</ListGroup.Item>
-                        <ListGroup.Item>Ice Resistance: {props.head.resistances.ice}</ListGroup.Item>
-                        <ListGroup.Item>Thunder Resistance:{props.head.resistances.thunder}</ListGroup.Item>
-                        <ListGroup.Item>Dragon Resistance: {props.head.resistances.dragon}</ListGroup.Item>
-                    </ListGroup>
-                    <ListGroup>
-                        {props.head.skills.map(skill => (
-                            <ListGroup.Item>{skill.skillName} {skill.level}</ListGroup.Item>
-                        ))}
-                    </ListGroup>
-                </Card.Body>
-            </Card>
+            <tbody>
+                <td>{props.head.name}</td>
+                <td>{props.head.defense.base}</td>
+                <td> {props.head.resistances.fire}</td>
+                <td> {props.head.resistances.water}</td>
+                <td> {props.head.resistances.thunder}</td>
+                <td> {props.head.resistances.ice}</td>
+                <td> {props.head.resistances.dragon}</td>
+                <td>
+                    <SkillDisplay armor={props.head} />
+                </td>
+            </tbody>
         )
     }
 }

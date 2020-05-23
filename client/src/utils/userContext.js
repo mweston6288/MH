@@ -5,6 +5,9 @@ const { Provider } = UserContext;
 // update authentication status, username, and userID
 // TODO: Make a sign out condition that resets everything
 const reducer = (state, action) => {
+	if (action.type==="logout"){
+		return{authenticated: false, userName: "", _id: ""};
+	}
 	return { authenticated: true, userName: action.userName, _id:action._id }
 }
 

@@ -1,47 +1,33 @@
 import React from "react";
-import Card from "react-bootstrap/Card"
-import ListGroup from "react-bootstrap/ListGroup"
+import SkillDisplay from "../SkillDisplay";
+
 function Waist(props) {
     if (!props.waist) {
         return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        No armor selected
-                    </Card.Title>
-                    <ListGroup>
-                        <ListGroup.Item>Defense: 0</ListGroup.Item>
-                        <ListGroup.Item>Fire Resistance: 0</ListGroup.Item>
-                        <ListGroup.Item>Water Resistance: 0</ListGroup.Item>
-                        <ListGroup.Item>Ice Resistance: 0</ListGroup.Item>
-                        <ListGroup.Item>Thunder Resistance:0</ListGroup.Item>
-                        <ListGroup.Item>Dragon Resistance: 0</ListGroup.Item>
-                    </ListGroup>
-                </Card.Body>
-            </Card>
+            <tbody>
+                <td>None selected</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tbody>
         )
     } else {
         return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        {props.waist.name}
-                    </Card.Title>
-                    <ListGroup>
-                        <ListGroup.Item>Defense {props.waist.defense.base}</ListGroup.Item>
-                        <ListGroup.Item>Fire Resistance {props.waist.resistances.fire}</ListGroup.Item>
-                        <ListGroup.Item>Water Resistance {props.waist.resistances.water}</ListGroup.Item>
-                        <ListGroup.Item>Ice Resistance {props.waist.resistances.ice}</ListGroup.Item>
-                        <ListGroup.Item>Thunder Resistance {props.waist.resistances.thunder}</ListGroup.Item>
-                        <ListGroup.Item>Dragon Resistance {props.waist.resistances.dragon}</ListGroup.Item>
-                    </ListGroup>
-                    <ListGroup>
-                        {props.waist.skills.map(skill => (
-                            <ListGroup.Item>{skill.skillName} {skill.level}</ListGroup.Item>
-                        ))}
-                    </ListGroup>
-                </Card.Body>
-            </Card>
+            <tbody>
+                <td>{props.waist.name}</td>
+                <td>{props.waist.defense.base}</td>
+                <td> {props.waist.resistances.fire}</td>
+                <td> {props.waist.resistances.water}</td>
+                <td> {props.waist.resistances.thunder}</td>
+                <td> {props.waist.resistances.ice}</td>
+                <td> {props.waist.resistances.dragon}</td>
+                <td>
+                    <SkillDisplay armor={props.waist} />
+                </td>
+            </tbody>
         )
     }
 }

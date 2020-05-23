@@ -1,13 +1,19 @@
 import React from "react";
 import Form from "react-bootstrap/Form"
+import { useSearchContext } from "../utils/searchContext";
 
 // A menu for Master rank
 // Options are different points where new hunts can be taken
-function MR(props) {
+function MR() {
+    const [{masterRank}, dispatch] = useSearchContext();
+    const updateMasterRank = (event)=>{
+        const value = event.target.value.split("-")
+        dispatch({type: "updateMR", MR: value[0]})
+    }
     return (
             <Form.Group>
                 <Form.Label>Master Rank</Form.Label>
-                <Form.Control as="select" custom defaultValue="Rank" onChange={props.updateMasterRank}>
+                <Form.Control as="select" custom defaultValue="Rank" onChange={updateMasterRank}>
                     <option disabled hidden>Rank</option>
                     <option>1</option>
                     <option>2</option>
