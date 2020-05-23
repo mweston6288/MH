@@ -10,7 +10,7 @@ import { useSearchContext } from "./searchContext";
 const SearchContext = ()=>{
 	// The state of the user's inputs
 	// updates when any search parameter is changed
-	const [{rank, monster, masterRank, hunterRank, skills}, dispatch] = useSearchContext();
+	const [{rank, monster}, dispatch] = useSearchContext();
 
 	// Take the search state and use it to find all armors that fit
 	// the requirements. Currently filters armor by skills in the monster's "ailments.protection"

@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Container from "react-bootstrap/Container"
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
 import Head from "./armors/head"
 import Chest from "./armors/chest"
 import Gloves from "./armors/gloves"
@@ -11,7 +8,6 @@ import Total from "./armors/total"
 import Axios from "axios"
 import Button from "react-bootstrap/Button";
 import { useArmorContext } from "../utils/armorContext";
-
 import Table from "react-bootstrap/Table";
 import def from "../images/mhw-defense_s.png"
 import fire from "../images/mhw-fire-damage_s.png"
@@ -19,7 +15,6 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
-import SkillDisplay from "./SkillDisplay";
 
 // Display the build armor
 function BuildDisplay(props) {
@@ -39,6 +34,11 @@ function BuildDisplay(props) {
 	// and then calls mhw-db to get the armor associated with the id
 	// Then it saves the result to the appropriate state above
 	useEffect(()=>{
+		// This will only trigger once search is true
+		// Search becomes true when the user first opens the
+		// accordion. THis is in place because otherwise all builds would
+		// make API calls at once. With this, calls only get made as you
+		// check builds
 		if (search){
 			if(build.headID){
 				Axios.get(`http://mhw-db.com/armor?q={"id":`+build.headID+`}`)
@@ -106,34 +106,6 @@ function BuildDisplay(props) {
 			<Button onClick={handleEdit}>
 				Edit Build
 			</Button>
-		{/*<Container>
-			<Row>
-				<Col className="col-sm-4">
-					<Head head={head}/>
-				</Col>
-				<Col className="col-sm-4">
-					<Chest chest={chest} />
-				</Col>
-				<Col className="col-sm-4">
-					<Gloves gloves={gloves} />
-				</Col>
-			</Row>
-			<Row>
-				<Col className="col-sm-4">
-					<Waist waist={waist} />
-				</Col>
-				<Col className="col-sm-4">
-					<Legs legs={legs} />
-				</Col>
-				<Col className="col-sm-4">
-					<Total build="true" head={head} chest={chest} gloves={gloves} waist={waist} legs={legs}/>
-				</Col>
-			</Row>
-			<Button onClick={handleEdit}>
-				Edit Build
-			</Button>
-		</Container>
-		*/}
 		</div>)
 }
 export default BuildDisplay;

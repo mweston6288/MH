@@ -3,8 +3,11 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import BuildDisplay from "./buildDisplay";
 
+// Creates an accordion component that displays a saved build when opened
 function SavedBuild({build, history}){
-	const [state,setState] = useState(false);
+	// A state of whether or not this build has been opened previously
+	// If this is false, buildDisplay will look up the armor elements
+	const [search,setState] = useState(false);
 
 	const handleClick = event=>{
 		event.preventDefault();
@@ -20,7 +23,7 @@ function SavedBuild({build, history}){
 				</Card.Header>
 				<Accordion.Collapse eventKey={build._id}>
 					<Card.Body>
-						<BuildDisplay build={build} history={history} search={state} />
+						<BuildDisplay build={build} history={history} search={search} />
 					</Card.Body>
 				</Accordion.Collapse>
 			</Card>

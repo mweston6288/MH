@@ -17,7 +17,6 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
-import SkillDisplay from "./SkillDisplay";
 
 // Display the selected armor. Displays name, skills and stats
 function ArmorDisplay(){
@@ -40,8 +39,7 @@ function ArmorDisplay(){
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th><img src={def} title="defense" alt="defense"/>
-                        </th>
+                        <th><img src={def} title="defense" alt="defense"/></th>
                         <th><img src={fire} title="fire resistance" alt="fire"/></th>
                         <th><img src={water} title="water resistance" alt="water"/></th>
                         <th><img src={thunder} title="thunder resistance" alt="thunder"/></th>
@@ -57,31 +55,6 @@ function ArmorDisplay(){
                 <Legs legs={armor.legs} />
             </Table>
             <Total />
-
-         {/*   <Container>
-                <Row>
-                    <Col className="col-sm-4">
-                        <Head head={armor.head}/>
-                    </Col>
-                    <Col className="col-sm-4">
-                        <Chest chest={armor.chest}/>
-                    </Col>
-                    <Col className="col-sm-4">
-                        <Gloves gloves={armor.gloves} />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col className="col-sm-4">
-                        <Waist waist={armor.waist} />
-                    </Col>
-                    <Col className="col-sm-4">
-                        <Legs legs={armor.legs} />
-                    </Col>
-                    <Col className="col-sm-4">
-                        <Total/>
-                    </Col>
-                </Row>
-            </Container> */}
             {// User can only save builds if logged in
                 user.authenticated ? 
                     <SaveButton/>
@@ -92,4 +65,4 @@ function ArmorDisplay(){
         </div>
     )
 }
-export default ArmorDisplay
+export default ArmorDisplay;
