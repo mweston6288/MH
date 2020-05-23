@@ -93,18 +93,14 @@ function BuildDisplay(props) {
 					<th><img src={thunder} title="thunder resistance" alt="thunder" /></th>
 					<th><img src={ice} title="ice resistance" alt="ice" /></th>
 					<th><img src={dragon} title="dragon resistance" alt="dragon" /></th>
+					<th>Skills</th>
 				</tr>
 			</thead>
 			<Head head={head} />
-			<SkillDisplay armor={head} />
 			<Chest chest={chest} />
-			<SkillDisplay armor={chest} />
 			<Gloves gloves={gloves} />
-			<SkillDisplay armor={gloves} />
 			<Waist waist={waist} />
-			<SkillDisplay armor={waist} />
 			<Legs legs={legs} />
-			<SkillDisplay armor={legs} />
 		</Table>
 		<Total />
 			<Button onClick={handleEdit}>

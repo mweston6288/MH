@@ -47,18 +47,14 @@ function ArmorDisplay(){
                         <th><img src={thunder} title="thunder resistance" alt="thunder"/></th>
                         <th><img src={ice} title="ice resistance" alt="ice"/></th>
                         <th><img src={dragon} title="dragon resistance" alt="dragon"/></th>
+                        <th>Skills</th>
                     </tr>
                 </thead>
                 <Head head={armor.head} />
-                <SkillDisplay armor={armor.head}/>
                 <Chest chest={armor.chest} />
-                <SkillDisplay armor={armor.chest} />
                 <Gloves gloves={armor.gloves} />
-                <SkillDisplay armor={armor.gloves} />
                 <Waist waist={armor.waist} />
-                <SkillDisplay armor={armor.waist} />
                 <Legs legs={armor.legs} />
-                <SkillDisplay armor={armor.legs} />
             </Table>
             <Total />
 

@@ -54,7 +54,7 @@ function Home() {
 					</Col>
 				</Row>
 				<Row>
-					<Col md={{span:6}}>
+					<Col md={{span:3}}>
 						<Recommend/>
 					</Col>
 					<Col>

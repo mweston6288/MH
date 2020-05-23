@@ -1,4 +1,6 @@
 import React from "react";
+import SkillDisplay from "../SkillDisplay";
+
 function Waist(props) {
     if (!props.waist) {
         return (
@@ -22,6 +24,9 @@ function Waist(props) {
                 <td> {props.waist.resistances.thunder}</td>
                 <td> {props.waist.resistances.ice}</td>
                 <td> {props.waist.resistances.dragon}</td>
+                <td>
+                    <SkillDisplay armor={props.waist} />
+                </td>
             </tbody>
         )
     }

@@ -1,4 +1,5 @@
 import React from "react";
+import SkillDisplay from "../SkillDisplay";
 
 function Legs(props) {
     if (!props.legs) {
@@ -23,6 +24,9 @@ function Legs(props) {
                 <td> {props.legs.resistances.thunder}</td>
                 <td> {props.legs.resistances.ice}</td>
                 <td> {props.legs.resistances.dragon}</td>
+                <td>
+                    <SkillDisplay armor={props.legs} />
+                </td>
             </tbody>
         )
     }

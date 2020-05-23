@@ -4,8 +4,14 @@ function SkillDisplay({armor}){
 	if (armor){
 		return(
 			<div>
+
 				{armor.skills.map(skill=>(
-					<div>{skill.skillName} {skill.level}</div>
+					<tbody>
+						<td colspan="6">
+							<div>{skill.skillName} {skill.level}</div>
+
+						</td>
+					</tbody>
 				))}
 			</div>
 		)

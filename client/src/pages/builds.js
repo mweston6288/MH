@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useUserContext } from '../utils/userContext';
 import { Redirect, Link } from 'react-router-dom';
 import Accordion from 'react-bootstrap/Accordion';
@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import API from '../api/userAPI';
 import BuildDisplay from "../components/buildDisplay"
 import SavedBuild from '../components/savedBuild';
+import Container from 'react-bootstrap/Container';
 
 // Main page for the user's saved builds
 function Builds(props){
@@ -29,9 +30,13 @@ function Builds(props){
 				<Link to="/">
 					Return
 				</Link>
-				{builds.map(build=>(
-					<SavedBuild build={build} history={props.history}/>
-				))}
+				<Container>
+					<div>
+					{builds.map(build=>(
+						<SavedBuild build={build} history={props.history}/>
+					))}
+							</div>
+				</Container>
 			</div>
 				:
 				<Redirect to="/login"/>
