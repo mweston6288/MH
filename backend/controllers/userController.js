@@ -2,10 +2,11 @@ const User = require("../models/users.js");
 const Build = require("../models/builds");
 module.exports = {
 	// Create a new user
-	createUser: function(req,res){
-		User.create(req.body)
+	createUser: function({body},res){
+		body.buildCount = 0;
+		User.create(body)
 			.then(response=>{
-				res.json({status: "Success", userName: response.userName});
+				res.json({status: "Success", userName: response.userName, _id: response._id});
 			})
 			.catch(() => res.json({ status: "Failure"}));
 	},

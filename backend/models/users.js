@@ -22,7 +22,9 @@ const userSchema = new Schema({
 			type: Schema.Types.ObjectId,
 			ref: "Builds"
 		}
-	]
+	],
+	// Track user Build Count
+	buildCount: Number
 });
 
 // Compare a given password to the encrypted password for a match

@@ -2,6 +2,7 @@ import React from "react";
 import SkillDisplay from "../SkillDisplay";
 
 function Chest(props) {
+    // Default appearance
     if (!props.chest) {
         return (
             <tbody>
