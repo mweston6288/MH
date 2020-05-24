@@ -35,7 +35,7 @@ function Home() {
 							<Link to="/builds">Your Builds</Link>
 						</Col>
 						<Col>
-							<Button onClick={handleLogout} backgorund="none" border="none" padding="0">Logout</Button>
+							<Button onClick={handleLogout} variant="link">Logout</Button>
 						</Col>
 					</Row>
 				</Container>

@@ -5,6 +5,7 @@ import BuildDisplay from "./buildDisplay";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 // Creates an accordion component that displays a saved build when opened
 function SavedBuild({build, history}){
@@ -19,13 +20,19 @@ function SavedBuild({build, history}){
 	return(
 		<div>
 			<Row>
-				<Col sm={{span:1}}>
+				<Col sm={{span:1}} style={{padding:"0px"}}>
 					<Container>
 						<Row style={{float:"right"}}>
-							<i class="fa fa-angle-up" style={{fontSize:"2em"}}/>
+							<Button variant="link" style={{padding:"0px"}}>
+								<i class="fa fa-angle-up" style={{ fontSize: "2em", color:"black" }} />
+
+							</Button>
 						</Row>
 						<Row style={{ clear: "both",float: "right" }}>
-							<i class="fa fa-angle-down" style={{ fontSize:"2em" }}/>
+							<Button variant="link" style={{padding:"0px"}}>
+
+								<i class="fa fa-angle-down" style={{ fontSize: "2em", color: "black" }}/>
+							</Button>
 						</Row>
 					</Container>
 				</Col>
