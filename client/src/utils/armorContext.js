@@ -55,7 +55,7 @@ const reducer = (state,action)=>{
 					gloves: null,
 					legs: null
 				},
-				name: "build",
+				name: "",
 				_id: ""
 			}
 	}
@@ -71,7 +71,7 @@ const ArmorProvider = ({ value = [], ...props })=>{
 			gloves: null,
 			legs: null
 		},
-		name:"build",
+		name:"",
 		_id:""
 	});
 	return <Provider value={[state, dispatch]}{...props} />
