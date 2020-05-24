@@ -14,6 +14,7 @@ function Builds(props){
 		API.getBuilds(userState._id)
 		.then(response=>{
 			setBuilds(response.data);
+			console.log(builds.length)
 			//updateUserBuildCount(userState._id, response.data.length)
 		})
 	}, [userState._id]);
@@ -30,8 +31,8 @@ function Builds(props){
 				</Link>
 				<Container>
 					<div>
-					{builds.map(build=>(
-						<SavedBuild build={build} history={props.history}/>
+					{builds.map((build, index)=>(
+						<SavedBuild build={build} dataId={index} history={props.history}/>
 					))}
 							</div>
 				</Container>
