@@ -24,8 +24,9 @@ function ArmorDisplay(){
     const [user] = useUserContext();
 
     let defaultName;
-
+    console.log(user.buildCount)
     if (name){
+        console.log(name)
         defaultName = name;
     } else{
         defaultName = "Build " + (user.buildCount + 1);
@@ -66,7 +67,7 @@ function ArmorDisplay(){
             <Total />
             {// User can only save builds if logged in
                 user.authenticated ? 
-                    <SaveButton/>
+                    <SaveButton defaultName={defaultName}/>
                     :
                     <LoginButton/>        
             }

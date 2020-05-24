@@ -21,7 +21,7 @@ module.exports = {
 				}else{
 					// Return a success status and username if password checks out
 					// This will update the user login status in the client side
-					res.json({ status: "Success", userName: response.userName, _id: response._id});
+					res.json({ status: "Success", userName: response.userName, _id: response._id, buildCount: response.buildCount});
 				}
 			})
 			.catch(err=>console.log(err));
@@ -56,7 +56,7 @@ module.exports = {
 			name: body.name
 		}).then(({_id})=>{
 			// Add the build id to the user
-			User.findOneAndUpdate({ userName: params.userName }, { $push: { builds: _id } })
+			User.findOneAndUpdate({ _id: params._id }, {$inc:{buildCount: 1}, $push: { builds: _id } })
 				.then(() => {
 					res.json(_id);
 				});
@@ -64,7 +64,7 @@ module.exports = {
 	},
 	// Get builds belonging to a specific user
 	getBuilds: function({params}, res){
-		User.findById(params.id).populate("builds")
+		User.findById(params._id).populate("builds")
 			.then(response=>{
 				res.json(response.builds);
 			});
@@ -91,7 +91,7 @@ module.exports = {
 			legsID = armor.legs.id;
 		}
 		// Find and update the build
-		Build.findOneAndUpdate({ _id: params.id }, {
+		Build.findOneAndUpdate({ _id: params._id }, {
 			headID: headID,
 			chestID: chestID,
 			glovesID: glovesID,

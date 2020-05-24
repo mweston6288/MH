@@ -28,6 +28,7 @@ function Login(props) {
 		// to the main page.
 		}).then(response=>{
 			if (response.data.status === "Success"){
+				console.log(response.data)
 				dispatch({userName: response.data.userName, _id:response.data._id, buildCount: response.data.buildCount})
 				props.history.push("/")
 			}else{

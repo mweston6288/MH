@@ -14,6 +14,7 @@ function Builds(props){
 		API.getBuilds(userState._id)
 		.then(response=>{
 			setBuilds(response.data);
+			//updateUserBuildCount(userState._id, response.data.length)
 		})
 	}, [userState._id]);
 

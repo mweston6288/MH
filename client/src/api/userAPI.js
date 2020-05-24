@@ -11,8 +11,8 @@ export default {
 		return axios.post("/api/user/get", userData);
 	},
 	// Save a build to the user
-	saveBuild: function(userName, buildData){
-		return axios.post("/api/user/"+ userName, buildData)
+	saveBuild: function(_id, buildData){
+		return axios.post("/api/user/"+ _id, buildData)
 	},
 	// Get user builds
 	getBuilds: function(userID){
@@ -21,5 +21,8 @@ export default {
 	// update a build; associated user ID is in buildData._id
 	updateBuild: function(buildData){
 		return axios.put("/api/user/builds/"+buildData._id, buildData)
+	},
+	updateUserBuildCount: function(_id, count){
+		return axios.put("/api/user/"+_id, count)
 	}
 }
