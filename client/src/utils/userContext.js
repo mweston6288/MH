@@ -8,17 +8,16 @@ const reducer = (state, action) => {
 	switch(action.type){
 		case "addBuild":
 			const newBuilds = state.builds;
-			console.log(newBuilds)
 			newBuilds.unshift(action.build);
-			console.log(newBuilds)
-			return { ...state, buildCount: state.buildCount++ , builds: newBuilds};
+			return { ...state, buildCount: state.buildCount+1 , builds: newBuilds};
+		case "updateBuild":
+			return { ...state, buildCount: state.buildCount+1};
 		case "builds":
 			return {...state, builds: action.builds}
 		case "logout":
 			return { authenticated: false, userName: "", _id: "", buildCount: 0, builds:[]};
 		case "login":
-			console.log(state)
-			return {...state, authenticated: true, userName: action.userName, _id: action._id, buildCount: action.buildCount}
+			return {...state, authenticated: true, userName: action.userName, _id: action._id, buildCount: action.buildCount, builds:[]}
 		default:
 			return { authenticated: false, userName: "", _id: "", buildCount: 0, builds:[]};
 	}

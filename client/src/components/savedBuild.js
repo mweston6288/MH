@@ -12,7 +12,6 @@ function SavedBuild({build, dataId, last, history, handleUpClick, handleDownClic
 	// A state of whether or not this build has been opened previously
 	// If this is false, buildDisplay will look up the armor elements
 	const [search,setState] = useState(false);
-	console.log(last)
 
 	const buildRef = useRef();
 	const handleClick = event=>{

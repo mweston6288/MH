@@ -53,9 +53,9 @@ module.exports = {
 			glovesID: glovesID,
 			waistID: waistID,
 			legsID: legsID,
-			name: body.name
+			name: body.name,
+			buildNo: body.buildNo
 		}).then((response)=>{
-			console.log(response)
 			// Add the build id to the user
 			User.findOneAndUpdate({ _id: params._id }, {$inc:{buildCount: 1}, $push: { builds: response._id } })
 				.then(() => {
@@ -65,7 +65,7 @@ module.exports = {
 	},
 	// Get builds belonging to a specific user
 	getBuilds: function({params}, res){
-		User.findById(params._id).populate("builds")
+		User.findById(params._id).populate({path: "builds", options: { sort:{ buildNo: -1 }}})
 			.then(response=>{
 				res.json(response.builds);
 			});
@@ -98,7 +98,8 @@ module.exports = {
 			glovesID: glovesID,
 			waistID: waistID,
 			legsID: legsID,
-			name: body.name
+			name: body.name,
+			buildNo: body.buildNo
 		}).then(response=>{
 			res.json(response);
 		}).catch(err=>console.log(err));

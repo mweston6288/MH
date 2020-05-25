@@ -44,7 +44,7 @@ const reducer = (state,action)=>{
 		// if _id has a value, saving the build will update the build
 		// with this _id
 		case "save":
-			return {...state, _id: action._id}
+			return {...state, _id: action._id, buildNo: action.buildNo}
 		// Resets the armor context
 		default:
 			return {
@@ -56,7 +56,8 @@ const reducer = (state,action)=>{
 					legs: null
 				},
 				name: "",
-				_id: ""
+				_id: "",
+				buildNo: 0
 			}
 	}
 }

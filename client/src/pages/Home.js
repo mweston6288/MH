@@ -19,7 +19,6 @@ function Home() {
 		event.preventDefault();
 		dispatch({type:"logout"})
 	}
-	console.log(state)
 	return (
 		<div>
 			{// Display option to log in or view builds depending on login status

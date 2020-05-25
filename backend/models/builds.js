@@ -9,7 +9,7 @@ const buildSchema = new Schema({
 	waistID: Number,
 	legsID: Number,
 	name: String,
-	orderNo: Number
+	buildNo: Number
 });
 const Builds = mongoose.model("Builds", buildSchema);
 
