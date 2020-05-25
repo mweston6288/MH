@@ -31,7 +31,7 @@ function SaveButton({defaultName}) {
 		// If there is an _id, then this is a buld to update
 		}else{
 			API.updateBuild(armorState)
-			userDispatch({ type: "updateBuild"})
+			userDispatch({ type: "updateBuild", _id: armorState._id})
 		}
 	}
 	return (

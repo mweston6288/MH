@@ -26,6 +26,7 @@ function Builds(props){
 		}
 	
 	}, [updateNeeded]);
+	console.log(userState.builds)
 	const handleUpClick = event => {
 		event.preventDefault();
 		const index = event.target.getAttribute("data-value");

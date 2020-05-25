@@ -27,6 +27,7 @@ When A new build is made, it gets set to the front of the array and it is given 
 
 * Issue: Updated builds do not automatically move to the top of the list
 * Plan to resolve: remove build from build array and then reset it to the front
+* Status: This issue in itself appears resolved. There are complications due to the above issue causing multiple builds to have the same buildNo. Some code is left in the userContext in case it will be needed later
 
 * Issue: Creating a new build before going to build page prevents older builds from loading in
 * Plan to resolve: remove the length check when entering builds and only check if an update is needed

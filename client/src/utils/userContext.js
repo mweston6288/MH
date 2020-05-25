@@ -5,12 +5,27 @@ const { Provider } = UserContext;
 // update authentication status, username, and userID
 // TODO: Make a sign out condition that resets everything
 const reducer = (state, action) => {
+	const newBuilds = state.builds;
 	switch(action.type){
 		case "addBuild":
-			const newBuilds = state.builds;
 			newBuilds.unshift(action.build);
 			return { ...state, buildCount: state.buildCount+1 , builds: newBuilds};
 		case "updateBuild":
+			console.log(newBuilds);
+			// This might be needed so I'm leaving it
+			// As is, the build page makes a new build element
+			// everytime you go to the page. Since this block of code would
+			// run in Home only, there's no need to update the build
+			// array upon saving an updated build
+			/*let build;
+			for (let i = 0; i<newBuilds.length; i++){
+				if (newBuilds[i]._id === action._id){
+					build = newBuilds[i];
+					newBuilds.splice(i,1);
+					break;
+				}
+			}
+			newBuilds.unshift(build)*/
 			return { ...state, buildCount: state.buildCount+1};
 		case "builds":
 			return {...state, builds: action.builds}
