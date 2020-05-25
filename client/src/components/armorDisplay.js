@@ -24,9 +24,7 @@ function ArmorDisplay(){
     const [user] = useUserContext();
 
     let defaultName;
-    console.log(user.buildCount)
     if (name){
-        console.log(name)
         defaultName = name;
     } else{
         defaultName = "Build " + (user.buildCount + 1);
@@ -41,7 +39,6 @@ function ArmorDisplay(){
         event.preventDefault();
         dispatch({type:"reset"});
     }
-    console.log(defaultName)
     return(
         <div>
             <input type="text" onChange={handleChange} placeholder={defaultName} />

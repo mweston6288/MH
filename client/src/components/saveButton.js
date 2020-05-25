@@ -13,7 +13,6 @@ function SaveButton({defaultName}) {
 		event.preventDefault();
 		const armor = armorState;
 		if (armor.name === ""){
-			console.log(armor);
 			armor.name = defaultName;
 		}
 		// If there is no _id in armorState, this is a new build to make

@@ -5,13 +5,16 @@ const { Provider } = UserContext;
 // update authentication status, username, and userID
 // TODO: Make a sign out condition that resets everything
 const reducer = (state, action) => {
-	if (action.type === "addBuild"){
-		return { ...state, buildCount: state.buildCount++ };
+	switch(action.type){
+		case "addBuild":
+			return { ...state, buildCount: state.buildCount++ };
+		case "logout":
+			return { authenticated: false, userName: "", _id: "", buildCount: 0};
+		case "login":
+			return {...state, authenticated: true, userName: action.userName, _id: action._id, buildCount: action.buildCount }
+		default:
+			return { authenticated: false, userName: "", _id: "", buildCount: 0};
 	}
-	if (action.type==="logout"){
-		return{authenticated: false, userName: "", _id: "", builds: 0};
-	}
-	return { authenticated: true, userName: action.userName, _id:action._id, buildCount: action.buildCount }
 }
 
 // Stores the currently selected armor for users
@@ -20,7 +23,7 @@ const UserProvider = ({ value = [], ...props }) => {
 		authenticated: false,
 		userName: "",
 		_id:"",
-		buildCount: 0
+		buildCount: 0,
 	});
 	return <Provider value={[state, dispatch]}{...props} />
 }

@@ -29,7 +29,7 @@ function Login(props) {
 		}).then(response=>{
 			if (response.data.status === "Success"){
 				console.log(response.data)
-				dispatch({userName: response.data.userName, _id:response.data._id, buildCount: response.data.buildCount})
+				dispatch({type: "login", userName: response.data.userName, _id:response.data._id, buildCount: response.data.buildCount})
 				props.history.push("/")
 			}else{
 				setLoginStatus({failure:true});
