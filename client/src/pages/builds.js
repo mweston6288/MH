@@ -16,18 +16,14 @@ function Builds(props){
 		console.log(userState.builds.length)
 		// Only  run if length is 0 AND no search was previously done
 		// TODO: make boolean and set it to what's needed
-		if(updateNeeded && userState.builds.length === 0){
+		if(updateNeeded){
 			API.getBuilds(userState._id)
 				.then(response => {
 					console.log(response);
 					dispatch({type: "builds", builds: response.data})
 					setUpdateNeeded(false)
 				})
-		// Will only update the builds that got swapped
-		}else if (updateNeeded){
-			setUpdateNeeded(false);
 		}
-
 	
 	}, [updateNeeded]);
 	const handleUpClick = event => {
@@ -38,7 +34,6 @@ function Builds(props){
 		newBuilds[index] = newBuilds[index-1];
 		newBuilds[index-1] = temp;
 		dispatch({ type: "builds", builds: newBuilds })
-		setUpdateNeeded(true)
 	}
 	const handleDownClick = event => {
 		event.preventDefault();
@@ -49,7 +44,6 @@ function Builds(props){
 		newBuilds[index] = newBuilds[index + 1];
 		newBuilds[index + 1] = temp;
 		dispatch({ type: "builds", builds: newBuilds })
-		setUpdateNeeded(true)
 	}
 	console.log(userState)
 	return(
