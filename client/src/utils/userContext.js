@@ -7,13 +7,17 @@ const { Provider } = UserContext;
 const reducer = (state, action) => {
 	switch(action.type){
 		case "addBuild":
-			return { ...state, buildCount: state.buildCount++ };
+			const newBuilds = state.builds;
+			newBuilds.unshift(action.builds);
+			return { ...state, buildCount: state.buildCount++ , builds: newBuilds};
+		case "builds":
+			return {...state, builds: action.builds}
 		case "logout":
-			return { authenticated: false, userName: "", _id: "", buildCount: 0};
+			return { authenticated: false, userName: "", _id: "", buildCount: 0, builds:[]};
 		case "login":
-			return {...state, authenticated: true, userName: action.userName, _id: action._id, buildCount: action.buildCount }
+			return {...state, authenticated: true, userName: action.userName, _id: action._id, buildCount: action.buildCount}
 		default:
-			return { authenticated: false, userName: "", _id: "", buildCount: 0};
+			return { authenticated: false, userName: "", _id: "", buildCount: 0, builds:[]};
 	}
 }
 
@@ -24,6 +28,7 @@ const UserProvider = ({ value = [], ...props }) => {
 		userName: "",
 		_id:"",
 		buildCount: 0,
+		builds:[]
 	});
 	return <Provider value={[state, dispatch]}{...props} />
 }

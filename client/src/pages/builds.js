@@ -7,19 +7,18 @@ import Container from 'react-bootstrap/Container';
 
 // Main page for the user's saved builds
 function Builds(props){
-	const [userState] = useUserContext();
-	const [builds, setBuilds] = useState([]);
+	const [userState, dispatch] = useUserContext();
 	const [updateNeeded, setUpdateNeeded] = useState(true);
 	// Get the user builds and store them in an array
 	useEffect(()=>{
 		console.log(updateNeeded)
 		// Only  run if length is 0 AND no search was previously done
 		// TODO: make boolean and set it to what's needed
-		if(updateNeeded && builds.length === 0){
+		if(updateNeeded && userState.builds.length === 0){
 			console.log("Test")
 			API.getBuilds(userState._id)
 				.then(response => {
-					setBuilds(response.data);
+					dispatch({type: "builds", builds: response.data})
 					setUpdateNeeded(false)
 				})
 		// Will only update the builds that got swapped
@@ -32,27 +31,24 @@ function Builds(props){
 	}, [updateNeeded]);
 	const handleUpClick = event => {
 		event.preventDefault();
-		console.log(event.target.getAttribute("data-value"))
 		const index = event.target.getAttribute("data-value");
-		let newBuilds = builds;
+		let newBuilds = userState.builds;
 		let temp = newBuilds[index];
 		newBuilds[index] = newBuilds[index-1];
 		newBuilds[index-1] = temp;
-		setBuilds(newBuilds)
+		dispatch({ type: "builds", builds: newBuilds })
 		setUpdateNeeded(true)
-		console.log(builds)
 	}
 	const handleDownClick = event => {
 		event.preventDefault();
 		let index = event.target.getAttribute("data-value");
 		index = parseInt(index, 10);
-		let newBuilds = builds;
+		let newBuilds = userState.builds;
 		let temp = newBuilds[index];
 		newBuilds[index] = newBuilds[index + 1];
 		newBuilds[index + 1] = temp;
-		setBuilds(newBuilds)
+		dispatch({ type: "builds", builds: newBuilds })
 		setUpdateNeeded(true)
-		console.log(builds)
 	}
 	return(
 		<div>
@@ -66,8 +62,8 @@ function Builds(props){
 				</Link>
 				<Container>
 					<div>
-					{builds.map((build, index)=>(
-						<SavedBuild build={build} dataId={index} last ={builds.length-1} history={props.history} handleUpClick={handleUpClick} handleDownClick={handleDownClick}/>
+					{userState.builds.map((build, index)=>(
+						<SavedBuild build={build} dataId={index} last ={userState.builds.length-1} history={props.history} handleUpClick={handleUpClick} handleDownClick={handleDownClick}/>
 					))}
 							</div>
 				</Container>
