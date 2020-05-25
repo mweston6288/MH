@@ -54,11 +54,12 @@ module.exports = {
 			waistID: waistID,
 			legsID: legsID,
 			name: body.name
-		}).then(({_id})=>{
+		}).then((response)=>{
+			console.log(response)
 			// Add the build id to the user
-			User.findOneAndUpdate({ _id: params._id }, {$inc:{buildCount: 1}, $push: { builds: _id } })
+			User.findOneAndUpdate({ _id: params._id }, {$inc:{buildCount: 1}, $push: { builds: response._id } })
 				.then(() => {
-					res.json(_id);
+					res.json(response);
 				});
 		});
 	},

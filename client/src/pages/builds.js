@@ -24,6 +24,7 @@ function Builds(props){
 		// Will only update the builds that got swapped
 		}else if (updateNeeded){
 			console.log(updateNeeded);
+			console.log(userState.builds);
 			setUpdateNeeded(false);
 		}
 
