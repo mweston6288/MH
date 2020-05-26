@@ -11,17 +11,17 @@ function Builds(props){
 	const [updateNeeded, setUpdateNeeded] = useState(true);
 	// Get the user builds and store them in an array
 	useEffect(()=>{
-		console.log(userState)
-		console.log(updateNeeded)
-		console.log(userState.builds.length)
 		// Only  run if length is 0 AND no search was previously done
 		// TODO: make boolean and set it to what's needed
-		if(updateNeeded){
+		if(updateNeeded && userState.authenticated){
 			API.getBuilds(userState._id)
 				.then(response => {
-					console.log(response);
 					dispatch({type: "builds", builds: response.data})
 					setUpdateNeeded(false)
+					response.data.forEach((build, index)=>{
+						const buildNo = userState.buildCount - index
+						API.updateBuildNo(build._id, buildNo)
+					})
 				})
 		}
 	

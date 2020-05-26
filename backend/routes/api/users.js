@@ -15,4 +15,7 @@ router.route("/builds/:_id")
 	.get(User.getBuilds)
 	.put(User.updateBuild);
 
+router.route("/builds/updateBuildNo/:_id")
+	.put(User.updateBuildNo);
+
 module.exports = router;

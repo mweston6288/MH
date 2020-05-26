@@ -24,5 +24,8 @@ export default {
 	},
 	updateUserBuildCount: function(_id, count){
 		return axios.put("/api/user/"+_id, count)
+	},
+	updateBuildNo: function(_id, buildNo){
+		return axios.put("/api/user/builds/updateBuildNo/"+_id, {buildNo})
 	}
 }
