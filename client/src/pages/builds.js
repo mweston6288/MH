@@ -26,14 +26,26 @@ function Builds(props){
 		}
 	
 	}, [updateNeeded]);
-	console.log(userState.builds)
+
+	function swap(array,a,b){
+		let temp = array[a];
+		array[a] = array[b];
+		array[b] = temp;
+
+		temp = array[a].buildNo
+		array[a].buildNo = array[b].buildNo;
+		array[b].buildNo = temp;
+		API.updateBuildNo(array[a]._id, array[a].buildNo)
+		API.updateBuildNo(array[b]._id, array[b].buildNo)
+	}
 	const handleUpClick = event => {
 		event.preventDefault();
 		const index = event.target.getAttribute("data-value");
 		let newBuilds = userState.builds;
-		let temp = newBuilds[index];
-		newBuilds[index] = newBuilds[index-1];
-		newBuilds[index-1] = temp;
+		swap(newBuilds, index, index-1);
+
+		console.log(newBuilds);
+
 		dispatch({ type: "builds", builds: newBuilds })
 	}
 	const handleDownClick = event => {
@@ -41,12 +53,9 @@ function Builds(props){
 		let index = event.target.getAttribute("data-value");
 		index = parseInt(index, 10);
 		let newBuilds = userState.builds;
-		let temp = newBuilds[index];
-		newBuilds[index] = newBuilds[index + 1];
-		newBuilds[index + 1] = temp;
+		swap(newBuilds, index, index+1);
 		dispatch({ type: "builds", builds: newBuilds })
 	}
-	console.log(userState)
 	return(
 		<div>
 			{ // If user is not signed in, redirect to the login page

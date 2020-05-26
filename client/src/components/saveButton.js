@@ -15,10 +15,7 @@ function SaveButton({defaultName}) {
 		if (armor.name === ""){
 			armor.name = defaultName;
 		}
-		console.log(armor)
 		armor.buildNo = userState.buildCount + 1;
-		console.log(armor)
-		console.log(armorState)
 		// If there is no _id in armorState, this is a new build to make
 		if (!armorState._id){
 			API.saveBuild(userState._id, armor)
@@ -28,10 +25,11 @@ function SaveButton({defaultName}) {
 					armorDispatch({ type: "save", _id: response.data._id, buildNo: userState.buildCount })
 					userDispatch({type:"addBuild", build:response.data})
 				})
-		// If there is an _id, then this is a buld to update
+		// If there is an _id, then this is a build to update
 		}else{
 			API.updateBuild(armorState)
 			userDispatch({ type: "updateBuild", _id: armorState._id})
+			console.log(userState.builds)
 		}
 	}
 	return (

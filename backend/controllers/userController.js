@@ -105,11 +105,8 @@ module.exports = {
 		}).catch(err=>console.log(err));
 	},
 	updateBuildNo:function({body, params}, res){
-		console.log(body);
-		console.log(params);
 		Build.findOneAndUpdate({_id:params._id},{buildNo: body.buildNo})
 			.then(response=>{
-				console.log(response);
 				res.json(response);
 			});
 	}
