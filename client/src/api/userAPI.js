@@ -27,5 +27,8 @@ export default {
 	},
 	updateBuildNo: function(_id, buildNo){
 		return axios.put("/api/user/builds/updateBuildNo/"+_id, {buildNo})
+	},
+	deleteBuild: function(_id, buildID){
+		return axios.put("/api/user/deleteBuild/"+_id, {buildID});
 	}
 }

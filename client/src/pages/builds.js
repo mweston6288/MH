@@ -25,7 +25,7 @@ function Builds(props){
 				})
 		}
 	
-	}, [updateNeeded]);
+	}, [updateNeeded, userState.builds]);
 
 	function swap(array,a,b){
 		let temp = array[a];

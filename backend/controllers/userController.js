@@ -109,5 +109,15 @@ module.exports = {
 			.then(response=>{
 				res.json(response);
 			});
+	},
+	deleteBuild: function({body, params}, res){
+		User.findOneAndUpdate({_id: params._id}, {$pull:{builds:body.buildID}})
+			.then(response=>{
+				Build.findOneAndDelete({ _id: body.buildID })
+					.then(()=>{
+						res.json(response);
+					});
+
+			});
 	}
 };

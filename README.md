@@ -4,9 +4,7 @@ The end-goal of this project is to make an app for Monster Hunter: World players
 The app could recommend builds for players based on what they are hunting and what weapons they are using.
 
 ## Current status
-* Working on a means to sort builds
-* Builds can be sorted incremently using arrow buttons next to each build; changes made are not saved
-* Default sorted order is most recently made/edited builds first
+* Attempting to delete builds
 
 ## End Goal
 * Provide equipment options that would best protect against monsters
@@ -14,9 +12,10 @@ The app could recommend builds for players based on what they are hunting and wh
 * Limit suggestions based on Hunter Rank
 
 ## TODO
-[ ] create mongo functions to update buildNo with proper values
-[ ] update build page so most recently updated build is on top
-[ ] update database buildNo whenever user reorganizes a build
+[x] create mongo functions to update buildNo with proper values
+[x] update build page so most recently updated build is on top
+[x] update database buildNo whenever user reorganizes a build
+[ ] make delete option
 
 ## Builds current status
 When user logs in, userContext gets the buildCount but not the actual builds. Builds are filled into an array upon going to the builds page.
@@ -36,6 +35,7 @@ When A new build is made, it gets set to the front of the array and it is given 
 
 * Issue: manual edits to list sort are not saved
 * Plan to resolve: On switch, update buildNo of builds by swapping them
+* Resolved
 
 ## Resources
 * https://docs.mhw-db.com/

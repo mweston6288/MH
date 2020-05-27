@@ -5,7 +5,7 @@ const { Provider } = UserContext;
 // update authentication status, username, and userID
 // TODO: Make a sign out condition that resets everything
 const reducer = (state, action) => {
-	const newBuilds = state.builds;
+	let newBuilds = state.builds;
 	switch(action.type){
 		case "addBuild":
 			newBuilds.unshift(action.build);
@@ -18,6 +18,16 @@ const reducer = (state, action) => {
 			return { authenticated: false, userName: "", _id: "", buildCount: 0, builds:[]};
 		case "login":
 			return {...state, authenticated: true, userName: action.userName, _id: action._id, buildCount: action.buildCount, builds:[]}
+		case "delete":
+			console.log(newBuilds)
+			for (let i = 0; i < newBuilds.length; i++){
+				if (newBuilds[i]._id == action._id){
+					newBuilds.splice(i,1);
+					break;
+				}
+			}
+			console.log(newBuilds)
+			return {...state, builds: newBuilds}
 		default:
 			return { authenticated: false, userName: "", _id: "", buildCount: 0, builds:[]};
 	}

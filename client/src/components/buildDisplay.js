@@ -15,6 +15,8 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
+import { useUserContext } from "../utils/userContext";
+import userAPI from "../api/userAPI";
 
 // Display the build armor
 function BuildDisplay(props) {
@@ -29,6 +31,7 @@ function BuildDisplay(props) {
 	const [waist, setWaist] = useState();
 	const [legs, setLegs] = useState();
 	const [armorContext, dispatch] = useArmorContext();
+	const [user, userDispatch] = useUserContext();
 
 	// Checks if any particular armor pieces are in the build
 	// and then calls mhw-db to get the armor associated with the id
@@ -79,7 +82,13 @@ function BuildDisplay(props) {
 		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs, name: build.name, _id:build._id})
 		props.history.push("/")
 	}
-
+	function handleDelete(event){
+		event.preventDefault();
+		console.log(event)
+		userAPI.deleteBuild(user._id, build._id)
+		userDispatch({type: "delete", _id: build._id})
+		console.log(user);
+	}
 	return (
 		<div>
 		<Table>
@@ -105,6 +114,9 @@ function BuildDisplay(props) {
 		<Total />
 			<Button onClick={handleEdit}>
 				Edit Build
+			</Button>
+			<Button onClick={handleDelete}>
+				Delete Build
 			</Button>
 		</div>)
 }
