@@ -8,16 +8,22 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Recommend from '../utils/recommend';
 import Button from 'react-bootstrap/Button';
+import { useArmorContext } from '../utils/armorContext';
+import { useSearchContext } from '../utils/searchContext';
 
 // The main page where users can create a build
 // Right now, everything happens to be under the rank tabs but
 // I'll reorganize it later.
 function Home() {
 	const [state, dispatch] = useUserContext();
+	const [armor, armorDispatch] = useArmorContext();
+	const [search, searchDispatch] = useSearchContext();
 
 	const handleLogout = event=>{
 		event.preventDefault();
-		dispatch({type:"logout"})
+		dispatch({type:"logout"});
+		armorDispatch({type:"reset"});
+		searchDispatch({type:"reset"})
 	}
 	return (
 		<div>
