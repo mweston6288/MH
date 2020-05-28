@@ -87,6 +87,7 @@ function BuildDisplay(props) {
 		console.log(event)
 		userAPI.deleteBuild(user._id, build._id)
 		userDispatch({type: "delete", _id: build._id})
+		dispatch({type:"reset"});
 		console.log(user);
 	}
 	return (
