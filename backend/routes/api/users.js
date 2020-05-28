@@ -8,11 +8,14 @@ router.route("/post")
 router.route("/get")
 	.post(User.getUser);
 // Add a build to the specific user
-router.route("/:userName")
+router.route("/:_id")
 	.post(User.addBuild);
 // get and update builds
-router.route("/builds/:id")
+router.route("/builds/:_id")
 	.get(User.getBuilds)
 	.put(User.updateBuild);
-
+router.route("/builds/updateBuildNo/:_id")
+	.put(User.updateBuildNo);
+router.route("/deleteBuild/:_id")
+	.put(User.deleteBuild);
 module.exports = router;

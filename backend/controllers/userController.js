@@ -2,10 +2,11 @@ const User = require("../models/users.js");
 const Build = require("../models/builds");
 module.exports = {
 	// Create a new user
-	createUser: function(req,res){
-		User.create(req.body)
+	createUser: function({body},res){
+		body.buildCount = 0;
+		User.create(body)
 			.then(response=>{
-				res.json({status: "Success", userName: response.userName});
+				res.json({status: "Success", userName: response.userName, _id: response._id});
 			})
 			.catch(() => res.json({ status: "Failure"}));
 	},
@@ -20,7 +21,7 @@ module.exports = {
 				}else{
 					// Return a success status and username if password checks out
 					// This will update the user login status in the client side
-					res.json({ status: "Success", userName: response.userName, _id: response._id});
+					res.json({ status: "Success", userName: response.userName, _id: response._id, buildCount: response.buildCount});
 				}
 			})
 			.catch(err=>console.log(err));
@@ -52,18 +53,19 @@ module.exports = {
 			glovesID: glovesID,
 			waistID: waistID,
 			legsID: legsID,
-			name: body.name
-		}).then(({_id})=>{
+			name: body.name,
+			buildNo: body.buildNo
+		}).then((response)=>{
 			// Add the build id to the user
-			User.findOneAndUpdate({ userName: params.userName }, { $push: { builds: _id } })
+			User.findOneAndUpdate({ _id: params._id }, {$inc:{buildCount: 1}, $push: { builds: response._id } })
 				.then(() => {
-					res.json(_id);
+					res.json(response);
 				});
 		});
 	},
 	// Get builds belonging to a specific user
 	getBuilds: function({params}, res){
-		User.findById(params.id).populate("builds")
+		User.findById(params._id).populate({path: "builds", options: { sort:{ buildNo: -1 }}})
 			.then(response=>{
 				res.json(response.builds);
 			});
@@ -90,15 +92,32 @@ module.exports = {
 			legsID = armor.legs.id;
 		}
 		// Find and update the build
-		Build.findOneAndUpdate({ _id: params.id }, {
+		Build.findOneAndUpdate({ _id: params._id }, {
 			headID: headID,
 			chestID: chestID,
 			glovesID: glovesID,
 			waistID: waistID,
 			legsID: legsID,
-			name: body.name
+			name: body.name,
+			buildNo: body.buildNo
 		}).then(response=>{
 			res.json(response);
 		}).catch(err=>console.log(err));
+	},
+	updateBuildNo:function({body, params}, res){
+		Build.findOneAndUpdate({_id:params._id},{buildNo: body.buildNo})
+			.then(response=>{
+				res.json(response);
+			});
+	},
+	deleteBuild: function({body, params}, res){
+		User.findOneAndUpdate({_id: params._id}, {$pull:{builds:body.buildID}})
+			.then(response=>{
+				Build.findOneAndDelete({ _id: body.buildID })
+					.then(()=>{
+						res.json(response);
+					});
+
+			});
 	}
 };

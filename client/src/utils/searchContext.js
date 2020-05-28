@@ -16,7 +16,7 @@ const reducer = (state, action) => {
 		case "updateSkills":
 			return { ...state, skills: action.skills };
 		default:
-			return { ...state };
+			return { ...state, rank: "LR", monster: "", hunterRank: 0, masterRank: 0, skills: [] };
 	}
 }
 // Stores the currently selected armor for users

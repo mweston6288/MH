@@ -4,9 +4,7 @@ The end-goal of this project is to make an app for Monster Hunter: World players
 The app could recommend builds for players based on what they are hunting and what weapons they are using.
 
 ## Current status
-* Working on form submissions
-* Narrowing responses to more reasonable levels
-* Working around missing/limited data from the API
+* Attempting to delete builds
 
 ## End Goal
 * Provide equipment options that would best protect against monsters
@@ -14,43 +12,35 @@ The app could recommend builds for players based on what they are hunting and wh
 * Limit suggestions based on Hunter Rank
 
 ## TODO
-[x] Create a database that tracks monster ailments, API ids for skills
-[ ] Track skill levels.
-[ ] Write Heroku deploy scripts for database
+[x] create mongo functions to update buildNo with proper values
+[x] update build page so most recently updated build is on top
+[x] update database buildNo whenever user reorganizes a build
+[ ] make delete option
+
+## Builds current status
+When user logs in, userContext gets the buildCount but not the actual builds. Builds are filled into an array upon going to the builds page.
+When A new build is made, it gets set to the front of the array and it is given a buildNo equal to buildCount+1. When a build is updated, it also gets a new buildNo equal to buildCount+1. Both instances also increment buildCount.
+
+* Issue: buildCount is always initialized to the correct value but buildNo might be larger so builds could end up out of order.
+* Plan to resolve: After getting builds, set all their BuildNo to buildCount - arrayIndex
+* Resolved
+
+* Issue: Updated builds do not automatically move to the top of the list
+* Plan to resolve: remove build from build array and then reset it to the front
+* Resolved
+
+* Issue: Creating a new build before going to build page prevents older builds from loading in
+* Plan to resolve: remove the length check when entering builds and only check if an update is needed
+* Resolved
+
+* Issue: manual edits to list sort are not saved
+* Plan to resolve: On switch, update buildNo of builds by swapping them
+* Resolved
+
 ## Resources
 * https://docs.mhw-db.com/
 
-## Structure
-<index>
-	<App>
-		<RankTabs>
-			<SearchState Hunter rank>
-                <Form>
-                    <MR?>
-                    <HR?>
-                    <MonsterSelector>
-                </Form>
-                <Recommendation for each skill>
-                    <selectArmor forEach armor>
-                </Recommendation for each skill>
-                <ArmorDisplay>
-		</RankTabs>
-	</App>
-</index>
 
-# Plan to get builds
-* Add userID to user Context
-* Create API getBuilds "/api/user/builds/:id" pass user ID
-* Get User Api populated with build IDs. Return builds
-* Save results to build State in build page
-
-# Note about routing
-* Will need to rewrite routing to better match standards
-* Routes: /api/monsters/(action)
-routes/index.js will hold the /api protion
-routes/api/index.js will hold the /monsters portion
-routes/api/monsters.js will hold the /(action) portion
-controller/monsterController.js will hold what to do at the api route
 # Notes for use
 * for specific searches, follow with ?q={"element":"value"}
 * Ex: get armor with rarity 1: https://mhw-db.com/armor?q={"rarity":"1"}

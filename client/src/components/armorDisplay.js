@@ -22,6 +22,13 @@ import dragon from "../images/mhw-dragon-damage_s.png"
 function ArmorDisplay(){
     const [{armor, name}, dispatch] = useArmorContext();
     const [user] = useUserContext();
+
+    let defaultName;
+    if (name){
+        defaultName = name;
+    } else{
+        defaultName = "Build " + (user.buildCount + 1);
+    }
     // Update build name in ArmorContext
     function handleChange(event){
         event.preventDefault();
@@ -34,7 +41,7 @@ function ArmorDisplay(){
     }
     return(
         <div>
-            <input type="text" onChange={handleChange} value={name} />
+            <input type="text" onChange={handleChange} placeholder={defaultName} />
             <Table>
                 <thead>
                     <tr>
@@ -57,7 +64,7 @@ function ArmorDisplay(){
             <Total />
             {// User can only save builds if logged in
                 user.authenticated ? 
-                    <SaveButton/>
+                    <SaveButton defaultName={defaultName}/>
                     :
                     <LoginButton/>        
             }

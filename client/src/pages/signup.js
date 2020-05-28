@@ -19,7 +19,6 @@ const SignUp = (props)=>{
 		UserFail: false,
 		PasswordFail: false
 	})
-
 	const userRef = useRef();
 	const passwordRef = useRef();
 	const confirmRef = useRef();
@@ -39,7 +38,7 @@ const SignUp = (props)=>{
 		// Update the user status and redirect if successful
 		}).then(response=>{
 			if (response.data.status === "Success"){
-				dispatch({ userName: response.data.userName, _id: response.data._id })
+				dispatch({type: "login", userName: response.data.userName, _id: response.data._id, buildCount: 0 })
 				props.history.push("/")
 			}else{
 				setLoginStatus({UserFail:true, PasswordFail:false})
