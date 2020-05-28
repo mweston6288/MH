@@ -93,6 +93,7 @@ function BuildDisplay(props) {
 		<Table>
 			<thead>
 				<tr>
+					<th>Type</th>
 					<th>Name</th>
 					<th><img src={def} title="defense" alt="defense" />
 					</th>
