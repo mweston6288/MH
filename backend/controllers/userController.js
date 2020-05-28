@@ -111,7 +111,7 @@ module.exports = {
 			});
 	},
 	deleteBuild: function({body, params}, res){
-		User.findOneAndUpdate({_id: params._id}, {$pull:{builds:body.buildID}})
+		User.findOneAndUpdate({_id: params._id}, {$pull:{builds:body.buildID}, $inc:{buildCount: -1}})
 			.then(response=>{
 				Build.findOneAndDelete({ _id: body.buildID })
 					.then(()=>{
