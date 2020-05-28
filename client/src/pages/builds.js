@@ -43,9 +43,6 @@ function Builds(props){
 		const index = event.target.getAttribute("data-value");
 		let newBuilds = userState.builds;
 		swap(newBuilds, index, index-1);
-
-		console.log(newBuilds);
-
 		dispatch({ type: "builds", builds: newBuilds })
 	}
 	const handleDownClick = event => {

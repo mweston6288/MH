@@ -29,7 +29,6 @@ function SaveButton({defaultName}) {
 		}else{
 			API.updateBuild(armorState)
 			userDispatch({ type: "updateBuild", _id: armorState._id})
-			console.log(userState.builds)
 		}
 	}
 	return (
