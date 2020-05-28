@@ -8,6 +8,11 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
+import head from "../images/mhw-head.png"
+import chest from "../images/mhw-chest.png"
+import gloves from "../images/mhw-gauntlets.png"
+import waist from "../images/mhw-waist.png"
+import legs from "../images/mhw-greaves.png"
 
 const SelectArmor = ({HR, MR, skill})=>{
 
@@ -51,6 +56,21 @@ const SelectArmor = ({HR, MR, skill})=>{
 		<div>
 			{armors.map((armor, index)=>(
 				<div>
+					<div>{armor.type === "head" ?
+						<img src={head} alt="head"/>
+						:
+						armor.type === "chest" ?
+						<img src={chest} alt="chest" />
+						:
+						armor.type === "gloves" ?
+						<img src={gloves} alt="gloves" />
+						:
+						armor.type === "waist" ?
+						<img src={waist} alt="waist" />
+						:
+						<img src={legs} alt="legs" />
+						}	
+					</div>
 					<div>{armor.name}</div>
 					<div>
 						<img src={def} alt="def"/>{armor.defense.base}

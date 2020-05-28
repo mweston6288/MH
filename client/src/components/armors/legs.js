@@ -1,10 +1,12 @@
 import React from "react";
 import SkillDisplay from "../SkillDisplay";
+import legs from "../../images/mhw-greaves.png"
 
 function Legs(props) {
     if (!props.legs) {
         return (
             <tbody>
+                <td><img src={legs} alt="legs" /></td>
                 <td>None selected</td>
                 <td>0</td>
                 <td>0</td>
@@ -17,6 +19,7 @@ function Legs(props) {
     } else {
         return (
             <tbody>
+                <td><img src={legs} alt="legs" /></td>
                 <td>{props.legs.name}</td>
                 <td>{props.legs.defense.base}</td>
                 <td> {props.legs.resistances.fire}</td>

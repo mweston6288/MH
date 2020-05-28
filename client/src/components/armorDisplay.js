@@ -45,6 +45,7 @@ function ArmorDisplay(){
             <Table>
                 <thead>
                     <tr>
+                        <th>Type</th>
                         <th>Name</th>
                         <th><img src={def} title="defense" alt="defense"/></th>
                         <th><img src={fire} title="fire resistance" alt="fire"/></th>
