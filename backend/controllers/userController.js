@@ -117,7 +117,6 @@ module.exports = {
 					.then(()=>{
 						res.json(response);
 					});
-
 			});
 	}
 };
