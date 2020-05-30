@@ -11,31 +11,34 @@ The app could recommend builds for players based on what they are hunting and wh
 * Provide skill suggestions based on monsters
 * Limit suggestions based on Hunter Rank
 
-## TODO
-[x] create mongo functions to update buildNo with proper values
-[x] update build page so most recently updated build is on top
-[x] update database buildNo whenever user reorganizes a build
-[ ] make delete option
+## Pages
+# /
+* User can search for equipment based on their hunter rank and the monsters they are hunting
+* User can save their created builds (if logged in)
 
-## Builds current status
-When user logs in, userContext gets the buildCount but not the actual builds. Builds are filled into an array upon going to the builds page.
-When A new build is made, it gets set to the front of the array and it is given a buildNo equal to buildCount+1. When a build is updated, it also gets a new buildNo equal to buildCount+1. Both instances also increment buildCount.
+# /builds
+* Displays user builds
+* User can reorganize build order (default order is newest first)
+* User can select a build to update or delete
 
-* Issue: buildCount is always initialized to the correct value but buildNo might be larger so builds could end up out of order.
-* Plan to resolve: After getting builds, set all their BuildNo to buildCount - arrayIndex
-* Resolved
+# /login
+* Log into your account
 
-* Issue: Updated builds do not automatically move to the top of the list
-* Plan to resolve: remove build from build array and then reset it to the front
-* Resolved
+# /signup
+* Create an account
+* Username must be unique
 
-* Issue: Creating a new build before going to build page prevents older builds from loading in
-* Plan to resolve: remove the length check when entering builds and only check if an update is needed
-* Resolved
 
-* Issue: manual edits to list sort are not saved
-* Plan to resolve: On switch, update buildNo of builds by swapping them
-* Resolved
+## Home page layout
+* Select whether you are hunting low, high, or master rank monsters. 
+* Select your hunter/master rank.
+* Select the monster you are hunting. Options are determined by whether you are searching low, high, or master rank and what hunter/master rank you are
+* Click submit to display a dropdown menu for recommended skills
+* Select the skill you want to use. A list of equipment with that skill will display. List is based on your hunter/master rank
+* Select the equipment you want to use. It will appear on the equipment display.
+* Save your build (if logged in) by clicking the save build button.
+* Click reset build to reset the build
+
 
 ## Resources
 * https://docs.mhw-db.com/

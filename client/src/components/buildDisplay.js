@@ -44,31 +44,31 @@ function BuildDisplay(props) {
 		// check builds
 		if (search){
 			if(build.headID){
-				Axios.get(`http://mhw-db.com/armor?q={"id":`+build.headID+`}`)
+				Axios.get(`https://mhw-db.com/armor?q={"id":`+build.headID+`}`)
 					.then(response=>{
 						setHead(response.data[0])
 					})
 			}
 			if (build.chestID) {
-				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.chestID + `}`)
+				Axios.get(`https://mhw-db.com/armor?q={"id":` + build.chestID + `}`)
 					.then(response => {
 						setChest(response.data[0])
 					})
 			}
 			if (build.glovesID) {
-				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.glovesID + `}`)
+				Axios.get(`https://mhw-db.com/armor?q={"id":` + build.glovesID + `}`)
 					.then(response => {
 						setGloves(response.data[0])
 					})
 			}
 			if (build.waistID) {
-				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.waistID + `}`)
+				Axios.get(`https://mhw-db.com/armor?q={"id":` + build.waistID + `}`)
 					.then(response => {
 						setWaist(response.data[0])
 					})
 			}
 			if (build.legsID) {
-				Axios.get(`http://mhw-db.com/armor?q={"id":` + build.legsID + `}`)
+				Axios.get(`https://mhw-db.com/armor?q={"id":` + build.legsID + `}`)
 					.then(response => {
 						setLegs(response.data[0])
 					})
