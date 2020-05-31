@@ -35,14 +35,31 @@ function Total(props) {
 					<ListGroup.Item>Defense:{defense}</ListGroup.Item>
 					<ListGroup.Item>Fire Resistance:{fireRes}</ListGroup.Item>
 					<ListGroup.Item>Water Resistance: {waterRes}</ListGroup.Item>
-					<ListGroup.Item>Ice Resistance: {iceRes}</ListGroup.Item>
 					<ListGroup.Item>Thunder Resistance:{thunderRes}</ListGroup.Item>
+					<ListGroup.Item>Ice Resistance: {iceRes}</ListGroup.Item>
 					<ListGroup.Item>Dragon Resistance: {dragonRes}</ListGroup.Item>
 				</ListGroup>
 				<ListGroup>
 					{skills.map(skill=>(
 						<ListGroup.Item>{skill.skillName} {skill.level}</ListGroup.Item>
 					))}
+				</ListGroup>
+				<ListGroup>
+					{fireRes >= 20 &&
+					<ListGroup.Item>This build is immune to fireblight</ListGroup.Item>
+					}
+					{waterRes >= 20 &&
+						<ListGroup.Item>This build is immune to waterblight</ListGroup.Item>
+					}
+					{thunderRes >= 20 &&
+						<ListGroup.Item>This build is immune to thunderblight</ListGroup.Item>
+					}
+					{iceRes >= 20 &&
+						<ListGroup.Item>This build is immune to iceblight</ListGroup.Item>
+					}
+					{dragonRes >= 20 &&
+						<ListGroup.Item>This build is immune to dragonblight</ListGroup.Item>
+					}
 				</ListGroup>
 			</Card.Body>
 		</Card>
