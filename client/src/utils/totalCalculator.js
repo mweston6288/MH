@@ -1,6 +1,5 @@
 
 export const totalCalculator = (armor)=>{
-	console.log("here")
 	let defense = 0;
 	let fireRes = 0;
 	let waterRes = 0;
@@ -41,7 +40,6 @@ export const totalCalculator = (armor)=>{
 		}
 	}
 	for(let i = 0; i < skills.length; i++){
-		console.log(skills[i])
 		if (skills[i].skillName === "Fire Resistance") {calculateFireRes(skills[i].level) }
 		else if (skills[i].skillName === "Water Resistance") { calculateWaterRes(skills[i].level)}
 		else if (skills[i].skillName === "Ice Resistance") { calculateIceRes(skills[i].level)}
@@ -101,7 +99,6 @@ export const totalCalculator = (armor)=>{
 		}
 	}
 	function calculateFireRes(level){
-		console.log(level)
 		switch(level){
 			case 1:
 				fireRes += 6;

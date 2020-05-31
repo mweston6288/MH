@@ -14,7 +14,6 @@ const Recommend = () => {
     useEffect(()=>{
         Axios.get("https://mhw-db.com/skills")
         .then(response=>{
-            console.log(response)
             setAllSkills(response.data);
         })
         setSkill();
