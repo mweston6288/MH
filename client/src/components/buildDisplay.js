@@ -111,7 +111,7 @@ function BuildDisplay(props) {
 			<Waist waist={waist} />
 			<Legs legs={legs} />
 		</Table>
-		<Total />
+		<Total build={true} head={head} chest={chest} waist={waist} gloves={gloves}legs={legs}/>
 			<Button onClick={handleEdit}>
 				Edit Build
 			</Button>
