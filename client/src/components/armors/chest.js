@@ -1,13 +1,13 @@
 import React from "react";
 import SkillDisplay from "../SkillDisplay";
-import chest from "../../images/mhw-chest.png"
+import chestLogo from "../../images/mhw-chest.png"
 
-function Chest(props) {
+function Chest({chest}) {
     // Default appearance
-    if (!props.chest) {
+    if (!chest) {
         return (
             <tbody>
-                <td><img src={chest} alt="chest" /></td>
+                <td><img src={chestLogo} alt="chest" /></td>
 
                 <td>None selected</td>
                 <td>0</td>
@@ -21,16 +21,16 @@ function Chest(props) {
     } else {
         return (
             <tbody>
-                <td><img src={chest} alt="chest" /></td>
-                <td>{props.chest.name}</td>
-                <td>{props.chest.defense.base}</td>
-                <td> {props.chest.resistances.fire}</td>
-                <td> {props.chest.resistances.water}</td>
-                <td> {props.chest.resistances.thunder}</td>
-                <td> {props.chest.resistances.ice}</td>
-                <td> {props.chest.resistances.dragon}</td>
+                <td><img src={chestLogo} alt="chest" /></td>
+                <td>{chest.name}</td>
+                <td>{chest.defense.base}</td>
+                <td> {chest.resistances.fire}</td>
+                <td> {chest.resistances.water}</td>
+                <td> {chest.resistances.thunder}</td>
+                <td> {chest.resistances.ice}</td>
+                <td> {chest.resistances.dragon}</td>
                 <td>
-                    <SkillDisplay armor={props.chest} />
+                    <SkillDisplay armor={chest} />
                 </td>
             </tbody>
         )

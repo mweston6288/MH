@@ -6,10 +6,20 @@ import { useSearchContext } from "../utils/searchContext";
 // Form is divided into three parts depending on if they are doing a low, high or master rank quest
 function HR(){
     const [{ rank, hunterRank }, dispatch] = useSearchContext();
+    /**
+     * Change hunter rank when user selects an option.
+     * Since some options are a range, split is used to extract the 
+     * first number value and use that
+     */
     const updateHunterRank = (event) => {
         const value = event.target.value.split("-")
         dispatch({ type: "updateHR", HR: value[0] })
     }
+    /**. 
+     * High Rank start at hunter rank 11 so if user is searching through
+     * High Rank, the option menu starts at 11. Options are based on
+     * points where new monsters can be hunted
+    */
     return(
             <Form.Group>
                 <Form.Label>Hunter Rank</Form.Label>

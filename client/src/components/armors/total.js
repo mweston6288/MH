@@ -4,6 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup"
 import {useArmorContext} from "../../utils/armorContext"
 import {totalCalculator} from "../../utils/totalCalculator";
 function Total(props) {
+	const {build, head, chest, gloves, waist, legs} = props;
 	let armor;
 	const [armorContext] = useArmorContext();
 	// Total is used in armorDisplay to calculate the value of the build being
@@ -11,20 +12,19 @@ function Total(props) {
 	// In buildDisplay, a boolean called build is passed along with the build's gear.
 	// if props.build is true, Total will use the passed in armor,
 	// Otherwise it will use the native armorContext
-	if (props.build) {
+	if (build) {
 		armor = {
-			head: props.head,
-			chest: props.chest,
-			gloves: props.gloves,
-			waist: props.waist,
-			legs: props.legs
+			head: head,
+			chest: chest,
+			gloves: gloves,
+			waist: waist,
+			legs: legs
 		};
 	}else{
 		armor = armorContext.armor;
 	}
-
+	// Gets the stat values of the equipment
 	const {defense, fireRes, waterRes, iceRes, thunderRes, dragonRes, skills} = totalCalculator(armor);
-	
 
 	return (
 		<Card>
@@ -45,6 +45,7 @@ function Total(props) {
 					))}
 				</ListGroup>
 				<ListGroup>
+					{/*Notify user if they are immune to certain elemental blights*/}
 					{fireRes >= 20 &&
 					<ListGroup.Item>This build is immune to fireblight</ListGroup.Item>
 					}

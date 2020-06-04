@@ -20,10 +20,11 @@ const userSchema = new Schema({
 	builds: [
 		{
 			type: Schema.Types.ObjectId,
-			ref: "Builds"
+			ref: "Builds",
+			default: 0
 		}
 	],
-	// Track user Build Count
+	// Track number of saved builds
 	buildCount: Number
 });
 

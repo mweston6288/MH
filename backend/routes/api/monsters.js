@@ -15,7 +15,7 @@ router.route("/HRmonsters/:HR")
 router.route("/MRmonsters/:MR")
 	.get(Monsters.getMR);
 // Get a specific monster. Used to get recommended skills
-router.route("/:id")
-	.get(Monsters.findByID);
+router.route("/:monster")
+	.get(Monsters.findMonster);
 
 module.exports = router;

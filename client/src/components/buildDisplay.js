@@ -39,7 +39,7 @@ function BuildDisplay(props) {
 	useEffect(()=>{
 		// This will only trigger once search is true
 		// Search becomes true when the user first opens the
-		// accordion. THis is in place because otherwise all builds would
+		// accordion. This is in place because otherwise all builds would
 		// make API calls at once. With this, calls only get made as you
 		// check builds
 		if (search){
@@ -82,6 +82,7 @@ function BuildDisplay(props) {
 		dispatch({type: "edit", head: head, chest:chest, gloves:gloves, waist:waist, legs:legs, name: build.name, _id:build._id})
 		props.history.push("/")
 	}
+	// Delete a build, remove it from the userDB, update the userContext details
 	function handleDelete(event){
 		event.preventDefault();
 		userAPI.deleteBuild(user._id, build._id)
