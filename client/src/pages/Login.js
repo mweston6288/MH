@@ -10,11 +10,10 @@ import {useUserContext} from "../utils/userContext";
 // User login page. User will need to log in to save builds.
 function Login(props) {
 	const [state, dispatch] = useUserContext();
-
+	// track if an error occurred during login
+	const [err, setErr] = useState(false);
 	// Track if login failed
-	const [loginStatus, setLoginStatus] = useState({
-		failure: false
-	});
+	const [loginStatus, setLoginStatus] = useState(false);
 
 	const userRef = useRef();
 	const passwordRef = useRef();
@@ -27,12 +26,18 @@ function Login(props) {
 		// If login is successful, redirect. For now, it's redirecting
 		// to the main page.
 		}).then(response=>{
+			setErr(false);
 			if (response.data.status === "Success"){
+				setLoginStatus(false);
 				dispatch({type: "login", userName: response.data.userName, _id:response.data._id, buildCount: response.data.buildCount})
 				props.history.push("/")
 			}else{
-				setLoginStatus({failure:true});
+				setLoginStatus(true);
 			}
+		// inform user if an error occurs
+		}).catch(err=>{
+			setLoginStatus(false);
+			setErr(true);
 		})
 	}
 	return (
@@ -55,10 +60,16 @@ function Login(props) {
 				</Form.Group>
 			</Form>
 			<div>
-				{
-					loginStatus.failure &&
+				{// Display if login fails
+					loginStatus &&
 					<Alert variant="danger">
 						Incorrect Username or Password
+					</Alert>
+				}
+				{// Display if an error occurs
+					err &&
+					<Alert variant="danger">
+						An error occurred
 					</Alert>
 				}
 			</div>

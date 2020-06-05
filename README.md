@@ -4,16 +4,20 @@ The end-goal of this project is to make an app for Monster Hunter: World players
 The app could recommend builds for players based on what they are hunting and what weapons they are using.
 
 ## Current status
-* Attempting to get totals values to reflect effects from skills
+* Adding nitfications for success/failure
 
 ## End Goal
 * Provide equipment options that would best protect against monsters
 * Provide skill suggestions based on monsters
 * Limit suggestions based on Hunter Rank
 
+## List of API calls to update
+* backend/controllers/monsterController
+* backend/controllers/userController
+* client/src/components/monsterSelector
+* client/src/utils/searchState
+
 ## Issues
-* All saved builds display the total stats of whatever the first build in the list had
-* functions for calculation have been made but are not being called successfully
 
 ## Pages
 # /
