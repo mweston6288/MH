@@ -22,12 +22,16 @@ export default {
 	updateBuild: function(buildData){
 		return axios.put("/api/user/builds/"+buildData._id, buildData)
 	},
+	// update user buildCount value
 	updateUserBuildCount: function(_id, count){
 		return axios.put("/api/user/"+_id, count)
 	},
+	// update the build's buildNo
 	updateBuildNo: function(_id, buildNo){
 		return axios.put("/api/user/builds/updateBuildNo/"+_id, {buildNo})
 	},
+	// Update a user's build array to remove a build and delete the build
+	// from the build DB
 	deleteBuild: function(_id, buildID){
 		return axios.put("/api/user/deleteBuild/"+_id, {buildID});
 	}

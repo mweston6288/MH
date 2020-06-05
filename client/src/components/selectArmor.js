@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {getArmor} from "../api/monsterAPI.js"
+import {getArmor} from "../api/armorAPI.js"
 import Button from "react-bootstrap/Button"
 import {useArmorContext} from "../utils/armorContext"
 import def from "../images/mhw-defense_s.png"

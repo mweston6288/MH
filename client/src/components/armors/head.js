@@ -1,12 +1,12 @@
 import React from "react";
 import SkillDisplay from "../SkillDisplay";
-import head from "../../images/mhw-head.png"
+import headLogo from "../../images/mhw-head.png"
 
-function Head(props){
-    if (!props.head){
+function Head({head}){
+    if (!head){
         return (
             <tbody>
-                <td><img src={head} alt="head" /></td>
+                <td><img src={headLogo} alt="head" /></td>
                 <td>None selected</td>
                 <td>0</td>
                 <td>0</td>
@@ -15,26 +15,26 @@ function Head(props){
                 <td>0</td>
                 <td>0</td>
                 <td>
-                    <SkillDisplay armor={props.head}/>
+                    <SkillDisplay armor={head}/>
                 </td>
             </tbody>
         )
     }else{
         return(
             <tbody>
-                <td><img src={head} alt="head" /></td>
-                <td>{props.head.name}</td>
-                <td>{props.head.defense.base}</td>
-                <td> {props.head.resistances.fire}</td>
-                <td> {props.head.resistances.water}</td>
-                <td> {props.head.resistances.thunder}</td>
-                <td> {props.head.resistances.ice}</td>
-                <td> {props.head.resistances.dragon}</td>
+                <td><img src={headLogo} alt="head" /></td>
+                <td>{head.name}</td>
+                <td>{head.defense.base}</td>
+                <td> {head.resistances.fire}</td>
+                <td> {head.resistances.water}</td>
+                <td> {head.resistances.thunder}</td>
+                <td> {head.resistances.ice}</td>
+                <td> {head.resistances.dragon}</td>
                 <td>
-                    <SkillDisplay armor={props.head} />
+                    <SkillDisplay armor={head} />
                 </td>
             </tbody>
         )
     }
 }
-export default Head
+export default Head;

@@ -23,6 +23,10 @@ function ArmorDisplay(){
     const [{armor, name}, dispatch] = useArmorContext();
     const [user] = useUserContext();
 
+    // If the armorContext has a name, set the display name
+    // to that name. Otherwise set the name to "Build (count + 1)"
+    // Since the user build count is 0 by default, there is no 
+    // issue if user is not logged in
     let defaultName;
     if (name){
         defaultName = name;

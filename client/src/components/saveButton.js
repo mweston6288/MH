@@ -33,7 +33,10 @@ function SaveButton({defaultName}) {
 	}
 	return (
 		<Button onClick={saveBuild}>
-			Save
+			{armorState._id === "" ? 
+			"Save"
+			:
+			"Update"}
 		</Button>
 	)
 }

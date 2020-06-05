@@ -35,6 +35,7 @@ function MonsterSelector(){
         }
 
     },[hunterRank, masterRank, rank])
+    // update the search context's monster
     const updateMonster = (event) => {
         dispatch({ type: "updateMonster", monster: event.target.value })
     };
