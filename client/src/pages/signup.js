@@ -13,6 +13,7 @@ import { useUserContext } from "../utils/userContext";
 const SignUp = (props)=>{
 	const [state, dispatch] = useUserContext();
 
+	const [err, setErr] = useState(false);
 	// track if signup failed for some reason
 	// Used to spawn an alert if either is true
 	const [loginStatus, setLoginStatus] = useState({
@@ -37,12 +38,16 @@ const SignUp = (props)=>{
 			password: passwordRef.current.value
 		// Update the user status and redirect if successful
 		}).then(response=>{
+			setErr(false);
 			if (response.data.status === "Success"){
 				dispatch({type: "login", userName: response.data.userName, _id: response.data._id, buildCount: 0 })
 				props.history.push("/")
 			}else{
 				setLoginStatus({UserFail:true, PasswordFail:false})
 			}
+		}).catch(err=>{
+			setLoginStatus({ UserFail: false, PasswordFail: false })
+			setErr(true);
 		})
 	}
 	return (
@@ -71,22 +76,24 @@ const SignUp = (props)=>{
 				</Form.Group>
 
 			</Form>
-			<div>
-				{
-					loginStatus.UserFail &&
-					<Alert variant="danger">
-						Username already taken
-					</Alert>
-				}
-			</div>
-			<div>
-				{
-					loginStatus.PasswordFail &&
-					<Alert variant="danger">
-						Password fields do not match
-					</Alert>
-				}
-			</div>
+			{
+				loginStatus.UserFail &&
+				<Alert variant="danger">
+					Username already taken
+				</Alert>
+			}
+			{
+				loginStatus.PasswordFail &&
+				<Alert variant="danger">
+					Password fields do not match
+				</Alert>
+			}
+			{
+				err &&
+				<Alert variant="danger">
+					An error occurred
+				</Alert>
+			}
 
 			<Link to="/">Return</Link>
 			<div>
