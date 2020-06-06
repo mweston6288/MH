@@ -22,6 +22,7 @@ import userAPI from "../api/userAPI";
 function BuildDisplay(props) {
 	const {build} = props;
 	const {search}=props;
+	const {setDeleteAlert} = props;
 	// Since setState does not play well with multiple asyncronous calls
 	// trying to edit the same variable, I've opted to save all armor
 	// pieces into their own states
@@ -88,6 +89,7 @@ function BuildDisplay(props) {
 		userAPI.deleteBuild(user._id, build._id)
 		userDispatch({type: "delete", _id: build._id})
 		dispatch({type:"reset"});
+		setDeleteAlert({name: build.name})
 	}
 	return (
 		<div>
