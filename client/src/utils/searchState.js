@@ -5,7 +5,7 @@ import MR from "../components/MR"
 import Form from "react-bootstrap/Form"
 import * as apis from "../api/monsterAPI.js"
 import { useSearchContext } from "./searchContext";
-import Alert from "react-bootstrap/Alert";
+import { useAlertContext } from "./alertContext";
 
 // Creates the user search and results states.
 const SearchContext = ()=>{
@@ -13,7 +13,7 @@ const SearchContext = ()=>{
 	// updates when any search parameter is changed
 	const [{rank, monster}, dispatch] = useSearchContext();
 
-	const [err, setErr] = useState(false);
+	const [alert, alertDispatch] = useAlertContext();
 	// Take the search state and use it to find all armors that fit
 	// the requirements. Currently filters armor by skills in the monster's "ailments.protection"
 	// field.
@@ -25,9 +25,9 @@ const SearchContext = ()=>{
 				// and set skills to the recommended skills
 				const res = await apis.getMonster(monster);
 				dispatch({type:"updateSkills", skills:res.data[0].skills})
-				setErr(false);
+				alertDispatch({show:false,variant:"",message:""});
 			}catch(err){
-				setErr(true);
+				alertDispatch({ show: true, variant: "danger", message: "Something went wrong" });
 			}
 		}
 	}
@@ -45,10 +45,6 @@ const SearchContext = ()=>{
 					<button type="submit">Submit</button>
 				</Form.Group>
 			</Form>
-			{err &&
-				<Alert variant="danger">
-					Something went wrong
-	        	</Alert>}
 		</div>
 	)
 }

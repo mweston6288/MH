@@ -5,14 +5,13 @@ import API from '../api/userAPI';
 import SavedBuild from '../components/savedBuild';
 import Container from 'react-bootstrap/Container';
 import Alert from "react-bootstrap/Alert";
+import { useAlertContext } from '../utils/alertContext';
 
 // Main page for the user's saved builds
 function Builds(props){
 	const [userState, dispatch] = useUserContext();
 	const [updateNeeded, setUpdateNeeded] = useState(true);
-	const [deleteAlert, setDeleteAlert] = useState({
-		name: ""
-	})
+	const [alert] = useAlertContext();
 	// Get the user builds and store them in an array
 	useEffect(()=>{
 		// Only  run if length is 0 AND no search was previously done
@@ -67,14 +66,14 @@ function Builds(props){
 				<Link to="/">
 					Return
 				</Link>
-				{deleteAlert.name !== "" &&
-				<Alert variant="success">
-					{deleteAlert.name} deleted
+				{alert.show &&
+				<Alert className="build-err-alert" variant={alert.variant}>
+					{alert.message}
 				</Alert>}
 				<Container>
 					<div>
 					{userState.builds.map((build, index)=>(
-						<SavedBuild build={build} dataId={index} last ={userState.builds.length-1} history={props.history} handleUpClick={handleUpClick} handleDownClick={handleDownClick} setDeleteAlert={setDeleteAlert}/>
+						<SavedBuild build={build} dataId={index} last ={userState.builds.length-1} history={props.history} handleUpClick={handleUpClick} handleDownClick={handleDownClick}/>
 					))}
 							</div>
 				</Container>

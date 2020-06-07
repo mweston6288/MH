@@ -17,12 +17,12 @@ import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
 import { useUserContext } from "../utils/userContext";
 import userAPI from "../api/userAPI";
+import { useAlertContext } from "../utils/alertContext";
 
 // Display the build armor
 function BuildDisplay(props) {
 	const {build} = props;
 	const {search}=props;
-	const {setDeleteAlert} = props;
 	// Since setState does not play well with multiple asyncronous calls
 	// trying to edit the same variable, I've opted to save all armor
 	// pieces into their own states
@@ -33,7 +33,7 @@ function BuildDisplay(props) {
 	const [legs, setLegs] = useState();
 	const [armorContext, dispatch] = useArmorContext();
 	const [user, userDispatch] = useUserContext();
-
+	const [alert, alertDispatch] = useAlertContext();
 	// Checks if any particular armor pieces are in the build
 	// and then calls mhw-db to get the armor associated with the id
 	// Then it saves the result to the appropriate state above
@@ -89,7 +89,7 @@ function BuildDisplay(props) {
 		userAPI.deleteBuild(user._id, build._id)
 		userDispatch({type: "delete", _id: build._id})
 		dispatch({type:"reset"});
-		setDeleteAlert({name: build.name})
+		alertDispatch({show: true, variant: "success", message: build.name + " deleted"})
 	}
 	return (
 		<div>

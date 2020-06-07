@@ -17,16 +17,11 @@ import water from "../images/mhw-water-elemental-damage_s.png"
 import ice from "../images/mhw-ice-damage_s.png"
 import thunder from "../images/mhw-thunder-damage_s.png"
 import dragon from "../images/mhw-dragon-damage_s.png"
-import Alert from "react-bootstrap/Alert";
 
 // Display the selected armor. Displays name, skills and stats
 function ArmorDisplay(){
     const [{armor, name}, dispatch] = useArmorContext();
     const [user] = useUserContext();
-    const [err, setErr] = useState({
-        success: false,
-        error: false
-    });
 
     // If the armorContext has a name, set the display name
     // to that name. Otherwise set the name to "Build (count + 1)"
@@ -74,21 +69,11 @@ function ArmorDisplay(){
             <Total />
             {// User can only save builds if logged in
                 user.authenticated ? 
-                    <SaveButton defaultName={defaultName} setErr={setErr}/>
+                    <SaveButton defaultName={defaultName}/>
                     :
                     <LoginButton/>        
             }
-            <Button onClick={handleReset}>Reset</Button>
-            {err.success &&
-                <Alert variant="success">
-                    Build Saved
-			</Alert>
-            }
-            {err.error &&
-                <Alert variant="danger">
-                    An Error Occurred
-				</Alert>
-            }		
+            <Button onClick={handleReset}>Reset</Button>	
         </div>
     )
 }

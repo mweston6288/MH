@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/signup";
 import Builds from "./pages/builds"
 import { SearchProvider } from './utils/searchContext';
+import { AlertProvider } from './utils/alertContext';
 function App() {
   return (
 	  <Router>
@@ -15,6 +16,7 @@ function App() {
 			<UserProvider>
 				<SearchProvider>
 					<ArmorProvider>
+						<AlertProvider>
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/login" component={Login} />
@@ -22,6 +24,7 @@ function App() {
 							<Route exact path="/builds" component={Builds}/>
 							<Route component={Home} />
 						</Switch>
+						  </AlertProvider>
 					</ArmorProvider>
 				</SearchProvider>
 			</UserProvider>

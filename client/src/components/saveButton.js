@@ -3,13 +3,13 @@ import Button from "react-bootstrap/Button";
 import { useUserContext } from "../utils/userContext";
 import { useArmorContext } from "../utils/armorContext";
 import API from "../api/userAPI.js"
-import { STATES } from "mongoose";
-import Alert from "react-bootstrap/Alert";
+import { useAlertContext } from "../utils/alertContext";
 
 // Creates a button that saves user created builds
 function SaveButton({defaultName, setErr}) {
 	const [armorState, armorDispatch] = useArmorContext();
 	const [userState, userDispatch] = useUserContext();
+	const [alert, alertDispatch] = useAlertContext();
 
 	const saveBuild = (event)=>{
 		event.preventDefault();
@@ -26,9 +26,9 @@ function SaveButton({defaultName, setErr}) {
 					// user will need to reset the armor context to make a new build
 					armorDispatch({ type: "save", _id: response.data._id, buildNo: userState.buildCount })
 					userDispatch({type:"addBuild", build:response.data})
-					setErr({ success: true, error: false });
+					alertDispatch({ show: true, variant: "success", message: "Build saved" })
 				}).catch(()=>{
-					setErr({success: false, error: true});
+					alertDispatch({ show: true, variant: "danger", message: "Something went wrong" })
 				})
 		// If there is an _id, then this is a build to update
 		}else{
