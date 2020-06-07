@@ -17,7 +17,6 @@ function MonsterSelector(){
     useEffect(()=>{
         if (rank==="LR"){
             apis.getLRMonsterList(hunterRank).then(res => {
-                console.log(res)
                 alertDispatch({ show: false, variant: "", message: "" })
                 setMonsterList(res.data);
             }).catch(err => {

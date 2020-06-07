@@ -12,7 +12,8 @@ code {
     monospace;
 }
 .build-err-alert{
-  position: absolute;
+  position: fixed;
+  margin-top:20px;
   margin-left:40%;
   z-index: 1;
 }

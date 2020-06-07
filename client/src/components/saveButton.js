@@ -35,9 +35,9 @@ function SaveButton({defaultName, setErr}) {
 			API.updateBuild(armorState)
 			.then(()=>{
 				userDispatch({ type: "updateBuild", _id: armorState._id })
-				setErr({ success: true, error: false });
+				alertDispatch({ show: true, variant: "success", message: "Build saved" })
 			}).catch(()=>{
-				setErr({ success: false, error: true });
+				alertDispatch({ show: true, variant: "danger", message: "Something went wrong" })
 			})
 		}
 	}

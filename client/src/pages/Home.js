@@ -10,8 +10,6 @@ import Recommend from '../utils/recommend';
 import Button from 'react-bootstrap/Button';
 import { useArmorContext } from '../utils/armorContext';
 import { useSearchContext } from '../utils/searchContext';
-import { useAlertContext } from '../utils/alertContext';
-import Alert from 'react-bootstrap/Alert';
 
 // The main page where users can create a build
 // Right now, everything happens to be under the rank tabs but
@@ -20,20 +18,14 @@ function Home() {
 	const [state, dispatch] = useUserContext();
 	const [armor, armorDispatch] = useArmorContext();
 	const [search, searchDispatch] = useSearchContext();
-	const [alert] = useAlertContext();
 	const handleLogout = event=>{
 		event.preventDefault();
 		dispatch({type:"logout"});
 		armorDispatch({type:"reset"});
 		searchDispatch({type:"reset"})
 	}
-	console.log(alert);
 	return (
 		<div>
-			{alert.show &&
-			<Alert className="build-err-alert" variant={alert.variant}>
-				{alert.message}
-			</Alert>}
 			{// Display option to log in or view builds depending on login status
 			// TODO: add a logout feature.
 			state.authenticated ?
