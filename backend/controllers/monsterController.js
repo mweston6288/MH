@@ -8,7 +8,7 @@ module.exports = {
 			.then(monsters => {
 				res.json(monsters);
 			}).catch((err) => {
-				console.log(err);
+				res.json(err);
 			});
 	},
 	getHR: function({params}, res){
@@ -16,7 +16,7 @@ module.exports = {
 			.then(monsters => {
 				res.json(monsters);
 			}).catch((err) => {
-				console.log(err);
+				res.json(err);
 			});
 	},
 	getMR: function ({params}, res) {
@@ -24,7 +24,7 @@ module.exports = {
 			.then(monsters => {
 				res.json(monsters);
 			}).catch((err) => {
-				console.log(err);
+				res.json(err);
 			});
 	},
 	// This method will get monster data by specific name
@@ -33,7 +33,7 @@ module.exports = {
 			.then(monster => {
 				res.json(monster);
 			}).catch((err) => {
-				console.log(err);
+				res.json(err);
 			});
 	}
 };

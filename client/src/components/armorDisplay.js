@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "./armors/head"
 import Chest from "./armors/chest"
 import Gloves from "./armors/gloves"
@@ -73,7 +73,7 @@ function ArmorDisplay(){
                     :
                     <LoginButton/>        
             }
-            <Button onClick={handleReset}>Reset</Button>
+            <Button onClick={handleReset}>Reset</Button>	
         </div>
     )
 }

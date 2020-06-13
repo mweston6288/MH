@@ -4,6 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 import API from '../api/userAPI';
 import SavedBuild from '../components/savedBuild';
 import Container from 'react-bootstrap/Container';
+import Alert from "react-bootstrap/Alert";
 
 // Main page for the user's saved builds
 function Builds(props){

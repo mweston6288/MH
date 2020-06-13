@@ -18,7 +18,6 @@ function Home() {
 	const [state, dispatch] = useUserContext();
 	const [armor, armorDispatch] = useArmorContext();
 	const [search, searchDispatch] = useSearchContext();
-
 	const handleLogout = event=>{
 		event.preventDefault();
 		dispatch({type:"logout"});

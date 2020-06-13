@@ -50,7 +50,7 @@ function SavedBuild({build, dataId, last, history, handleUpClick, handleDownClic
 						</Card.Header>
 						<Accordion.Collapse eventKey={build._id}>
 							<Card.Body>
-								<BuildDisplay build={build} history={history} search={search} />
+								<BuildDisplay build={build} history={history} search={search}/>
 							</Card.Body>
 						</Accordion.Collapse>
 					</Card>

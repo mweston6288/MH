@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.build-err-alert{
+  position: fixed;
+  margin-top:20px;
+  margin-left:40%;
+  z-index: 1;
+}
