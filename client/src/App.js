@@ -13,7 +13,6 @@ import Alert from 'react-bootstrap/Alert';
 function App() {
 
 	const [alert, alertDispatch] = useAlertContext();
-	console.log(alert);
 	useEffect(()=>{
 		if (alert.show){
 			setTimeout(()=>{
