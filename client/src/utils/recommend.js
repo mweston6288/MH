@@ -34,6 +34,7 @@ const Recommend = () => {
                 </Form.Control>
             </Form.Group>
             }
+            {/*}
             <Form.Group>
                 <Form.Label>All Skills</Form.Label>
                 <Form.Control as="select" onChange={updateSkill}>
@@ -43,6 +44,7 @@ const Recommend = () => {
                     ))}
                 </Form.Control>
             </Form.Group>
+                    */}
 
             {skill &&
             <SelectArmor HR={hunterRank} MR={masterRank} skill={skill} />
